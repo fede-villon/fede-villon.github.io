@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reportes · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="">Inicio</a>
+    <a href="caja.html" class="">Caja</a>
+    <a href="ventas.html" class="">Ventas</a>
+    <a href="productos.html" class="">Productos</a>
+    
+    <a href="compras.html" class="">Compras</a>
+    <a href="reportes.html" class="activo">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+<div class="encabezado">
+  <h1>Reportes</h1>
+  <div>
+    <a class="btn" href="#">Exportar ventas (Excel)</a>
+    <a class="btn" href="#">Exportar stock (Excel)</a>
+  </div>
+</div>
+<form class="filtros" method="get">
+  <label>Desde <input type="date" name="desde" value="2026-10-20"></label>
+  <label>Hasta <input type="date" name="hasta" value="2026-11-18"></label>
+  <button class="btn">Actualizar</button>
+</form>
+<section class="metricas">
+  <div class="metrica"><span>Facturado</span><strong>$4.464.180</strong></div>
+  <div class="metrica"><span>Ganancia bruta</span><strong>$1.377.930</strong></div>
+  <div class="metrica"><span>Ventas</span><strong>652</strong></div>
+  <div class="metrica"><span>Ticket promedio</span><strong>$6.846</strong></div>
+</section>
+<section class="tarjeta">
+  <h2>Ventas por día</h2>
+  <div class="barras" role="img" aria-label="Gráfico de ventas por día">
+    
+    <div class="barra-col" title="20/10/2026: $95.430 (16 ventas)">
+      <div class="barra-dato" style="height: 35.8%"></div>
+      <span>20</span>
+    </div>
+    
+    <div class="barra-col" title="21/10/2026: $157.500 (21 ventas)">
+      <div class="barra-dato" style="height: 59.1%"></div>
+      <span>21</span>
+    </div>
+    
+    <div class="barra-col" title="22/10/2026: $101.250 (15 ventas)">
+      <div class="barra-dato" style="height: 38.0%"></div>
+      <span>22</span>
+    </div>
+    
+    <div class="barra-col" title="23/10/2026: $135.640 (18 ventas)">
+      <div class="barra-dato" style="height: 50.9%"></div>
+      <span>23</span>
+    </div>
+    
+    <div class="barra-col" title="24/10/2026: $244.350 (30 ventas)">
+      <div class="barra-dato" style="height: 91.6%"></div>
+      <span>24</span>
+    </div>
+    
+    <div class="barra-col" title="25/10/2026: $161.450 (26 ventas)">
+      <div class="barra-dato" style="height: 60.5%"></div>
+      <span>25</span>
+    </div>
+    
+    <div class="barra-col" title="26/10/2026: $101.930 (16 ventas)">
+      <div class="barra-dato" style="height: 38.2%"></div>
+      <span>26</span>
+    </div>
+    
+    <div class="barra-col" title="27/10/2026: $187.650 (25 ventas)">
+      <div class="barra-dato" style="height: 70.4%"></div>
+      <span>27</span>
+    </div>
+    
+    <div class="barra-col" title="28/10/2026: $173.730 (23 ventas)">
+      <div class="barra-dato" style="height: 65.1%"></div>
+      <span>28</span>
+    </div>
+    
+    <div class="barra-col" title="29/10/2026: $114.300 (16 ventas)">
+      <div class="barra-dato" style="height: 42.9%"></div>
+      <span>29</span>
+    </div>
+    
+    <div class="barra-col" title="30/10/2026: $185.480 (23 ventas)">
+      <div class="barra-dato" style="height: 69.5%"></div>
+      <span>30</span>
+    </div>
+    
+    <div class="barra-col" title="31/10/2026: $120.050 (25 ventas)">
+      <div class="barra-dato" style="height: 45.0%"></div>
+      <span>31</span>
+    </div>
+    
+    <div class="barra-col" title="01/11/2026: $148.640 (27 ventas)">
+      <div class="barra-dato" style="height: 55.7%"></div>
+      <span>01</span>
+    </div>
+    
+    <div class="barra-col" title="02/11/2026: $91.890 (18 ventas)">
+      <div class="barra-dato" style="height: 34.5%"></div>
+      <span>02</span>
+    </div>
+    
+    <div class="barra-col" title="03/11/2026: $124.860 (20 ventas)">
+      <div class="barra-dato" style="height: 46.8%"></div>
+      <span>03</span>
+    </div>
+    
+    <div class="barra-col" title="04/11/2026: $142.240 (20 ventas)">
+      <div class="barra-dato" style="height: 53.3%"></div>
+      <span>04</span>
+    </div>
+    
+    <div class="barra-col" title="05/11/2026: $143.650 (23 ventas)">
+      <div class="barra-dato" style="height: 53.9%"></div>
+      <span>05</span>
+    </div>
+    
+    <div class="barra-col" title="06/11/2026: $114.700 (18 ventas)">
+      <div class="barra-dato" style="height: 43.0%"></div>
+      <span>06</span>
+    </div>
+    
+    <div class="barra-col" title="07/11/2026: $266.690 (34 ventas)">
+      <div class="barra-dato" style="height: 100.0%"></div>
+      <span>07</span>
+    </div>
+    
+    <div class="barra-col" title="08/11/2026: $202.740 (22 ventas)">
+      <div class="barra-dato" style="height: 76.0%"></div>
+      <span>08</span>
+    </div>
+    
+    <div class="barra-col" title="09/11/2026: $140.490 (21 ventas)">
+      <div class="barra-dato" style="height: 52.7%"></div>
+      <span>09</span>
+    </div>
+    
+    <div class="barra-col" title="10/11/2026: $157.450 (22 ventas)">
+      <div class="barra-dato" style="height: 59.0%"></div>
+      <span>10</span>
+    </div>
+    
+    <div class="barra-col" title="11/11/2026: $165.240 (23 ventas)">
+      <div class="barra-dato" style="height: 62.0%"></div>
+      <span>11</span>
+    </div>
+    
+    <div class="barra-col" title="12/11/2026: $104.150 (20 ventas)">
+      <div class="barra-dato" style="height: 39.1%"></div>
+      <span>12</span>
+    </div>
+    
+    <div class="barra-col" title="13/11/2026: $181.110 (26 ventas)">
+      <div class="barra-dato" style="height: 67.9%"></div>
+      <span>13</span>
+    </div>
+    
+    <div class="barra-col" title="14/11/2026: $221.470 (27 ventas)">
+      <div class="barra-dato" style="height: 83.0%"></div>
+      <span>14</span>
+    </div>
+    
+    <div class="barra-col" title="15/11/2026: $184.020 (27 ventas)">
+      <div class="barra-dato" style="height: 69.0%"></div>
+      <span>15</span>
+    </div>
+    
+    <div class="barra-col" title="16/11/2026: $164.340 (26 ventas)">
+      <div class="barra-dato" style="height: 61.6%"></div>
+      <span>16</span>
+    </div>
+    
+    <div class="barra-col" title="17/11/2026: $79.590 (15 ventas)">
+      <div class="barra-dato" style="height: 29.8%"></div>
+      <span>17</span>
+    </div>
+    
+    <div class="barra-col" title="18/11/2026: $52.150 (9 ventas)">
+      <div class="barra-dato" style="height: 19.6%"></div>
+      <span>18</span>
+    </div>
+    
+  </div>
+</section>
+<div class="dos-col">
+  <section class="tarjeta">
+    <h2>Más vendidos</h2>
+    <table><thead><tr><th>Producto</th><th class="num">Unid.</th><th class="num">Facturado</th><th class="num">Ganancia</th></tr></thead><tbody>
+    <tr><td>Pan francés 1 kg</td><td class="num">176</td><td class="num">$404.800</td><td class="num">$140.800</td></tr><tr><td>Leche entera 1 L</td><td class="num">174</td><td class="num">$217.500</td><td class="num">$60.900</td></tr><tr><td>Alfajor triple</td><td class="num">155</td><td class="num">$155.000</td><td class="num">$62.000</td></tr><tr><td>Cerveza lata 473 ml</td><td class="num">133</td><td class="num">$212.800</td><td class="num">$66.500</td></tr><tr><td>Gaseosa cola 2,25 L</td><td class="num">120</td><td class="num">$348.000</td><td class="num">$96.000</td></tr><tr><td>Fideos tallarín 500 g</td><td class="num">99</td><td class="num">$133.650</td><td class="num">$39.600</td></tr><tr><td>Yerba mate 1 kg</td><td class="num">88</td><td class="num">$457.600</td><td class="num">$114.400</td></tr><tr><td>Chicles</td><td class="num">83</td><td class="num">$49.800</td><td class="num">$24.900</td></tr><tr><td>Agua mineral 2 L</td><td class="num">78</td><td class="num">$85.800</td><td class="num">$31.200</td></tr><tr><td>Facturas (docena)</td><td class="num">75</td><td class="num">$360.000</td><td class="num">$135.000</td></tr>
+    </tbody></table>
+  </section>
+  <div>
+    <section class="tarjeta">
+      <h2>Medios de pago</h2>
+      <table><tbody>
+      <tr><td>Efectivo</td><td class="num tenue">245 ventas</td><td class="num">$1.625.050</td></tr><tr><td>Transferencia</td><td class="num tenue">193 ventas</td><td class="num">$1.343.130</td></tr><tr><td>Débito</td><td class="num tenue">158 ventas</td><td class="num">$1.078.670</td></tr><tr><td>Crédito</td><td class="num tenue">56 ventas</td><td class="num">$417.330</td></tr>
+      </tbody></table>
+    </section>
+    <section class="tarjeta">
+      <h2>Por categoría</h2>
+      <table><tbody>
+      <tr><td>Almacén</td><td class="num">$1.237.330</td></tr><tr><td>Panadería</td><td class="num">$877.300</td></tr><tr><td>Bebidas</td><td class="num">$850.550</td></tr><tr><td>Lácteos</td><td class="num">$789.650</td></tr><tr><td>Kiosco</td><td class="num">$398.500</td></tr><tr><td>Limpieza</td><td class="num">$310.850</td></tr>
+      </tbody></table>
+    </section>
+  </div>
+</div>
+<section class="tarjeta">
+  <h2>Sin ventas en el período <small class="tenue">plata inmovilizada en góndola</small></h2>
+  <table><thead><tr><th>Producto</th><th class="num">Stock</th><th class="num">Capital (a costo)</th></tr></thead><tbody>
+  <tr><td colspan="3" class="vacio">Todos los productos tuvieron ventas.</td></tr>
+  </tbody></table>
+</section>
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>

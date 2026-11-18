@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Productos · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="">Inicio</a>
+    <a href="caja.html" class="">Caja</a>
+    <a href="ventas.html" class="">Ventas</a>
+    <a href="productos.html" class="activo">Productos</a>
+    
+    <a href="compras.html" class="">Compras</a>
+    <a href="reportes.html" class="">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+<div class="encabezado">
+  <h1>Productos <small class="tenue">3</small></h1>
+  <a class="btn primario" href="#">Nuevo producto</a>
+</div>
+<form class="filtros" method="get">
+  <input name="q" value="" placeholder="Buscar por nombre o código" aria-label="Buscar">
+  <select name="categoria" aria-label="Categoría"><option value="">Todas las categorías</option>
+    <option value="1" >Almacén</option><option value="2" >Bebidas</option><option value="3" >Kiosco</option><option value="4" >Limpieza</option><option value="5" >Lácteos</option><option value="6" >Panadería</option>
+  </select>
+  <label class="check"><input type="checkbox" name="filtro" value="bajo" checked> Solo stock bajo</label>
+  <button class="btn">Filtrar</button>
+</form>
+<div class="tarjeta sin-padding">
+<table>
+  <thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th class="num">Precio</th><th class="num">Stock</th><th>Vence</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td class="mono tenue">7790001000097</td>
+      <td><a href="producto.html">Galletitas de agua 300 g</a></td>
+      <td>Almacén</td>
+      <td class="num">$1.300</td>
+      <td class="num"><span class="etiqueta ambar">3</span></td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790002000041</td>
+      <td><a href="producto.html">Manteca 200 g</a></td>
+      <td>Lácteos</td>
+      <td class="num">$2.250</td>
+      <td class="num"><span class="etiqueta ambar">2</span></td>
+      <td>08/12/2026</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790003000062</td>
+      <td><a href="producto.html">Soda sifón 2 L</a></td>
+      <td>Bebidas</td>
+      <td class="num">$950</td>
+      <td class="num"><span class="etiqueta ambar">7</span></td>
+      <td>—</td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>

@@ -1,0 +1,19 @@
+From: Bebidas Norte <ventas@bebidasnorte.example>
+To: compras@almacendonamarta.example
+Subject: Remito 0002-00004410 - entrega jueves
+Date: Thu, 05 Nov 2026 09:30:00 -0300
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hola Marta, te paso el detalle de lo que te dejamos hoy (remito 0002-00004410=
+):
+
+- 24 botellas de gaseosa cola 2,25 L a $2.100 c/u =3D $50.400
+- 24 botellas de agua mineral 2 L a $700 c/u =3D $16.800
+- 48 latas de cerveza 473 ml a $1.100 c/u =3D $52.800
+
+Total del remito: $120.000. La factura te llega a fin de mes.
+
+Saludos,
+Ra=C3=BAl - Bebidas Norte

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caja · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="">Inicio</a>
+    <a href="caja.html" class="activo">Caja</a>
+    <a href="ventas.html" class="">Ventas</a>
+    <a href="productos.html" class="">Productos</a>
+    
+    <a href="compras.html" class="">Compras</a>
+    <a href="reportes.html" class="">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+<div class="caja">
+  <section>
+    <h1>Caja</h1>
+    <form method="post" action="#" class="escaner">
+      <input name="codigo" placeholder="Escaneá el código o escribí el producto" autofocus autocomplete="off" aria-label="Código o producto">
+      <input name="cantidad" type="number" min="1" value="1" class="cant" aria-label="Cantidad">
+      <button class="btn primario">Agregar</button>
+    </form>
+    
+  </section>
+  <aside class="tarjeta ticket-actual">
+    <h2>Venta actual</h2>
+    
+    <ul class="items">
+      
+      <li>
+        <div><strong>Leche entera 1 L</strong><small class="tenue">2 × $1.250</small></div>
+        <span>$2.500</span>
+        <form method="post" action="#"><button class="quitar" aria-label="Quitar Leche entera 1 L">×</button></form>
+      </li>
+      
+      <li>
+        <div><strong>Alfajor triple</strong><small class="tenue">3 × $1.000</small></div>
+        <span>$3.000</span>
+        <form method="post" action="#"><button class="quitar" aria-label="Quitar Alfajor triple">×</button></form>
+      </li>
+      
+    </ul>
+    <div class="total"><span>Total</span><strong>$5.500</strong></div>
+    <form method="post" action="#">
+      <div class="medios">
+        
+        <label><input type="radio" name="medio_pago" value="efectivo" checked> Efectivo</label>
+        
+        <label><input type="radio" name="medio_pago" value="debito" > Débito</label>
+        
+        <label><input type="radio" name="medio_pago" value="credito" > Crédito</label>
+        
+        <label><input type="radio" name="medio_pago" value="transferencia" > Transferencia</label>
+        
+      </div>
+      <button class="btn primario ancho grande">Cobrar $5.500</button>
+    </form>
+    <form method="post" action="#"><button class="btn enlace ancho">Cancelar venta</button></form>
+    
+  </aside>
+</div>
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>

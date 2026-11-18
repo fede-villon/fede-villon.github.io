@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yerba mate 1 kg · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="">Inicio</a>
+    <a href="caja.html" class="">Caja</a>
+    <a href="ventas.html" class="">Ventas</a>
+    <a href="productos.html" class="activo">Productos</a>
+    
+    <a href="compras.html" class="">Compras</a>
+    <a href="reportes.html" class="">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+
+<div class="encabezado">
+  <h1>Yerba mate 1 kg</h1>
+  <a class="btn" href="productos.html">Volver</a>
+</div>
+<div class="dos-col">
+<form method="post" class="tarjeta formulario">
+  <fieldset >
+  <div class="fila">
+    <label>Código <input name="codigo" value="7790001000011" required></label>
+    <label class="crece">Nombre <input name="nombre" value="Yerba mate 1 kg" required></label>
+  </div>
+  <div class="fila">
+    <label>Categoría <select name="categoria_id"><option value="">—</option>
+      <option value="1" selected>Almacén</option><option value="2" >Bebidas</option><option value="3" >Kiosco</option><option value="4" >Limpieza</option><option value="5" >Lácteos</option><option value="6" >Panadería</option></select></label>
+    <label>Proveedor <select name="proveedor_id"><option value="">—</option>
+      <option value="3" >Bebidas Norte</option><option value="1" selected>Distribuidora Del Litoral</option><option value="2" >Lácteos La Pradera</option><option value="4" >Panificados Don Julio</option></select></label>
+  </div>
+  <div class="fila">
+    <label>Costo ($) <input name="precio_costo" type="number" min="0" value="3900" required></label>
+    <label>Precio de venta ($) <input name="precio_venta" type="number" min="0" value="5200" required></label>
+  </div>
+  <div class="fila">
+    
+    <label>Stock mínimo <input name="stock_minimo" type="number" min="0" value="8"></label>
+    <label>Vencimiento <input name="vencimiento" type="date" value=""></label>
+  </div>
+  
+    <p class="tenue">Margen actual: 33 % · Stock: <strong>24</strong> unidades</p>
+  
+  <button class="btn primario">Guardar cambios</button>
+  </fieldset>
+</form>
+
+<div>
+  
+  <form method="post" action="#" class="tarjeta formulario">
+    <h2>Ajustar stock</h2>
+    <p class="tenue">Usalo después de contar la góndola, o si hubo roturas o vencidos.</p>
+    <div class="fila">
+      <label>Stock real contado <input name="stock_real" type="number" min="0" value="24" required></label>
+      <label class="crece">Motivo <input name="detalle" placeholder="Conteo, rotura, vencido…" required></label>
+    </div>
+    <button class="btn">Aplicar ajuste</button>
+  </form>
+  
+  <section class="tarjeta">
+    <h2>Movimientos de stock</h2>
+    <table><thead><tr><th>Fecha</th><th>Motivo</th><th class="num">Cant.</th><th>Usuario</th></tr></thead><tbody>
+    
+      <tr><td>18/10/2026 08:00</td><td>Inicial <small class="tenue">Inventario inicial</small></td>
+          <td class="num verde">+24</td><td>Marta (dueña)</td></tr>
+    
+    </tbody></table>
+  </section>
+  
+  <form method="post" action="#" onsubmit="return confirm('¿Dar de baja este producto?')">
+    <button class="btn peligro">Dar de baja el producto</button>
+  </form>
+  
+</div>
+
+</div>
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>

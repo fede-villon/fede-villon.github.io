@@ -1,0 +1,19 @@
+From: Panificados Don Julio <donjulio.panificados@example.com>
+To: compras@almacendonamarta.example
+Subject: Presupuesto pan y facturas
+Date: Fri, 13 Nov 2026 09:30:00 -0300
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hola, como hablamos te paso precios para empezar a trabajar:
+
+Pan franc=C3=A9s: $1.600 el kilo (calculamos unos 30 kg por semana =3D $48.00=
+0)
+Facturas: $3.100 la docena (10 docenas =3D $31.000)
+
+Total estimado semanal: $79.000.
+Precios v=C3=A1lidos hasta el 30/11/2026. Entregamos todos los d=C3=ADas ante=
+s de las 7.
+
+Julio

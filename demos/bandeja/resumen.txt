@@ -1,0 +1,19 @@
+Resumen de compras del 03/11 al 16/11/2026
+
+Documentos recibidos: 8
+Total comprado: $880.307,00
+
+Por proveedor:
+  · Distribuidora Del Litoral S.A.: $455.807,00
+  · Lácteos La Pradera S.R.L.: $233.594,00
+  · Bebidas Norte: $120.000,00
+  · Limpieza Total S.R.L.: $70.906,00
+
+Para revisar (5):
+  ‼ #6 Lácteos La Pradera S.R.L.: El comprobante 0001-00000567 de Lácteos La Pradera S.R.L. ya se cargó (documento #2). No pagarlo dos veces.
+  · #4 Distribuidora Del Litoral S.A.: «Yerba mate 1 kg» subió 15 %: de $3.900,00 a $4.500,00.
+  ‼ #5 Lácteos La Pradera S.R.L.: El total impreso es $123.726,00 pero las líneas más impuestos suman $121.726,00 (diferencia de +$2.000,00).
+  · #8 Limpieza Total S.R.L.: «Detergente 500 ml»: 24 × $900,00 da $21.600,00, pero la línea dice $22.600,00.
+  · #8 Limpieza Total S.R.L.: A la factura le falta: CUIT.
+
+Pendientes de aprobar: 8

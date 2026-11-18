@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bandeja · Revisión de comprobantes</title>
+<style>
+:root {
+  --fondo: #f5f6f8; --papel: #fff; --tinta: #1b2130; --tenue: #687083; --linea: #e3e6ec;
+  --acento: #2b3a67; --acento-suave: #e8ecf7; --rojo: #b3261e; --rojo-suave: #fcebea;
+  --ambar: #8a5a00; --ambar-suave: #fdf3dc; --verde: #1f6b45; --verde-suave: #e5f3eb; --azul-suave: #e9f1fb;
+  --radio: 10px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif; color: var(--tinta);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); font-size: 15px; line-height: 1.45; }
+header { background: var(--acento); color: #fff; padding: 14px 24px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.logo { width: 30px; height: 30px; border-radius: 8px; background: #fff; color: var(--acento); display: grid; place-items: center; font-weight: 800; }
+header h1 { font-size: 1.1rem; margin: 0; }
+header p { margin: 0; color: #c9d0e4; font-size: .9rem; }
+.demo { background: var(--ambar-suave); color: var(--ambar); padding: 8px 24px; font-size: .88rem; border-bottom: 1px solid #f1dfb0; }
+main { max-width: 1240px; margin: 0 auto; padding: 22px 24px 48px; }
+.metricas { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.metrica { background: var(--papel); border: 1px solid var(--linea); border-radius: var(--radio); padding: 12px 16px; }
+.metrica span { display: block; color: var(--tenue); font-size: .82rem; }
+.metrica strong { font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+.metrica.alta strong { color: var(--rojo); }
+.filtros { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.filtros button { font: inherit; border: 1px solid var(--linea); background: var(--papel); padding: 6px 12px; border-radius: 99px; cursor: pointer; color: var(--tinta); }
+.filtros button.activo { background: var(--acento); border-color: var(--acento); color: #fff; }
+.grilla { display: grid; grid-template-columns: 380px 1fr; gap: 18px; align-items: start; }
+.lista { display: flex; flex-direction: column; gap: 8px; }
+.tarjeta { background: var(--papel); border: 1px solid var(--linea); border-radius: var(--radio); padding: 12px 14px; cursor: pointer; text-align: left; font: inherit; color: inherit; width: 100%; }
+.tarjeta:hover { border-color: #b9c2d8; }
+.tarjeta.sel { border-color: var(--acento); box-shadow: 0 0 0 2px var(--acento-suave); }
+.tarjeta .fila { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.tarjeta .prov { font-weight: 650; }
+.tarjeta .monto { font-variant-numeric: tabular-nums; font-weight: 650; }
+.tarjeta .meta { color: var(--tenue); font-size: .84rem; margin-top: 2px; }
+.chips { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.chip { font-size: .74rem; font-weight: 650; padding: 2px 8px; border-radius: 99px; }
+.chip.alta { background: var(--rojo-suave); color: var(--rojo); }
+.chip.media { background: var(--ambar-suave); color: var(--ambar); }
+.chip.info { background: var(--azul-suave); color: var(--acento); }
+.chip.aprobado { background: var(--verde-suave); color: var(--verde); }
+.chip.rechazado { background: #eee; color: #555; }
+.chip.pendiente { background: var(--acento-suave); color: var(--acento); }
+.detalle { background: var(--papel); border: 1px solid var(--linea); border-radius: var(--radio); padding: 20px 22px; position: sticky; top: 14px; }
+.detalle h2 { margin: 0 0 2px; font-size: 1.3rem; }
+.detalle .sub { color: var(--tenue); margin: 0 0 14px; }
+.datos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 18px; margin: 0 0 18px; }
+.datos dt { color: var(--tenue); font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+.datos dd { margin: 0; font-weight: 550; font-variant-numeric: tabular-nums; }
+.alertas { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
+.alertas li { padding: 9px 12px; border-radius: 8px; border-left: 4px solid; }
+.alertas li.alta { background: var(--rojo-suave); border-color: var(--rojo); }
+.alertas li.media { background: var(--ambar-suave); border-color: #d9a420; }
+.alertas li.info { background: var(--azul-suave); border-color: #7f9bd1; }
+.ok { background: var(--verde-suave); color: var(--verde); padding: 9px 12px; border-radius: 8px; margin: 0 0 18px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--linea); }
+th { font-size: .76rem; color: var(--tenue); text-transform: uppercase; letter-spacing: .04em; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tfoot td { font-weight: 700; border-bottom: 0; }
+.acciones { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.btn { font: inherit; font-weight: 600; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--linea); background: #fff; color: var(--tinta); cursor: pointer; text-decoration: none; }
+.btn.aprobar { background: var(--verde); border-color: var(--verde); color: #fff; }
+.btn.rechazar { color: var(--rojo); border-color: #efc4c0; }
+.cmd { color: var(--tenue); font-size: .82rem; }
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .85em; background: #f0f2f6; padding: 1px 5px; border-radius: 4px; }
+.vacio { color: var(--tenue); padding: 30px; text-align: center; }
+details { margin-top: 14px; } summary { cursor: pointer; color: var(--tenue); font-size: .88rem; }
+pre { background: #0f1422; color: #d7deef; padding: 12px; border-radius: 8px; overflow: auto; font-size: .8rem; }
+@media (max-width: 900px) { .grilla { grid-template-columns: 1fr; } .detalle { position: static; } main { padding: 16px; } header, .demo { padding-left: 16px; padding-right: 16px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">B</div>
+  <div><h1>Bandeja</h1><p>Comprobantes de proveedores leídos con IA y verificados automáticamente</p></div>
+</header>
+<div class="demo" id="aviso">Demo con datos de ejemplo. Aprobar o rechazar solo se guarda en tu navegador.</div>
+<main>
+  <section class="metricas" id="metricas"></section>
+  <nav class="filtros" id="filtros"></nav>
+  <div class="grilla">
+    <div class="lista" id="lista"></div>
+    <section class="detalle" id="detalle"><p class="vacio">Elegí un comprobante.</p></section>
+  </div>
+</main>
+<script id="datos" type="application/json">{"demo": true, "documentos": [{"id": 1, "archivo": "2026-11-03_litoral_factura_1234.pdf", "hash": "699d1eba4184ebe25075e69d7b545a7c0c86f0b3953caaf2338f8ae354b928e7", "tipo": "factura", "proveedor": "Distribuidora Del Litoral S.A.", "cuit": "30-71234567-8", "numero": "0003-00001234", "fecha": "2026-11-03", "total": 236918.0, "impuestos": 41118.0, "estado": "pendiente", "procesado": "2026-11-18 18:58:52", "extractor": "demo", "datos": {"tipo": "factura", "proveedor": "Distribuidora Del Litoral S.A.", "cuit": "30-71234567-8", "numero": "0003-00001234", "fecha": "2026-11-03", "items": [{"descripcion": "Yerba mate 1 kg", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 3900.0, "subtotal": 93600.0}, {"descripcion": "Azúcar 1 kg", "cantidad": 30.0, "unidad": "unidad", "precio_unitario": 1100.0, "subtotal": 33000.0}, {"descripcion": "Fideos tallarín 500 g", "cantidad": 40.0, "unidad": "unidad", "precio_unitario": 950.0, "subtotal": 38000.0}, {"descripcion": "Aceite girasol 1,5 L", "cantidad": 12.0, "unidad": "unidad", "precio_unitario": 2600.0, "subtotal": 31200.0}], "subtotal": 195800.0, "impuestos": 41118.0, "total": 236918.0, "observaciones": null}, "items": [{"descripcion": "Yerba mate 1 kg", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 3900.0, "subtotal": 93600.0}, {"descripcion": "Azúcar 1 kg", "cantidad": 30.0, "unidad": "unidad", "precio_unitario": 1100.0, "subtotal": 33000.0}, {"descripcion": "Fideos tallarín 500 g", "cantidad": 40.0, "unidad": "unidad", "precio_unitario": 950.0, "subtotal": 38000.0}, {"descripcion": "Aceite girasol 1,5 L", "cantidad": 12.0, "unidad": "unidad", "precio_unitario": 2600.0, "subtotal": 31200.0}], "alertas": [], "original": "archivos/2026-11-03_litoral_factura_1234.pdf"}, {"id": 2, "archivo": "2026-11-04_pradera_factura_0567.pdf", "hash": "8efd953ebf1aa22369c50b7301a9c275d1ffe826db96ee1e497003b9ae31e45a", "tipo": "factura", "proveedor": "Lácteos La Pradera S.R.L.", "cuit": "30-70987654-3", "numero": "0001-00000567", "fecha": "2026-11-04", "total": 109868.0, "impuestos": 19068.0, "estado": "pendiente", "procesado": "2026-11-18 18:58:52", "extractor": "demo", "datos": {"tipo": "factura", "proveedor": "Lácteos La Pradera S.R.L.", "cuit": "30-70987654-3", "numero": "0001-00000567", "fecha": "2026-11-04", "items": [{"descripcion": "Leche entera 1 L", "cantidad": 48.0, "unidad": "unidad", "precio_unitario": 900.0, "subtotal": 43200.0}, {"descripcion": "Yogur bebible 1 L", "cantidad": 12.0, "unidad": "unidad", "precio_unitario": 1300.0, "subtotal": 15600.0}, {"descripcion": "Manteca 200 g", "cantidad": 20.0, "unidad": "unidad", "precio_unitario": 1600.0, "subtotal": 32000.0}], "subtotal": 90800.0, "impuestos": 19068.0, "total": 109868.0, "observaciones": null}, "items": [{"descripcion": "Leche entera 1 L", "cantidad": 48.0, "unidad": "unidad", "precio_unitario": 900.0, "subtotal": 43200.0}, {"descripcion": "Yogur bebible 1 L", "cantidad": 12.0, "unidad": "unidad", "precio_unitario": 1300.0, "subtotal": 15600.0}, {"descripcion": "Manteca 200 g", "cantidad": 20.0, "unidad": "unidad", "precio_unitario": 1600.0, "subtotal": 32000.0}], "alertas": [], "original": "archivos/2026-11-04_pradera_factura_0567.pdf"}, {"id": 6, "archivo": "2026-11-12_reenvio_pradera_0567.eml", "hash": "86fd0b3ab0174eaf721b03ae29ee975e599343da57490d0ee3f65ec4a463cf87", "tipo": "factura", "proveedor": "Lácteos La Pradera S.R.L.", "cuit": "30-70987654-3", "numero": "0001-00000567", "fecha": "2026-11-04", "total": 109868.0, "impuestos": 19068.0, "estado": "pendiente", "procesado": "2026-11-18 18:58:52", "extractor": "demo", "datos": {"tipo": "factura", "proveedor": "Lácteos La Pradera S.R.L.", "cuit": "30-70987654-3", "numero": "0001-00000567", "fecha": "2026-11-04", "items": [{"descripcion": "Leche entera 1 L", "cantidad": 48.0, "unidad": "unidad", "precio_unitario": 900.0, "subtotal": 43200.0}, {"descripcion": "Yogur bebible 1 L", "cantidad": 12.0, "unidad": "unidad", "precio_unitario": 1300.0, "subtotal": 15600.0}, {"descripcion": "Manteca 200 g", "cantidad": 20.0, "unidad": "unidad", "precio_unitario": 1600.0, "subtotal": 32000.0}], "subtotal": 90800.0, "impuestos": 19068.0, "total": 109868.0, "observaciones": null}, "items": [{"descripcion": "Leche entera 1 L", "cantidad": 48.0, "unidad": "unidad", "precio_unitario": 900.0, "subtotal": 43200.0}, {"descripcion": "Yogur bebible 1 L", "cantidad": 12.0, "unidad": "unidad", "precio_unitario": 1300.0, "subtotal": 15600.0}, {"descripcion": "Manteca 200 g", "cantidad": 20.0, "unidad": "unidad", "precio_unitario": 1600.0, "subtotal": 32000.0}], "alertas": [{"tipo": "duplicado", "gravedad": "alta", "mensaje": "El comprobante 0001-00000567 de Lácteos La Pradera S.R.L. ya se cargó (documento #2). No pagarlo dos veces."}], "original": "archivos/2026-11-12_reenvio_pradera_0567.eml.txt"}, {"id": 3, "archivo": "2026-11-05_bebidas_norte_remito.eml", "hash": "e021254b7cbe3f8267c6f31b974c90d33ff2fc274aeb293914035b3d84714f2c", "tipo": "remito", "proveedor": "Bebidas Norte", "cuit": null, "numero": "0002-00004410", "fecha": "2026-11-05", "total": 120000.0, "impuestos": null, "estado": "pendiente", "procesado": "2026-11-18 18:58:52", "extractor": "demo", "datos": {"tipo": "remito", "proveedor": "Bebidas Norte", "cuit": null, "numero": "0002-00004410", "fecha": "2026-11-05", "items": [{"descripcion": "Gaseosa cola 2,25 L", "cantidad": 24.0, "unidad": "botella", "precio_unitario": 2100.0, "subtotal": 50400.0}, {"descripcion": "Agua mineral 2 L", "cantidad": 24.0, "unidad": "botella", "precio_unitario": 700.0, "subtotal": 16800.0}, {"descripcion": "Cerveza lata 473 ml", "cantidad": 48.0, "unidad": "lata", "precio_unitario": 1100.0, "subtotal": 52800.0}], "subtotal": null, "impuestos": null, "total": 120000.0, "observaciones": null}, "items": [{"descripcion": "Gaseosa cola 2,25 L", "cantidad": 24.0, "unidad": "botella", "precio_unitario": 2100.0, "subtotal": 50400.0}, {"descripcion": "Agua mineral 2 L", "cantidad": 24.0, "unidad": "botella", "precio_unitario": 700.0, "subtotal": 16800.0}, {"descripcion": "Cerveza lata 473 ml", "cantidad": 48.0, "unidad": "lata", "precio_unitario": 1100.0, "subtotal": 52800.0}], "alertas": [], "original": "archivos/2026-11-05_bebidas_norte_remito.eml.txt"}, {"id": 4, "archivo": "2026-11-10_litoral_factura_1301.pdf", "hash": "4e0d855fe0dc38788e9e882986cacfe10068a78ec54e969741870f10e29f1c58", "tipo": "factura", "proveedor": "Distribuidora Del Litoral S.A.", "cuit": "30-71234567-8", "numero": "0003-00001301", "fecha": "2026-11-10", "total": 218889.0, "impuestos": 37989.0, "estado": "pendiente", "procesado": "2026-11-18 18:58:52", "extractor": "demo", "datos": {"tipo": "factura", "proveedor": "Distribuidora Del Litoral S.A.", "cuit": "30-71234567-8", "numero": "0003-00001301", "fecha": "2026-11-10", "items": [{"descripcion": "Yerba mate 1 kg", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 4500.0, "subtotal": 108000.0}, {"descripcion": "Azúcar 1 kg", "cantidad": 30.0, "unidad": "unidad", "precio_unitario": 1150.0, "subtotal": 34500.0}, {"descripcion": "Café molido 250 g", "cantidad": 12.0, "unidad": "unidad", "precio_unitario": 3200.0, "subtotal": 38400.0}], "subtotal": 180900.0, "impuestos": 37989.0, "total": 218889.0, "observaciones": null}, "items": [{"descripcion": "Yerba mate 1 kg", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 4500.0, "subtotal": 108000.0}, {"descripcion": "Azúcar 1 kg", "cantidad": 30.0, "unidad": "unidad", "precio_unitario": 1150.0, "subtotal": 34500.0}, {"descripcion": "Café molido 250 g", "cantidad": 12.0, "unidad": "unidad", "precio_unitario": 3200.0, "subtotal": 38400.0}], "alertas": [{"tipo": "aumento", "gravedad": "media", "mensaje": "«Yerba mate 1 kg» subió 15 %: de $3.900,00 a $4.500,00."}], "original": "archivos/2026-11-10_litoral_factura_1301.pdf"}, {"id": 5, "archivo": "2026-11-11_pradera_factura_0589.pdf", "hash": "7a3a8bbf2970df2fd2cf5a17200c000501eb7295941d46cdc5977e4a6d277752", "tipo": "factura", "proveedor": "Lácteos La Pradera S.R.L.", "cuit": "30-70987654-3", "numero": "0001-00000589", "fecha": "2026-11-11", "total": 123726.0, "impuestos": 21126.0, "estado": "pendiente", "procesado": "2026-11-18 18:58:52", "extractor": "demo", "datos": {"tipo": "factura", "proveedor": "Lácteos La Pradera S.R.L.", "cuit": "30-70987654-3", "numero": "0001-00000589", "fecha": "2026-11-11", "items": [{"descripcion": "Leche entera 1 L", "cantidad": 48.0, "unidad": "unidad", "precio_unitario": 900.0, "subtotal": 43200.0}, {"descripcion": "Queso cremoso 1 kg", "cantidad": 5.0, "unidad": "kg", "precio_unitario": 6200.0, "subtotal": 31000.0}, {"descripcion": "Crema de leche 200 ml", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 1100.0, "subtotal": 26400.0}], "subtotal": 100600.0, "impuestos": 21126.0, "total": 123726.0, "observaciones": null}, "items": [{"descripcion": "Leche entera 1 L", "cantidad": 48.0, "unidad": "unidad", "precio_unitario": 900.0, "subtotal": 43200.0}, {"descripcion": "Queso cremoso 1 kg", "cantidad": 5.0, "unidad": "kg", "precio_unitario": 6200.0, "subtotal": 31000.0}, {"descripcion": "Crema de leche 200 ml", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 1100.0, "subtotal": 26400.0}], "alertas": [{"tipo": "total", "gravedad": "alta", "mensaje": "El total impreso es $123.726,00 pero las líneas más impuestos suman $121.726,00 (diferencia de +$2.000,00)."}], "original": "archivos/2026-11-11_pradera_factura_0589.pdf"}, {"id": 7, "archivo": "2026-11-13_don_julio_presupuesto.eml", "hash": "a0381e6b162aa631de400897b863e71ac4e94ab6839d3301fc20f3c883ce73c5", "tipo": "presupuesto", "proveedor": "Panificados Don Julio", "cuit": null, "numero": null, "fecha": "2026-11-13", "total": 79000.0, "impuestos": null, "estado": "pendiente", "procesado": "2026-11-18 18:58:52", "extractor": "demo", "datos": {"tipo": "presupuesto", "proveedor": "Panificados Don Julio", "cuit": null, "numero": null, "fecha": "2026-11-13", "items": [{"descripcion": "Pan francés", "cantidad": 30.0, "unidad": "kg", "precio_unitario": 1600.0, "subtotal": 48000.0}, {"descripcion": "Facturas", "cantidad": 10.0, "unidad": "docena", "precio_unitario": 3100.0, "subtotal": 31000.0}], "subtotal": null, "impuestos": null, "total": 79000.0, "observaciones": "Precios válidos hasta el 30/11/2026; entrega diaria antes de las 7."}, "items": [{"descripcion": "Pan francés", "cantidad": 30.0, "unidad": "kg", "precio_unitario": 1600.0, "subtotal": 48000.0}, {"descripcion": "Facturas", "cantidad": 10.0, "unidad": "docena", "precio_unitario": 3100.0, "subtotal": 31000.0}], "alertas": [{"tipo": "proveedor_nuevo", "gravedad": "info", "mensaje": "«Panificados Don Julio» no está en el padrón de proveedores. Verificá que sea real antes de pagar."}, {"tipo": "revisar", "gravedad": "info", "mensaje": "Observación de la lectura: Precios válidos hasta el 30/11/2026; entrega diaria antes de las 7."}], "original": "archivos/2026-11-13_don_julio_presupuesto.eml.txt"}, {"id": 8, "archivo": "2026-11-16_limpieza_total_factura.pdf", "hash": "e36c11043f1ddad686132b84db7d75dae1bbfaeb360bca59a4573c803e493691", "tipo": "factura", "proveedor": "Limpieza Total S.R.L.", "cuit": null, "numero": "0005-00000088", "fecha": "2026-11-16", "total": 70906.0, "impuestos": 12306.0, "estado": "pendiente", "procesado": "2026-11-18 18:58:52", "extractor": "demo", "datos": {"tipo": "factura", "proveedor": "Limpieza Total S.R.L.", "cuit": null, "numero": "0005-00000088", "fecha": "2026-11-16", "items": [{"descripcion": "Lavandina 1 L", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 600.0, "subtotal": 14400.0}, {"descripcion": "Detergente 500 ml", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 900.0, "subtotal": 22600.0}, {"descripcion": "Papel higiénico x4", "cantidad": 12.0, "unidad": "pack", "precio_unitario": 1800.0, "subtotal": 21600.0}], "subtotal": 58600.0, "impuestos": 12306.0, "total": 70906.0, "observaciones": null}, "items": [{"descripcion": "Lavandina 1 L", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 600.0, "subtotal": 14400.0}, {"descripcion": "Detergente 500 ml", "cantidad": 24.0, "unidad": "unidad", "precio_unitario": 900.0, "subtotal": 22600.0}, {"descripcion": "Papel higiénico x4", "cantidad": 12.0, "unidad": "pack", "precio_unitario": 1800.0, "subtotal": 21600.0}], "alertas": [{"tipo": "linea", "gravedad": "media", "mensaje": "«Detergente 500 ml»: 24 × $900,00 da $21.600,00, pero la línea dice $22.600,00."}, {"tipo": "proveedor_nuevo", "gravedad": "info", "mensaje": "«Limpieza Total S.R.L.» no está en el padrón de proveedores. Verificá que sea real antes de pagar."}, {"tipo": "dato_faltante", "gravedad": "media", "mensaje": "A la factura le falta: CUIT."}], "original": "archivos/2026-11-16_limpieza_total_factura.pdf"}]}</script>
+<script>
+const DATOS = JSON.parse(document.getElementById('datos').textContent);
+const docs = DATOS.documentos;
+const CLAVE = 'bandeja-estados';
+let cambios = {};
+try { cambios = JSON.parse(localStorage.getItem(CLAVE) || '{}'); } catch (e) {}
+const estado = d => cambios[d.id] || d.estado;
+const pesos = n => '$' + Number(n || 0).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fecha = f => f ? f.split('-').reverse().join('/') : '—';
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const gravedadMax = d => d.alertas.some(a => a.gravedad === 'alta') ? 'alta' : d.alertas.some(a => a.gravedad === 'media') ? 'media' : null;
+const TIPOS = { total: 'Total no cierra', linea: 'Línea mal calculada', duplicado: 'Duplicado', aumento: 'Aumento', proveedor_nuevo: 'Proveedor nuevo', dato_faltante: 'Faltan datos', revisar: 'Revisar' };
+const FILTROS = [['todos', 'Todos', () => true], ['alertas', 'Con alertas', d => gravedadMax(d)], ['pendiente', 'Pendientes', d => estado(d) === 'pendiente'], ['aprobado', 'Aprobados', d => estado(d) === 'aprobado'], ['rechazado', 'Rechazados', d => estado(d) === 'rechazado']];
+let filtro = 'todos', seleccionado = null;
+
+function metricas() {
+  const validos = docs.filter(d => ['factura', 'remito'].includes(d.tipo) && estado(d) !== 'rechazado' && !d.alertas.some(a => a.tipo === 'duplicado'));
+  const altas = docs.filter(d => gravedadMax(d) === 'alta' && estado(d) === 'pendiente').length;
+  document.getElementById('metricas').innerHTML = [
+    ['Comprobantes', docs.length, ''], ['Total comprado', pesos(validos.reduce((s, d) => s + d.total, 0)), ''],
+    ['Alertas graves sin resolver', altas, altas ? 'alta' : ''], ['Pendientes de aprobar', docs.filter(d => estado(d) === 'pendiente').length, ''],
+  ].map(([t, v, c]) => `<div class="metrica ${c}"><span>${t}</span><strong>${v}</strong></div>`).join('');
+}
+function filtros() {
+  document.getElementById('filtros').innerHTML = FILTROS.map(([k, t, f]) =>
+    `<button class="${k === filtro ? 'activo' : ''}" data-f="${k}">${t} (${docs.filter(f).length})</button>`).join('');
+}
+function lista() {
+  const f = FILTROS.find(x => x[0] === filtro)[2];
+  const vis = docs.filter(f);
+  document.getElementById('lista').innerHTML = vis.length ? vis.map(d => {
+    const chips = [...new Set(d.alertas.map(a => a.gravedad + '|' + a.tipo))].map(k => { const [g, t] = k.split('|'); return `<span class="chip ${g}">${TIPOS[t] || t}</span>`; }).join('');
+    return `<button class="tarjeta ${d.id === seleccionado ? 'sel' : ''}" data-id="${d.id}">
+      <div class="fila"><span class="prov">${esc(d.proveedor)}</span><span class="monto">${pesos(d.total)}</span></div>
+      <div class="meta">${esc(d.tipo)} ${esc(d.numero || '')} · ${fecha(d.fecha)}</div>
+      <div class="chips"><span class="chip ${estado(d)}">${estado(d)}</span>${chips}</div></button>`;
+  }).join('') : '<p class="vacio">No hay comprobantes en este filtro.</p>';
+}
+function detalle() {
+  const d = docs.find(x => x.id === seleccionado);
+  const el = document.getElementById('detalle');
+  if (!d) { el.innerHTML = '<p class="vacio">Elegí un comprobante.</p>'; return; }
+  const suma = d.items.reduce((s, i) => s + i.subtotal, 0);
+  el.innerHTML = `
+    <h2>${esc(d.proveedor)}</h2>
+    <p class="sub">${esc(d.tipo)} ${esc(d.numero || '')} · archivo <code>${esc(d.archivo)}</code></p>
+    <dl class="datos">
+      <div><dt>Fecha</dt><dd>${fecha(d.fecha)}</dd></div><div><dt>CUIT</dt><dd>${esc(d.cuit || '—')}</dd></div>
+      <div><dt>Impuestos</dt><dd>${d.impuestos != null ? pesos(d.impuestos) : '—'}</dd></div><div><dt>Total impreso</dt><dd>${pesos(d.total)}</dd></div>
+      <div><dt>Estado</dt><dd>${estado(d)}</dd></div><div><dt>Leído por</dt><dd>${esc(d.extractor)}</dd></div>
+    </dl>
+    ${d.alertas.length ? `<ul class="alertas">${d.alertas.map(a => `<li class="${a.gravedad}"><strong>${TIPOS[a.tipo] || a.tipo}.</strong> ${esc(a.mensaje)}</li>`).join('')}</ul>` : '<p class="ok">Todos los controles dieron bien.</p>'}
+    <table><thead><tr><th>Descripción</th><th class="num">Cant.</th><th class="num">Precio</th><th class="num">Subtotal</th></tr></thead>
+      <tbody>${d.items.map(i => `<tr><td>${esc(i.descripcion)}</td><td class="num">${i.cantidad} ${esc(i.unidad || '')}</td><td class="num">${pesos(i.precio_unitario)}</td><td class="num">${pesos(i.subtotal)}</td></tr>`).join('')}</tbody>
+      <tfoot><tr><td colspan="3">Suma de líneas</td><td class="num">${pesos(suma)}</td></tr></tfoot></table>
+    <div class="acciones">
+      <button class="btn aprobar" data-accion="aprobado">Aprobar para pago</button>
+      <button class="btn rechazar" data-accion="rechazado">Rechazar</button>
+      ${d.original ? `<a class="btn" href="${esc(d.original)}" target="_blank" rel="noopener">Ver original</a>` : ''}
+      <span class="cmd">En la terminal: <code>bandeja aprobar ${d.id}</code></span>
+    </div>
+    <details><summary>Datos extraídos (JSON)</summary><pre>${esc(JSON.stringify(d.datos, null, 2))}</pre></details>`;
+}
+function todo() { metricas(); filtros(); lista(); detalle(); }
+document.addEventListener('click', e => {
+  const f = e.target.closest('[data-f]'); if (f) { filtro = f.dataset.f; todo(); return; }
+  const t = e.target.closest('.tarjeta'); if (t) { seleccionado = Number(t.dataset.id); todo(); if (innerWidth < 900) document.getElementById('detalle').scrollIntoView({ behavior: 'smooth' }); return; }
+  const a = e.target.closest('[data-accion]');
+  if (a && seleccionado != null) { cambios[seleccionado] = a.dataset.accion; try { localStorage.setItem(CLAVE, JSON.stringify(cambios)); } catch (e) {} todo(); }
+});
+if (!DATOS.demo) document.getElementById('aviso').remove();
+const primero = docs.find(d => gravedadMax(d) === 'alta') || docs[0];
+seleccionado = primero ? primero.id : null;
+todo();
+</script>
+</body>
+</html>

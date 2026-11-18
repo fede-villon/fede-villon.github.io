@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c0c11">
+<title>Panel · filo studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css?v=8">
+<link rel="stylesheet" href="css/panel.css?v=8">
+</head>
+<body>
+<p class="aviso-demo">Panel de demostración. En la versión real lleva usuario y contraseña. <a href="index.html">Ir a la web de turnos</a> · <button type="button" class="enlace" id="btn-reiniciar">Reiniciar datos de la demo</button></p>
+
+<header class="barra">
+  <span class="marca">filo<span>studio</span></span>
+  <nav class="pestanas" role="tablist" aria-label="Secciones del panel">
+    <button role="tab" data-vista="agenda" aria-selected="true">Agenda</button>
+    <button role="tab" data-vista="recordatorios">Recordatorios <span class="contador" id="cont-rec"></span></button>
+    <button role="tab" data-vista="clientes">Clientes</button>
+    <button role="tab" data-vista="numeros">Números</button>
+  </nav>
+</header>
+
+<main class="contenido">
+  <section id="vista-agenda" class="vista">
+    <div class="encabezado">
+      <div class="navegar-dia">
+        <button class="btn chico" type="button" data-dia="-1" aria-label="Día anterior">‹</button>
+        <h1 id="titulo-dia"></h1>
+        <button class="btn chico" type="button" data-dia="1" aria-label="Día siguiente">›</button>
+        <button class="btn chico" type="button" data-dia="0">Hoy</button>
+      </div>
+      <button class="btn principal" type="button" id="btn-nuevo" title="Atajo: tecla N">Nuevo turno</button>
+    </div>
+    <div class="resumen-dia" id="resumen-dia"></div>
+    <div class="proximo" id="proximo" hidden></div>
+    <div class="agenda" id="agenda"></div>
+  </section>
+
+  <section id="vista-recordatorios" class="vista" hidden>
+    <div class="encabezado"><h1>Recordatorios para mañana</h1></div>
+    <p class="ayuda">Cada botón abre WhatsApp con el mensaje escrito. Lo mandás y queda marcado como enviado.</p>
+    <div id="lista-rec"></div>
+  </section>
+
+  <section id="vista-clientes" class="vista" hidden>
+    <div class="encabezado">
+      <h1>Clientes</h1>
+      <label class="filtro"><input type="checkbox" id="solo-perdidos"> Hace más de 30 días que no vienen</label>
+    </div>
+    <div class="tabla-envoltura"><table class="tabla" id="tabla-clientes"></table></div>
+  </section>
+
+  <section id="vista-numeros" class="vista" hidden>
+    <div class="encabezado">
+      <h1>Números</h1>
+      <div class="segmentos" role="radiogroup" aria-label="Período" id="periodos">
+        <button role="radio" data-dias="1">Hoy</button>
+        <button role="radio" data-dias="7" aria-checked="true">7 días</button>
+        <button role="radio" data-dias="30">30 días</button>
+      </div>
+    </div>
+    <div class="metricas" id="metricas"></div>
+    <div class="dos-col">
+      <section class="caja"><h2>Ingresos por día</h2><div class="barras" id="barras"></div></section>
+      <section class="caja"><h2>Servicios más pedidos</h2><div id="servicios-top"></div>
+        <h2 class="separado">Cobros por medio de pago</h2><div id="medios"></div></section>
+    </div>
+  </section>
+</main>
+
+<div class="fondo-panel" id="fondo" hidden></div>
+<aside class="lateral" id="lateral" hidden aria-labelledby="lateral-titulo" role="dialog" aria-modal="true">
+  <div class="lateral-cabeza"><h2 id="lateral-titulo"></h2><button class="btn chico" type="button" id="btn-cerrar" aria-label="Cerrar">✕</button></div>
+  <div id="lateral-cuerpo"></div>
+</aside>
+
+<div class="aviso-flotante" id="toast" role="status"></div>
+<script src="js/agenda.js?v=8"></script>
+<script src="js/datos.js?v=8"></script>
+<script src="js/panel.js?v=8"></script>
+</body>
+</html>

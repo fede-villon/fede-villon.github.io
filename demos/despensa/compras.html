@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compras · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="">Inicio</a>
+    <a href="caja.html" class="">Caja</a>
+    <a href="ventas.html" class="">Ventas</a>
+    <a href="productos.html" class="">Productos</a>
+    
+    <a href="compras.html" class="activo">Compras</a>
+    <a href="reportes.html" class="">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+<div class="encabezado">
+  <h1>Compras a proveedores</h1>
+  <a class="btn primario" href="#">Ingresar mercadería</a>
+</div>
+<div class="dos-col">
+  <section class="tarjeta sin-padding">
+    <table><thead><tr><th>#</th><th>Fecha</th><th>Proveedor</th><th class="num">Unidades</th><th class="num">Total</th></tr></thead><tbody>
+    <tr><td colspan="5" class="vacio">Todavía no registraste compras.</td></tr>
+    </tbody></table>
+  </section>
+  <section class="tarjeta">
+    <h2>Proveedores</h2>
+    <ul class="lista-simple">
+      <li><strong>Bebidas Norte</strong> <small class="tenue">7 productos · 343 470-7788</small></li><li><strong>Distribuidora Del Litoral</strong> <small class="tenue">17 productos · 343 455-1020</small></li><li><strong>Lácteos La Pradera</strong> <small class="tenue">6 productos · 343 488-3311</small></li><li><strong>Panificados Don Julio</strong> <small class="tenue">3 productos · 343 461-2299</small></li>
+    </ul>
+    <form method="post" action="#" class="formulario">
+      <h3>Agregar proveedor</h3>
+      <label>Nombre <input name="nombre" required></label>
+      <div class="fila"><label>Teléfono <input name="telefono"></label><label>Email <input name="email" type="email"></label></div>
+      <button class="btn">Agregar</button>
+    </form>
+  </section>
+</div>
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>

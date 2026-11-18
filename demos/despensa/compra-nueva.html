@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ingresar mercadería · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="">Inicio</a>
+    <a href="caja.html" class="">Caja</a>
+    <a href="ventas.html" class="">Ventas</a>
+    <a href="productos.html" class="">Productos</a>
+    
+    <a href="compras.html" class="activo">Compras</a>
+    <a href="reportes.html" class="">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+<div class="encabezado"><h1>Ingresar mercadería</h1><a class="btn" href="compras.html">Volver</a></div>
+<form method="get" class="filtros">
+  <select name="proveedor_id" aria-label="Proveedor" onchange="this.form.submit()">
+    <option value="">Elegí el proveedor…</option>
+    <option value="3" >Bebidas Norte</option><option value="1" selected>Distribuidora Del Litoral</option><option value="2" >Lácteos La Pradera</option><option value="4" >Panificados Don Julio</option>
+  </select>
+  <noscript><button class="btn">Ver productos</button></noscript>
+</form>
+
+<form method="post" class="tarjeta sin-padding">
+  <input type="hidden" name="proveedor_id" value="1">
+  <table><thead><tr><th>Producto</th><th class="num">Stock</th><th class="num">Mín.</th><th>Cantidad recibida</th><th>Costo unitario ($)</th></tr></thead><tbody>
+  
+    <tr class=""><td>Aceite girasol 1,5 L</td><td class="num">15</td><td class="num tenue">6</td>
+      <td><input type="number" min="0" name="cant_5" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_5" value="2600" class="costo"></td></tr>
+  
+    <tr class=""><td>Alfajor triple</td><td class="num">45</td><td class="num tenue">15</td>
+      <td><input type="number" min="0" name="cant_29" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_29" value="600" class="costo"></td></tr>
+  
+    <tr class=""><td>Arroz largo fino 1 kg</td><td class="num">22</td><td class="num tenue">8</td>
+      <td><input type="number" min="0" name="cant_4" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_4" value="1400" class="costo"></td></tr>
+  
+    <tr class=""><td>Azúcar 1 kg</td><td class="num">30</td><td class="num tenue">10</td>
+      <td><input type="number" min="0" name="cant_2" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_2" value="1100" class="costo"></td></tr>
+  
+    <tr class=""><td>Café molido 250 g</td><td class="num">6</td><td class="num tenue">4</td>
+      <td><input type="number" min="0" name="cant_8" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_8" value="3200" class="costo"></td></tr>
+  
+    <tr class=""><td>Caramelos (bolsa)</td><td class="num">20</td><td class="num tenue">6</td>
+      <td><input type="number" min="0" name="cant_31" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_31" value="900" class="costo"></td></tr>
+  
+    <tr class=""><td>Chicles</td><td class="num">40</td><td class="num tenue">10</td>
+      <td><input type="number" min="0" name="cant_33" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_33" value="300" class="costo"></td></tr>
+  
+    <tr class=""><td>Chocolate 100 g</td><td class="num">18</td><td class="num tenue">8</td>
+      <td><input type="number" min="0" name="cant_30" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_30" value="1500" class="costo"></td></tr>
+  
+    <tr class=""><td>Detergente 500 ml</td><td class="num">14</td><td class="num tenue">6</td>
+      <td><input type="number" min="0" name="cant_26" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_26" value="900" class="costo"></td></tr>
+  
+    <tr class=""><td>Fideos tallarín 500 g</td><td class="num">40</td><td class="num tenue">12</td>
+      <td><input type="number" min="0" name="cant_3" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_3" value="950" class="costo"></td></tr>
+  
+    <tr class="resaltada"><td>Galletitas de agua 300 g</td><td class="num">3</td><td class="num tenue">10</td>
+      <td><input type="number" min="0" name="cant_9" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_9" value="900" class="costo"></td></tr>
+  
+    <tr class=""><td>Harina 000 1 kg</td><td class="num">18</td><td class="num tenue">8</td>
+      <td><input type="number" min="0" name="cant_6" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_6" value="700" class="costo"></td></tr>
+  
+    <tr class=""><td>Jabón en polvo 800 g</td><td class="num">5</td><td class="num tenue">4</td>
+      <td><input type="number" min="0" name="cant_28" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_28" value="2700" class="costo"></td></tr>
+  
+    <tr class=""><td>Lavandina 1 L</td><td class="num">20</td><td class="num tenue">6</td>
+      <td><input type="number" min="0" name="cant_25" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_25" value="600" class="costo"></td></tr>
+  
+    <tr class=""><td>Papel higiénico x4</td><td class="num">12</td><td class="num tenue">6</td>
+      <td><input type="number" min="0" name="cant_27" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_27" value="1800" class="costo"></td></tr>
+  
+    <tr class=""><td>Puré de tomate 520 g</td><td class="num">35</td><td class="num tenue">10</td>
+      <td><input type="number" min="0" name="cant_7" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_7" value="650" class="costo"></td></tr>
+  
+    <tr class=""><td>Yerba mate 1 kg</td><td class="num">24</td><td class="num tenue">8</td>
+      <td><input type="number" min="0" name="cant_1" value="0" class="cant"></td>
+      <td><input type="number" min="0" name="costo_1" value="3900" class="costo"></td></tr>
+  
+  </tbody></table>
+  <div class="pie-form">
+    <label class="check"><input type="checkbox" name="actualizar_costo" value="1" checked> Actualizar el costo de los productos con estos valores</label>
+    <button class="btn primario">Registrar compra</button>
+  </div>
+</form>
+
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>

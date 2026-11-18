@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>filo studio · Reservá tu turno</title>
+<meta name="description" content="Barbería en barrio Alberdi, Rosario. Degradés, barba y diseños. Reservá tu turno online en un minuto.">
+<meta name="theme-color" content="#0c0c11">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css?v=8">
+<link rel="stylesheet" href="css/sitio.css?v=8">
+</head>
+<body>
+<p class="aviso-demo">Demo con datos inventados: lo que reserves se guarda solo en este navegador y aparece en el <a href="panel.html">panel del local</a>.</p>
+
+<header class="cabecera">
+  <a class="marca" href="#">filo<span>studio</span></a>
+  <nav aria-label="Secciones">
+    <a href="#servicios">Servicios</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#donde">Dónde estamos</a>
+    <a class="btn principal chico" href="#reservar">Reservar</a>
+  </nav>
+</header>
+
+<section class="portada">
+  <div class="portada-texto">
+    <p class="estado" id="neon" aria-live="polite"><span class="punto" aria-hidden="true"></span><span id="neon-texto">Abierto</span><span id="neon-detalle"></span></p>
+    <h1>Degradés, barba y diseño. Reservá en un minuto.</h1>
+    <p class="bajada">Elegí servicio, barbero y horario. Te confirmamos al instante y el día anterior te llega un recordatorio por WhatsApp.</p>
+    <div class="portada-acciones">
+      <a class="btn principal grande" href="#reservar">Reservar turno</a>
+      <a class="btn grande" id="wa-consulta" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+    <p class="libre" id="pizarra-libre" aria-live="polite"></p>
+  </div>
+
+  <div class="visual">
+    <div class="espejo" id="servicios">
+      <div class="espejo-luz" aria-hidden="true"></div>
+      <div class="espejo-vidrio">
+        <p class="menu-titulo">servicios</p>
+        <ul id="pizarra-lista"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="reserva" id="reservar" aria-labelledby="reserva-titulo">
+    <div class="reserva-cabeza">
+      <h2 id="reserva-titulo">Reservá tu turno</h2>
+      <p id="saludo">Tarda menos de un minuto. Si no podés venir, cancelás respondiendo el recordatorio.</p>
+    </div>
+
+    <div class="reserva-grilla">
+      <form id="form-reserva" class="reserva-form" novalidate>
+        <div class="atajo" id="atajo" hidden></div>
+
+        <fieldset class="paso" data-paso="servicio">
+          <legend><span class="paso-n">1</span> Servicio</legend>
+          <div class="opciones" id="op-servicios"></div>
+        </fieldset>
+
+        <fieldset class="paso" data-paso="barbero">
+          <legend><span class="paso-n">2</span> Barbero</legend>
+          <div class="opciones opciones-barberos" id="op-barberos"></div>
+        </fieldset>
+
+        <fieldset class="paso" data-paso="horario" id="paso-horario">
+          <legend><span class="paso-n">3</span> Día y horario</legend>
+          <div class="dias" id="op-dias" role="radiogroup" aria-label="Día"></div>
+          <div class="horas" id="op-horas" aria-live="polite"></div>
+        </fieldset>
+
+        <fieldset class="paso" data-paso="datos" id="paso-datos">
+          <legend><span class="paso-n">4</span> Tus datos</legend>
+          <div class="campos">
+            <label>Nombre y apellido<input name="nombre" autocomplete="name" required></label>
+            <label>WhatsApp<input name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="341 555 1234" required></label>
+          </div>
+          <label class="recordar"><input type="checkbox" name="recordar" checked> Recordar mis datos en este celular</label>
+          <p class="error" id="error" role="alert" hidden></p>
+        </fieldset>
+      </form>
+
+      <aside class="ticket-zona" aria-label="Tu turno">
+        <div class="ticket" id="ticket">
+          <div class="ticket-cabeza"><span>Tu turno</span><span id="ticket-n"></span></div>
+          <dl class="ticket-datos" id="ticket-datos"></dl>
+          <div class="ticket-total"><span>A pagar en el local</span><strong id="ticket-precio"></strong></div>
+          <button class="btn principal grande ancho" type="submit" form="form-reserva" id="btn-reservar" disabled>Confirmar turno</button>
+          <p class="politica" id="politica">Si no podés venir, avisá por WhatsApp con 2 horas de anticipación.</p>
+          <div class="ticket-ok" id="ticket-ok" hidden>
+            <p id="conf-detalle"></p>
+            <button class="btn principal ancho" type="button" id="btn-calendario">Agregar a mi calendario</button>
+            <a class="btn ancho" id="btn-avisar" target="_blank" rel="noopener" href="#">Avisar al local por WhatsApp</a>
+            <button class="btn ancho" type="button" id="btn-otro">Reservar otro turno</button>
+            <a class="ver-panel" href="panel.html">Ver cómo le aparece al local</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="equipo" id="equipo" aria-labelledby="equipo-titulo">
+    <h2 id="equipo-titulo">Quién te atiende</h2>
+    <div class="equipo-lista" id="equipo-lista"></div>
+  </section>
+
+  <section class="donde" id="donde" aria-labelledby="donde-titulo">
+    <div>
+      <h2 id="donde-titulo">Dónde estamos</h2>
+      <p class="direccion" id="direccion"></p>
+      <p>A dos cuadras de la plaza Alberdi. Hay lugar para dejar la bici en la puerta.</p>
+    </div>
+    <table class="horarios" id="horarios" aria-label="Horarios de atención"></table>
+  </section>
+</main>
+
+<footer class="pie">
+  <p>filo studio es un negocio ficticio. Este sitio es la demo de <strong>Turnero</strong>, un sistema de turnos para barberías, peluquerías y centros de estética.</p>
+  <p><a href="panel.html">Abrir el panel del local</a></p>
+</footer>
+
+<div class="barra-movil" id="barra-movil">
+  <div class="bm-texto"><strong id="bm-titulo">Reservá tu turno</strong><small id="barra-movil-libre"></small></div>
+  <button class="btn principal chico" type="button" id="bm-accion">Reservar</button>
+</div>
+<div class="aviso-flotante" id="toast" role="status"></div>
+
+<script src="js/agenda.js?v=8"></script>
+<script src="js/datos.js?v=8"></script>
+<script src="js/sitio.js?v=8"></script>
+</body>
+</html>

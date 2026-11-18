@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ventas · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="">Inicio</a>
+    <a href="caja.html" class="">Caja</a>
+    <a href="ventas.html" class="activo">Ventas</a>
+    <a href="productos.html" class="">Productos</a>
+    
+    <a href="compras.html" class="">Compras</a>
+    <a href="reportes.html" class="">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+<div class="encabezado"><h1>Ventas</h1></div>
+<form class="filtros" method="get">
+  <label>Desde <input type="date" name="desde" value=""></label>
+  <label>Hasta <input type="date" name="hasta" value=""></label>
+  <button class="btn">Filtrar</button>
+  <span class="tenue">200 ventas · $1.350.560</span>
+</form>
+<div class="tarjeta sin-padding">
+<table><thead><tr><th>#</th><th>Fecha</th><th>Cajero</th><th>Pago</th><th class="num">Unidades</th><th class="num">Total</th></tr></thead><tbody>
+
+  <tr><td><a href="ticket.html">676</a></td><td>18/11/2026 18:23</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">6</td><td class="num">$14.550</td></tr>
+
+  <tr><td><a href="ticket.html">675</a></td><td>18/11/2026 17:38</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$1.000</td></tr>
+
+  <tr><td><a href="ticket.html">674</a></td><td>18/11/2026 15:27</td><td>Marta (dueña)</td><td>Débito</td><td class="num">2</td><td class="num">$1.200</td></tr>
+
+  <tr><td><a href="ticket.html">673</a></td><td>18/11/2026 18:28</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">3</td><td class="num">$5.400</td></tr>
+
+  <tr><td><a href="ticket.html">672</a></td><td>18/11/2026 18:55</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$5.000</td></tr>
+
+  <tr><td><a href="ticket.html">671</a></td><td>18/11/2026 16:26</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$6.900</td></tr>
+
+  <tr><td><a href="ticket.html">670</a></td><td>18/11/2026 17:52</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">4</td><td class="num">$13.250</td></tr>
+
+  <tr><td><a href="ticket.html">669</a></td><td>18/11/2026 10:13</td><td>Marta (dueña)</td><td>Débito</td><td class="num">1</td><td class="num">$2.300</td></tr>
+
+  <tr><td><a href="ticket.html">668</a></td><td>18/11/2026 10:10</td><td>Lucas (caja)</td><td>Débito</td><td class="num">3</td><td class="num">$2.550</td></tr>
+
+  <tr><td><a href="ticket.html">667</a></td><td>17/11/2026 10:22</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">3</td><td class="num">$6.190</td></tr>
+
+  <tr><td><a href="ticket.html">666</a></td><td>17/11/2026 17:31</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$7.750</td></tr>
+
+  <tr><td><a href="ticket.html">665</a></td><td>17/11/2026 08:55</td><td>Lucas (caja)</td><td>Débito</td><td class="num">3</td><td class="num">$5.900</td></tr>
+
+  <tr><td><a href="ticket.html">664</a></td><td>17/11/2026 20:59</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$4.450</td></tr>
+
+  <tr><td><a href="ticket.html">663</a></td><td>17/11/2026 10:31</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">2</td><td class="num">$2.100</td></tr>
+
+  <tr><td><a href="ticket.html">662</a></td><td>17/11/2026 18:57</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$3.350</td></tr>
+
+  <tr><td><a href="ticket.html">661</a></td><td>17/11/2026 17:51</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$1.900</td></tr>
+
+  <tr><td><a href="ticket.html">660</a></td><td>17/11/2026 20:53</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">1</td><td class="num">$2.900</td></tr>
+
+  <tr><td><a href="ticket.html">659</a></td><td>17/11/2026 17:22</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">4</td><td class="num">$5.650</td></tr>
+
+  <tr><td><a href="ticket.html">658</a></td><td>17/11/2026 11:34</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$2.300</td></tr>
+
+  <tr><td><a href="ticket.html">657</a></td><td>17/11/2026 20:45</td><td>Marta (dueña)</td><td>Débito</td><td class="num">1</td><td class="num">$1.600</td></tr>
+
+  <tr><td><a href="ticket.html">656</a></td><td>17/11/2026 20:58</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">3</td><td class="num">$4.150</td></tr>
+
+  <tr><td><a href="ticket.html">655</a></td><td>17/11/2026 12:27</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$8.100</td></tr>
+
+  <tr><td><a href="ticket.html">654</a></td><td>17/11/2026 18:11</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$10.750</td></tr>
+
+  <tr><td><a href="ticket.html">653</a></td><td>17/11/2026 08:30</td><td>Marta (dueña)</td><td>Crédito</td><td class="num">5</td><td class="num">$12.500</td></tr>
+
+  <tr><td><a href="ticket.html">652</a></td><td>16/11/2026 09:28</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">4</td><td class="num">$12.900</td></tr>
+
+  <tr><td><a href="ticket.html">651</a></td><td>16/11/2026 19:46</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">2</td><td class="num">$5.800</td></tr>
+
+  <tr><td><a href="ticket.html">650</a></td><td>16/11/2026 11:15</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">4</td><td class="num">$8.800</td></tr>
+
+  <tr><td><a href="ticket.html">649</a></td><td>16/11/2026 19:55</td><td>Lucas (caja)</td><td>Débito</td><td class="num">2</td><td class="num">$4.150</td></tr>
+
+  <tr><td><a href="ticket.html">648</a></td><td>16/11/2026 10:50</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">2</td><td class="num">$3.200</td></tr>
+
+  <tr><td><a href="ticket.html">647</a></td><td>16/11/2026 21:03</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$5.850</td></tr>
+
+  <tr><td><a href="ticket.html">646</a></td><td>16/11/2026 19:11</td><td>Marta (dueña)</td><td>Crédito</td><td class="num">4</td><td class="num">$14.150</td></tr>
+
+  <tr><td><a href="ticket.html">645</a></td><td>16/11/2026 11:47</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">6</td><td class="num">$16.000</td></tr>
+
+  <tr><td><a href="ticket.html">644</a></td><td>16/11/2026 21:37</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">3</td><td class="num">$7.350</td></tr>
+
+  <tr><td><a href="ticket.html">643</a></td><td>16/11/2026 19:32</td><td>Lucas (caja)</td><td>Débito</td><td class="num">1</td><td class="num">$1.500</td></tr>
+
+  <tr><td><a href="ticket.html">642</a></td><td>16/11/2026 18:16</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">3</td><td class="num">$8.100</td></tr>
+
+  <tr><td><a href="ticket.html">641</a></td><td>16/11/2026 10:42</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$5.200</td></tr>
+
+  <tr><td><a href="ticket.html">640</a></td><td>16/11/2026 11:29</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$3.150</td></tr>
+
+  <tr><td><a href="ticket.html">639</a></td><td>16/11/2026 20:15</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">2</td><td class="num">$2.450</td></tr>
+
+  <tr><td><a href="ticket.html">638</a></td><td>16/11/2026 20:28</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$6.340</td></tr>
+
+  <tr><td><a href="ticket.html">637</a></td><td>16/11/2026 21:56</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$5.400</td></tr>
+
+  <tr><td><a href="ticket.html">636</a></td><td>16/11/2026 21:24</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$6.300</td></tr>
+
+  <tr><td><a href="ticket.html">635</a></td><td>16/11/2026 17:35</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">2</td><td class="num">$5.200</td></tr>
+
+  <tr><td><a href="ticket.html">634</a></td><td>16/11/2026 08:37</td><td>Marta (dueña)</td><td>Crédito</td><td class="num">3</td><td class="num">$3.950</td></tr>
+
+  <tr><td><a href="ticket.html">633</a></td><td>16/11/2026 18:20</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$600</td></tr>
+
+  <tr><td><a href="ticket.html">632</a></td><td>16/11/2026 21:14</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">2</td><td class="num">$2.700</td></tr>
+
+  <tr><td><a href="ticket.html">631</a></td><td>16/11/2026 08:57</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$8.150</td></tr>
+
+  <tr><td><a href="ticket.html">630</a></td><td>16/11/2026 19:58</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">1</td><td class="num">$1.300</td></tr>
+
+  <tr><td><a href="ticket.html">629</a></td><td>16/11/2026 10:47</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$12.700</td></tr>
+
+  <tr><td><a href="ticket.html">628</a></td><td>16/11/2026 08:25</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">2</td><td class="num">$8.800</td></tr>
+
+  <tr><td><a href="ticket.html">627</a></td><td>16/11/2026 20:41</td><td>Marta (dueña)</td><td>Débito</td><td class="num">3</td><td class="num">$4.300</td></tr>
+
+  <tr><td><a href="ticket.html">626</a></td><td>15/11/2026 19:47</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$3.850</td></tr>
+
+  <tr><td><a href="ticket.html">625</a></td><td>15/11/2026 18:57</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$950</td></tr>
+
+  <tr><td><a href="ticket.html">624</a></td><td>15/11/2026 12:41</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">3</td><td class="num">$7.180</td></tr>
+
+  <tr><td><a href="ticket.html">623</a></td><td>15/11/2026 19:07</td><td>Marta (dueña)</td><td>Débito</td><td class="num">3</td><td class="num">$4.000</td></tr>
+
+  <tr><td><a href="ticket.html">622</a></td><td>15/11/2026 17:57</td><td>Marta (dueña)</td><td>Débito</td><td class="num">6</td><td class="num">$8.000</td></tr>
+
+  <tr><td><a href="ticket.html">621</a></td><td>15/11/2026 08:59</td><td>Marta (dueña)</td><td>Crédito</td><td class="num">1</td><td class="num">$2.300</td></tr>
+
+  <tr><td><a href="ticket.html">620</a></td><td>15/11/2026 09:58</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">6</td><td class="num">$9.700</td></tr>
+
+  <tr><td><a href="ticket.html">619</a></td><td>15/11/2026 21:25</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$5.950</td></tr>
+
+  <tr><td><a href="ticket.html">618</a></td><td>15/11/2026 18:24</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$7.400</td></tr>
+
+  <tr><td><a href="ticket.html">617</a></td><td>15/11/2026 09:40</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$7.450</td></tr>
+
+  <tr><td><a href="ticket.html">616</a></td><td>15/11/2026 18:42</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">2</td><td class="num">$3.300</td></tr>
+
+  <tr><td><a href="ticket.html">615</a></td><td>15/11/2026 08:38</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$3.050</td></tr>
+
+  <tr><td><a href="ticket.html">614</a></td><td>15/11/2026 19:22</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$6.100</td></tr>
+
+  <tr><td><a href="ticket.html">613</a></td><td>15/11/2026 08:53</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$5.200</td></tr>
+
+  <tr><td><a href="ticket.html">612</a></td><td>15/11/2026 12:41</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$8.800</td></tr>
+
+  <tr><td><a href="ticket.html">611</a></td><td>15/11/2026 08:06</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$7.300</td></tr>
+
+  <tr><td><a href="ticket.html">610</a></td><td>15/11/2026 18:30</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">5</td><td class="num">$14.200</td></tr>
+
+  <tr><td><a href="ticket.html">609</a></td><td>15/11/2026 09:03</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$8.700</td></tr>
+
+  <tr><td><a href="ticket.html">608</a></td><td>15/11/2026 19:46</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$9.200</td></tr>
+
+  <tr><td><a href="ticket.html">607</a></td><td>15/11/2026 21:59</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">4</td><td class="num">$17.000</td></tr>
+
+  <tr><td><a href="ticket.html">606</a></td><td>15/11/2026 12:50</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$4.250</td></tr>
+
+  <tr><td><a href="ticket.html">605</a></td><td>15/11/2026 21:17</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$8.900</td></tr>
+
+  <tr><td><a href="ticket.html">604</a></td><td>15/11/2026 09:08</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$1.000</td></tr>
+
+  <tr><td><a href="ticket.html">603</a></td><td>15/11/2026 12:46</td><td>Lucas (caja)</td><td>Débito</td><td class="num">3</td><td class="num">$5.390</td></tr>
+
+  <tr><td><a href="ticket.html">602</a></td><td>15/11/2026 20:57</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">4</td><td class="num">$5.250</td></tr>
+
+  <tr><td><a href="ticket.html">601</a></td><td>15/11/2026 09:15</td><td>Lucas (caja)</td><td>Débito</td><td class="num">4</td><td class="num">$7.850</td></tr>
+
+  <tr><td><a href="ticket.html">600</a></td><td>15/11/2026 08:02</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">5</td><td class="num">$11.750</td></tr>
+
+  <tr><td><a href="ticket.html">599</a></td><td>14/11/2026 18:35</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">6</td><td class="num">$31.600</td></tr>
+
+  <tr><td><a href="ticket.html">598</a></td><td>14/11/2026 08:09</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">7</td><td class="num">$11.650</td></tr>
+
+  <tr><td><a href="ticket.html">597</a></td><td>14/11/2026 18:53</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">3</td><td class="num">$7.800</td></tr>
+
+  <tr><td><a href="ticket.html">596</a></td><td>14/11/2026 11:27</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">5</td><td class="num">$9.250</td></tr>
+
+  <tr><td><a href="ticket.html">595</a></td><td>14/11/2026 21:32</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$4.500</td></tr>
+
+  <tr><td><a href="ticket.html">594</a></td><td>14/11/2026 18:39</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$8.400</td></tr>
+
+  <tr><td><a href="ticket.html">593</a></td><td>14/11/2026 18:20</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$9.000</td></tr>
+
+  <tr><td><a href="ticket.html">592</a></td><td>14/11/2026 21:29</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">4</td><td class="num">$6.790</td></tr>
+
+  <tr><td><a href="ticket.html">591</a></td><td>14/11/2026 17:13</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">5</td><td class="num">$7.900</td></tr>
+
+  <tr><td><a href="ticket.html">590</a></td><td>14/11/2026 09:50</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$6.950</td></tr>
+
+  <tr><td><a href="ticket.html">589</a></td><td>14/11/2026 17:38</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">2</td><td class="num">$2.650</td></tr>
+
+  <tr><td><a href="ticket.html">588</a></td><td>14/11/2026 09:30</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$3.600</td></tr>
+
+  <tr><td><a href="ticket.html">587</a></td><td>14/11/2026 17:25</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$6.900</td></tr>
+
+  <tr><td><a href="ticket.html">586</a></td><td>14/11/2026 09:29</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$7.500</td></tr>
+
+  <tr><td><a href="ticket.html">585</a></td><td>14/11/2026 18:11</td><td>Lucas (caja)</td><td>Débito</td><td class="num">5</td><td class="num">$11.600</td></tr>
+
+  <tr><td><a href="ticket.html">584</a></td><td>14/11/2026 19:57</td><td>Marta (dueña)</td><td>Débito</td><td class="num">1</td><td class="num">$1.350</td></tr>
+
+  <tr><td><a href="ticket.html">583</a></td><td>14/11/2026 12:09</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">4</td><td class="num">$4.830</td></tr>
+
+  <tr><td><a href="ticket.html">582</a></td><td>14/11/2026 20:32</td><td>Lucas (caja)</td><td>Débito</td><td class="num">1</td><td class="num">$4.400</td></tr>
+
+  <tr><td><a href="ticket.html">581</a></td><td>14/11/2026 12:17</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">3</td><td class="num">$6.050</td></tr>
+
+  <tr><td><a href="ticket.html">580</a></td><td>14/11/2026 09:21</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">4</td><td class="num">$9.650</td></tr>
+
+  <tr><td><a href="ticket.html">579</a></td><td>14/11/2026 20:07</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">1</td><td class="num">$1.250</td></tr>
+
+  <tr><td><a href="ticket.html">578</a></td><td>14/11/2026 11:21</td><td>Lucas (caja)</td><td>Débito</td><td class="num">4</td><td class="num">$8.750</td></tr>
+
+  <tr><td><a href="ticket.html">577</a></td><td>14/11/2026 10:07</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$7.300</td></tr>
+
+  <tr><td><a href="ticket.html">576</a></td><td>14/11/2026 09:31</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$12.200</td></tr>
+
+  <tr><td><a href="ticket.html">575</a></td><td>14/11/2026 08:21</td><td>Lucas (caja)</td><td>Débito</td><td class="num">4</td><td class="num">$8.500</td></tr>
+
+  <tr><td><a href="ticket.html">574</a></td><td>14/11/2026 21:46</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">3</td><td class="num">$8.400</td></tr>
+
+  <tr><td><a href="ticket.html">573</a></td><td>14/11/2026 19:58</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">6</td><td class="num">$12.700</td></tr>
+
+  <tr><td><a href="ticket.html">572</a></td><td>13/11/2026 12:32</td><td>Marta (dueña)</td><td>Débito</td><td class="num">4</td><td class="num">$7.600</td></tr>
+
+  <tr><td><a href="ticket.html">571</a></td><td>13/11/2026 18:02</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">3</td><td class="num">$7.000</td></tr>
+
+  <tr><td><a href="ticket.html">570</a></td><td>13/11/2026 08:29</td><td>Lucas (caja)</td><td>Débito</td><td class="num">1</td><td class="num">$4.800</td></tr>
+
+  <tr><td><a href="ticket.html">569</a></td><td>13/11/2026 19:31</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$2.300</td></tr>
+
+  <tr><td><a href="ticket.html">568</a></td><td>13/11/2026 21:59</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">4</td><td class="num">$8.100</td></tr>
+
+  <tr><td><a href="ticket.html">567</a></td><td>13/11/2026 18:33</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">2</td><td class="num">$6.500</td></tr>
+
+  <tr><td><a href="ticket.html">566</a></td><td>13/11/2026 17:23</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">5</td><td class="num">$12.900</td></tr>
+
+  <tr><td><a href="ticket.html">565</a></td><td>13/11/2026 21:36</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$5.400</td></tr>
+
+  <tr><td><a href="ticket.html">564</a></td><td>13/11/2026 21:53</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$3.950</td></tr>
+
+  <tr><td><a href="ticket.html">563</a></td><td>13/11/2026 20:52</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$8.700</td></tr>
+
+  <tr><td><a href="ticket.html">562</a></td><td>13/11/2026 09:38</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">1</td><td class="num">$1.300</td></tr>
+
+  <tr><td><a href="ticket.html">561</a></td><td>13/11/2026 08:29</td><td>Lucas (caja)</td><td>Débito</td><td class="num">6</td><td class="num">$15.000</td></tr>
+
+  <tr><td><a href="ticket.html">560</a></td><td>13/11/2026 19:18</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$3.300</td></tr>
+
+  <tr><td><a href="ticket.html">559</a></td><td>13/11/2026 10:10</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">3</td><td class="num">$4.280</td></tr>
+
+  <tr><td><a href="ticket.html">558</a></td><td>13/11/2026 09:33</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">5</td><td class="num">$17.900</td></tr>
+
+  <tr><td><a href="ticket.html">557</a></td><td>13/11/2026 12:20</td><td>Lucas (caja)</td><td>Débito</td><td class="num">3</td><td class="num">$5.000</td></tr>
+
+  <tr><td><a href="ticket.html">556</a></td><td>13/11/2026 17:28</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$990</td></tr>
+
+  <tr><td><a href="ticket.html">555</a></td><td>13/11/2026 19:05</td><td>Lucas (caja)</td><td>Débito</td><td class="num">1</td><td class="num">$990</td></tr>
+
+  <tr><td><a href="ticket.html">554</a></td><td>13/11/2026 12:29</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">2</td><td class="num">$5.750</td></tr>
+
+  <tr><td><a href="ticket.html">553</a></td><td>13/11/2026 11:33</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$13.050</td></tr>
+
+  <tr><td><a href="ticket.html">552</a></td><td>13/11/2026 21:38</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$2.200</td></tr>
+
+  <tr><td><a href="ticket.html">551</a></td><td>13/11/2026 21:31</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">4</td><td class="num">$5.900</td></tr>
+
+  <tr><td><a href="ticket.html">550</a></td><td>13/11/2026 08:59</td><td>Marta (dueña)</td><td>Débito</td><td class="num">3</td><td class="num">$5.700</td></tr>
+
+  <tr><td><a href="ticket.html">549</a></td><td>13/11/2026 19:08</td><td>Marta (dueña)</td><td>Débito</td><td class="num">4</td><td class="num">$12.900</td></tr>
+
+  <tr><td><a href="ticket.html">548</a></td><td>13/11/2026 08:48</td><td>Marta (dueña)</td><td>Crédito</td><td class="num">3</td><td class="num">$8.850</td></tr>
+
+  <tr><td><a href="ticket.html">547</a></td><td>13/11/2026 17:56</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">4</td><td class="num">$10.750</td></tr>
+
+  <tr><td><a href="ticket.html">546</a></td><td>12/11/2026 20:34</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$950</td></tr>
+
+  <tr><td><a href="ticket.html">545</a></td><td>12/11/2026 20:58</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$3.900</td></tr>
+
+  <tr><td><a href="ticket.html">544</a></td><td>12/11/2026 19:34</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">2</td><td class="num">$6.350</td></tr>
+
+  <tr><td><a href="ticket.html">543</a></td><td>12/11/2026 20:43</td><td>Lucas (caja)</td><td>Débito</td><td class="num">3</td><td class="num">$4.700</td></tr>
+
+  <tr><td><a href="ticket.html">542</a></td><td>12/11/2026 12:14</td><td>Lucas (caja)</td><td>Débito</td><td class="num">2</td><td class="num">$3.500</td></tr>
+
+  <tr><td><a href="ticket.html">541</a></td><td>12/11/2026 12:51</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">2</td><td class="num">$1.900</td></tr>
+
+  <tr><td><a href="ticket.html">540</a></td><td>12/11/2026 20:19</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">3</td><td class="num">$11.100</td></tr>
+
+  <tr><td><a href="ticket.html">539</a></td><td>12/11/2026 09:57</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">4</td><td class="num">$5.150</td></tr>
+
+  <tr><td><a href="ticket.html">538</a></td><td>12/11/2026 12:42</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">5</td><td class="num">$9.200</td></tr>
+
+  <tr><td><a href="ticket.html">537</a></td><td>12/11/2026 21:17</td><td>Marta (dueña)</td><td>Débito</td><td class="num">1</td><td class="num">$2.900</td></tr>
+
+  <tr><td><a href="ticket.html">536</a></td><td>12/11/2026 08:24</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$2.100</td></tr>
+
+  <tr><td><a href="ticket.html">535</a></td><td>12/11/2026 20:13</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">3</td><td class="num">$8.000</td></tr>
+
+  <tr><td><a href="ticket.html">534</a></td><td>12/11/2026 10:55</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$16.350</td></tr>
+
+  <tr><td><a href="ticket.html">533</a></td><td>12/11/2026 10:48</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">1</td><td class="num">$1.350</td></tr>
+
+  <tr><td><a href="ticket.html">532</a></td><td>12/11/2026 19:39</td><td>Lucas (caja)</td><td>Débito</td><td class="num">2</td><td class="num">$5.200</td></tr>
+
+  <tr><td><a href="ticket.html">531</a></td><td>12/11/2026 18:27</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$2.950</td></tr>
+
+  <tr><td><a href="ticket.html">530</a></td><td>12/11/2026 20:15</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">2</td><td class="num">$2.400</td></tr>
+
+  <tr><td><a href="ticket.html">529</a></td><td>12/11/2026 12:05</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">6</td><td class="num">$11.950</td></tr>
+
+  <tr><td><a href="ticket.html">528</a></td><td>12/11/2026 10:21</td><td>Lucas (caja)</td><td>Débito</td><td class="num">1</td><td class="num">$2.900</td></tr>
+
+  <tr><td><a href="ticket.html">527</a></td><td>12/11/2026 19:48</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">1</td><td class="num">$1.300</td></tr>
+
+  <tr><td><a href="ticket.html">526</a></td><td>11/11/2026 20:02</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">3</td><td class="num">$6.200</td></tr>
+
+  <tr><td><a href="ticket.html">525</a></td><td>11/11/2026 21:59</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$1.900</td></tr>
+
+  <tr><td><a href="ticket.html">524</a></td><td>11/11/2026 12:02</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">6</td><td class="num">$9.750</td></tr>
+
+  <tr><td><a href="ticket.html">523</a></td><td>11/11/2026 09:36</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">6</td><td class="num">$8.750</td></tr>
+
+  <tr><td><a href="ticket.html">522</a></td><td>11/11/2026 17:09</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$3.100</td></tr>
+
+  <tr><td><a href="ticket.html">521</a></td><td>11/11/2026 11:54</td><td>Marta (dueña)</td><td>Débito</td><td class="num">3</td><td class="num">$10.100</td></tr>
+
+  <tr><td><a href="ticket.html">520</a></td><td>11/11/2026 12:23</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$10.550</td></tr>
+
+  <tr><td><a href="ticket.html">519</a></td><td>11/11/2026 20:20</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$5.100</td></tr>
+
+  <tr><td><a href="ticket.html">518</a></td><td>11/11/2026 17:43</td><td>Lucas (caja)</td><td>Débito</td><td class="num">6</td><td class="num">$10.650</td></tr>
+
+  <tr><td><a href="ticket.html">517</a></td><td>11/11/2026 20:42</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$5.300</td></tr>
+
+  <tr><td><a href="ticket.html">516</a></td><td>11/11/2026 20:06</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">2</td><td class="num">$9.600</td></tr>
+
+  <tr><td><a href="ticket.html">515</a></td><td>11/11/2026 18:52</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">3</td><td class="num">$7.050</td></tr>
+
+  <tr><td><a href="ticket.html">514</a></td><td>11/11/2026 19:59</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">1</td><td class="num">$2.900</td></tr>
+
+  <tr><td><a href="ticket.html">513</a></td><td>11/11/2026 08:36</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">4</td><td class="num">$7.800</td></tr>
+
+  <tr><td><a href="ticket.html">512</a></td><td>11/11/2026 09:02</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">3</td><td class="num">$11.390</td></tr>
+
+  <tr><td><a href="ticket.html">511</a></td><td>11/11/2026 19:49</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">2</td><td class="num">$5.450</td></tr>
+
+  <tr><td><a href="ticket.html">510</a></td><td>11/11/2026 17:46</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">2</td><td class="num">$4.600</td></tr>
+
+  <tr><td><a href="ticket.html">509</a></td><td>11/11/2026 12:34</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$4.900</td></tr>
+
+  <tr><td><a href="ticket.html">508</a></td><td>11/11/2026 20:44</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$7.950</td></tr>
+
+  <tr><td><a href="ticket.html">507</a></td><td>11/11/2026 10:16</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$5.800</td></tr>
+
+  <tr><td><a href="ticket.html">506</a></td><td>11/11/2026 09:08</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">6</td><td class="num">$13.700</td></tr>
+
+  <tr><td><a href="ticket.html">505</a></td><td>11/11/2026 21:21</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">1</td><td class="num">$1.500</td></tr>
+
+  <tr><td><a href="ticket.html">504</a></td><td>11/11/2026 19:44</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">3</td><td class="num">$11.200</td></tr>
+
+  <tr><td><a href="ticket.html">503</a></td><td>10/11/2026 12:37</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">1</td><td class="num">$2.250</td></tr>
+
+  <tr><td><a href="ticket.html">502</a></td><td>10/11/2026 08:55</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">3</td><td class="num">$2.500</td></tr>
+
+  <tr><td><a href="ticket.html">501</a></td><td>10/11/2026 08:47</td><td>Marta (dueña)</td><td>Débito</td><td class="num">1</td><td class="num">$2.100</td></tr>
+
+  <tr><td><a href="ticket.html">500</a></td><td>10/11/2026 08:12</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">5</td><td class="num">$17.650</td></tr>
+
+  <tr><td><a href="ticket.html">499</a></td><td>10/11/2026 18:04</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$20.250</td></tr>
+
+  <tr><td><a href="ticket.html">498</a></td><td>10/11/2026 11:21</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">4</td><td class="num">$6.100</td></tr>
+
+  <tr><td><a href="ticket.html">497</a></td><td>10/11/2026 19:46</td><td>Marta (dueña)</td><td>Débito</td><td class="num">1</td><td class="num">$1.300</td></tr>
+
+  <tr><td><a href="ticket.html">496</a></td><td>10/11/2026 12:44</td><td>Marta (dueña)</td><td>Crédito</td><td class="num">4</td><td class="num">$12.950</td></tr>
+
+  <tr><td><a href="ticket.html">495</a></td><td>10/11/2026 20:51</td><td>Lucas (caja)</td><td>Débito</td><td class="num">4</td><td class="num">$4.450</td></tr>
+
+  <tr><td><a href="ticket.html">494</a></td><td>10/11/2026 18:40</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">2</td><td class="num">$2.450</td></tr>
+
+  <tr><td><a href="ticket.html">493</a></td><td>10/11/2026 18:15</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">3</td><td class="num">$6.900</td></tr>
+
+  <tr><td><a href="ticket.html">492</a></td><td>10/11/2026 19:48</td><td>Lucas (caja)</td><td>Débito</td><td class="num">5</td><td class="num">$6.000</td></tr>
+
+  <tr><td><a href="ticket.html">491</a></td><td>10/11/2026 12:23</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">5</td><td class="num">$13.750</td></tr>
+
+  <tr><td><a href="ticket.html">490</a></td><td>10/11/2026 10:37</td><td>Marta (dueña)</td><td>Débito</td><td class="num">5</td><td class="num">$6.200</td></tr>
+
+  <tr><td><a href="ticket.html">489</a></td><td>10/11/2026 08:02</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">4</td><td class="num">$6.400</td></tr>
+
+  <tr><td><a href="ticket.html">488</a></td><td>10/11/2026 18:19</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">2</td><td class="num">$2.550</td></tr>
+
+  <tr><td><a href="ticket.html">487</a></td><td>10/11/2026 09:04</td><td>Marta (dueña)</td><td>Transferencia</td><td class="num">4</td><td class="num">$11.550</td></tr>
+
+  <tr><td><a href="ticket.html">486</a></td><td>10/11/2026 17:47</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$12.500</td></tr>
+
+  <tr><td><a href="ticket.html">485</a></td><td>10/11/2026 10:21</td><td>Lucas (caja)</td><td>Débito</td><td class="num">3</td><td class="num">$5.850</td></tr>
+
+  <tr><td><a href="ticket.html">484</a></td><td>10/11/2026 09:24</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">5</td><td class="num">$9.100</td></tr>
+
+  <tr><td><a href="ticket.html">483</a></td><td>10/11/2026 11:36</td><td>Lucas (caja)</td><td>Débito</td><td class="num">3</td><td class="num">$3.100</td></tr>
+
+  <tr><td><a href="ticket.html">482</a></td><td>10/11/2026 12:22</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">1</td><td class="num">$1.550</td></tr>
+
+  <tr><td><a href="ticket.html">481</a></td><td>09/11/2026 08:13</td><td>Lucas (caja)</td><td>Transferencia</td><td class="num">3</td><td class="num">$6.750</td></tr>
+
+  <tr><td><a href="ticket.html">480</a></td><td>09/11/2026 19:08</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">4</td><td class="num">$5.000</td></tr>
+
+  <tr><td><a href="ticket.html">479</a></td><td>09/11/2026 18:12</td><td>Marta (dueña)</td><td>Débito</td><td class="num">3</td><td class="num">$7.500</td></tr>
+
+  <tr><td><a href="ticket.html">478</a></td><td>09/11/2026 17:23</td><td>Lucas (caja)</td><td>Débito</td><td class="num">4</td><td class="num">$5.790</td></tr>
+
+  <tr><td><a href="ticket.html">477</a></td><td>09/11/2026 12:15</td><td>Lucas (caja)</td><td>Crédito</td><td class="num">5</td><td class="num">$16.000</td></tr>
+
+</tbody></table>
+</div>
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>

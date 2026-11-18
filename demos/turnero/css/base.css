@@ -1,0 +1,70 @@
+/* Turnero · tokens y base compartida por el sitio y el panel.
+   Dirección: barbería urbana de noche. Fondo oscuro, luz LED azul y violeta, letra gruesa en minúscula. */
+:root {
+  color-scheme: dark;
+  --fondo: #0c0c11;
+  --superficie: #15151c;
+  --superficie-2: #1d1d26;
+  --superficie-3: #262632;
+  --linea: #2b2b37;
+  --tinta: #f1f1f6;
+  --gris: #9b9bad;
+  --azul: #4f6bff;
+  --violeta: #a06bff;
+  --led: linear-gradient(90deg, #4f6bff, #a06bff);
+  --brillo-azul: rgba(79, 107, 255, .55);
+  --ok: #45d99c;
+  --ok-suave: rgba(69, 217, 156, .12);
+  --rojo: #ff5f73;
+  --rojo-suave: rgba(255, 95, 115, .12);
+  --ambar: #ffc46b;
+  --ambar-suave: rgba(255, 196, 107, .12);
+  --azul-suave: rgba(79, 107, 255, .14);
+  --radio: 14px;
+  --display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --texto: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --curva: cubic-bezier(.2, .8, .2, 1);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: var(--fondo); }
+body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 var(--texto); overflow-x: clip; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.04; margin: 0; letter-spacing: -0.03em; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--azul); outline-offset: 3px; }
+::selection { background: var(--azul); color: #fff; }
+
+.aviso-demo { background: var(--superficie); color: var(--gris); font-size: .82rem; padding: 8px 20px; text-align: center; margin: 0; border-bottom: 1px solid var(--linea); }
+.aviso-demo a, .aviso-demo .enlace { color: var(--tinta); font-weight: 600; }
+.enlace { background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 20px; border-radius: 999px; border: 1px solid var(--linea);
+  background: var(--superficie-2); font-weight: 700; cursor: pointer; text-decoration: none; line-height: 1.2; font-size: .95rem;
+  transition: transform .2s var(--curva), background-color .2s, border-color .2s, box-shadow .25s;
+}
+.btn:hover { border-color: #4a4a5c; background: var(--superficie-3); }
+.btn:active { transform: scale(.97); }
+.btn.principal { background: var(--led); border-color: transparent; color: #fff; box-shadow: 0 0 0 0 var(--brillo-azul); }
+.btn.principal:hover { box-shadow: 0 8px 28px -6px var(--brillo-azul); }
+.btn.verde { background: var(--azul); border-color: var(--azul); color: #fff; }
+.btn.peligro { color: var(--rojo); border-color: rgba(255, 95, 115, .35); background: transparent; }
+.btn:disabled { opacity: .35; cursor: not-allowed; box-shadow: none; }
+.btn.chico { padding: 8px 14px; font-size: .86rem; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.aviso-flotante {
+  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 160%); z-index: 50; visibility: hidden;
+  background: var(--superficie-2); color: var(--tinta); padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: .95rem;
+  border: 1px solid var(--linea); box-shadow: 0 18px 40px -14px rgba(0, 0, 0, .8), 0 0 24px -8px var(--brillo-azul); max-width: calc(100% - 32px);
+  transition: transform .4s var(--curva), visibility 0s .4s;
+}
+.aviso-flotante.visible { transform: translate(-50%, 0); visibility: visible; transition: transform .4s var(--curva); }
+.aviso-flotante::before { content: "✓"; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--led); color: #fff; margin-right: 10px; font-size: .75rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}

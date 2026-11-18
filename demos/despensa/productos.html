@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Productos · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="">Inicio</a>
+    <a href="caja.html" class="">Caja</a>
+    <a href="ventas.html" class="">Ventas</a>
+    <a href="productos.html" class="activo">Productos</a>
+    
+    <a href="compras.html" class="">Compras</a>
+    <a href="reportes.html" class="">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+<div class="encabezado">
+  <h1>Productos <small class="tenue">33</small></h1>
+  <a class="btn primario" href="#">Nuevo producto</a>
+</div>
+<form class="filtros" method="get">
+  <input name="q" value="" placeholder="Buscar por nombre o código" aria-label="Buscar">
+  <select name="categoria" aria-label="Categoría"><option value="">Todas las categorías</option>
+    <option value="1" >Almacén</option><option value="2" >Bebidas</option><option value="3" >Kiosco</option><option value="4" >Limpieza</option><option value="5" >Lácteos</option><option value="6" >Panadería</option>
+  </select>
+  <label class="check"><input type="checkbox" name="filtro" value="bajo" > Solo stock bajo</label>
+  <button class="btn">Filtrar</button>
+</form>
+<div class="tarjeta sin-padding">
+<table>
+  <thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th class="num">Precio</th><th class="num">Stock</th><th>Vence</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td class="mono tenue">7790001000059</td>
+      <td><a href="producto.html">Aceite girasol 1,5 L</a></td>
+      <td>Almacén</td>
+      <td class="num">$3.500</td>
+      <td class="num">15</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790003000024</td>
+      <td><a href="producto.html">Agua mineral 2 L</a></td>
+      <td>Bebidas</td>
+      <td class="num">$1.100</td>
+      <td class="num">30</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790006000018</td>
+      <td><a href="producto.html">Alfajor triple</a></td>
+      <td>Kiosco</td>
+      <td class="num">$1.000</td>
+      <td class="num">45</td>
+      <td>17/01/2027</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000042</td>
+      <td><a href="producto.html">Arroz largo fino 1 kg</a></td>
+      <td>Almacén</td>
+      <td class="num">$1.950</td>
+      <td class="num">22</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000028</td>
+      <td><a href="producto.html">Azúcar 1 kg</a></td>
+      <td>Almacén</td>
+      <td class="num">$1.500</td>
+      <td class="num">30</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000080</td>
+      <td><a href="producto.html">Café molido 250 g</a></td>
+      <td>Almacén</td>
+      <td class="num">$4.400</td>
+      <td class="num">6</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790006000032</td>
+      <td><a href="producto.html">Caramelos (bolsa)</a></td>
+      <td>Kiosco</td>
+      <td class="num">$1.500</td>
+      <td class="num">20</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790003000031</td>
+      <td><a href="producto.html">Cerveza lata 473 ml</a></td>
+      <td>Bebidas</td>
+      <td class="num">$1.600</td>
+      <td class="num">48</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790006000056</td>
+      <td><a href="producto.html">Chicles</a></td>
+      <td>Kiosco</td>
+      <td class="num">$600</td>
+      <td class="num">40</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790006000025</td>
+      <td><a href="producto.html">Chocolate 100 g</a></td>
+      <td>Kiosco</td>
+      <td class="num">$2.300</td>
+      <td class="num">18</td>
+      <td>18/03/2027</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790002000058</td>
+      <td><a href="producto.html">Crema de leche 200 ml</a></td>
+      <td>Lácteos</td>
+      <td class="num">$1.550</td>
+      <td class="num">9</td>
+      <td>21/11/2026</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790005000028</td>
+      <td><a href="producto.html">Detergente 500 ml</a></td>
+      <td>Limpieza</td>
+      <td class="num">$1.350</td>
+      <td class="num">14</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000103</td>
+      <td><a href="producto.html">Dulce de leche 400 g</a></td>
+      <td>Almacén</td>
+      <td class="num">$2.100</td>
+      <td class="num">14</td>
+      <td>16/02/2027</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790004000021</td>
+      <td><a href="producto.html">Facturas (docena)</a></td>
+      <td>Panadería</td>
+      <td class="num">$4.800</td>
+      <td class="num">3</td>
+      <td>19/11/2026</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000035</td>
+      <td><a href="producto.html">Fideos tallarín 500 g</a></td>
+      <td>Almacén</td>
+      <td class="num">$1.350</td>
+      <td class="num">40</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000097</td>
+      <td><a href="producto.html">Galletitas de agua 300 g</a></td>
+      <td>Almacén</td>
+      <td class="num">$1.300</td>
+      <td class="num"><span class="etiqueta ambar">3</span></td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790003000017</td>
+      <td><a href="producto.html">Gaseosa cola 2,25 L</a></td>
+      <td>Bebidas</td>
+      <td class="num">$2.900</td>
+      <td class="num">28</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000066</td>
+      <td><a href="producto.html">Harina 000 1 kg</a></td>
+      <td>Almacén</td>
+      <td class="num">$990</td>
+      <td class="num">18</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790005000042</td>
+      <td><a href="producto.html">Jabón en polvo 800 g</a></td>
+      <td>Limpieza</td>
+      <td class="num">$3.700</td>
+      <td class="num">5</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790003000048</td>
+      <td><a href="producto.html">Jugo en polvo</a></td>
+      <td>Bebidas</td>
+      <td class="num">$450</td>
+      <td class="num">60</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790005000011</td>
+      <td><a href="producto.html">Lavandina 1 L</a></td>
+      <td>Limpieza</td>
+      <td class="num">$900</td>
+      <td class="num">20</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790002000010</td>
+      <td><a href="producto.html">Leche entera 1 L</a></td>
+      <td>Lácteos</td>
+      <td class="num">$1.250</td>
+      <td class="num">36</td>
+      <td>23/11/2026</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790002000041</td>
+      <td><a href="producto.html">Manteca 200 g</a></td>
+      <td>Lácteos</td>
+      <td class="num">$2.250</td>
+      <td class="num"><span class="etiqueta ambar">2</span></td>
+      <td>08/12/2026</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790004000014</td>
+      <td><a href="producto.html">Pan francés 1 kg</a></td>
+      <td>Panadería</td>
+      <td class="num">$2.300</td>
+      <td class="num">8</td>
+      <td>19/11/2026</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790004000038</td>
+      <td><a href="producto.html">Pan lactal</a></td>
+      <td>Panadería</td>
+      <td class="num">$2.500</td>
+      <td class="num">6</td>
+      <td>24/11/2026</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790006000049</td>
+      <td><a href="producto.html">Papas fritas 150 g</a></td>
+      <td>Kiosco</td>
+      <td class="num">$2.100</td>
+      <td class="num">16</td>
+      <td>02/01/2027</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790005000035</td>
+      <td><a href="producto.html">Papel higiénico x4</a></td>
+      <td>Limpieza</td>
+      <td class="num">$2.600</td>
+      <td class="num">12</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000073</td>
+      <td><a href="producto.html">Puré de tomate 520 g</a></td>
+      <td>Almacén</td>
+      <td class="num">$950</td>
+      <td class="num">35</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790002000034</td>
+      <td><a href="producto.html">Queso cremoso 1 kg</a></td>
+      <td>Lácteos</td>
+      <td class="num">$8.500</td>
+      <td class="num">4</td>
+      <td>30/11/2026</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790003000062</td>
+      <td><a href="producto.html">Soda sifón 2 L</a></td>
+      <td>Bebidas</td>
+      <td class="num">$950</td>
+      <td class="num"><span class="etiqueta ambar">7</span></td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790003000055</td>
+      <td><a href="producto.html">Vino tinto 750 ml</a></td>
+      <td>Bebidas</td>
+      <td class="num">$4.200</td>
+      <td class="num">10</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790001000011</td>
+      <td><a href="producto.html">Yerba mate 1 kg</a></td>
+      <td>Almacén</td>
+      <td class="num">$5.200</td>
+      <td class="num">24</td>
+      <td>—</td>
+    </tr>
+  
+    <tr>
+      <td class="mono tenue">7790002000027</td>
+      <td><a href="producto.html">Yogur bebible 1 L</a></td>
+      <td>Lácteos</td>
+      <td class="num">$1.800</td>
+      <td class="num">12</td>
+      <td>22/11/2026</td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>

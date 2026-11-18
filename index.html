@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Federico Villón · Soporte IT, datos y automatización</title>
+<meta name="description" content="Estudiante de Ingeniería en Sistemas (UTN). Soporte IT, datos y automatización con IA. Proyectos con demo: Despensa, Bandeja y Turnero.">
+<meta name="theme-color" content="#f4f1ea">
+<meta property="og:title" content="Federico Villón · Soporte IT, datos y automatización">
+<meta property="og:description" content="Proyectos con demo para probar: stock y ventas, facturas leídas con IA local y turnos online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css?v=2">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="#">fede-villon<span>.github.io</span></a>
+  <nav aria-label="Secciones">
+    <a href="#proyectos">proyectos</a>
+    <a href="#stack">stack</a>
+    <a href="#trayectoria">trayectoria</a>
+    <a href="#contacto">contacto</a>
+    <a class="btn chico" href="cv/CV-Federico-Villon.pdf" download>Descargar CV</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Ventana principal: la misma terminal del README de GitHub, pero se puede escribir -->
+  <section class="ventana portada" aria-label="Presentación">
+    <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">~/fede-villon — bash</span><span></span></div>
+    <div class="portada-cuerpo">
+      <pre class="ascii" aria-hidden="true">
+                                            :::
+                                       -+#%@@@@%*=+++=-
+                                    -*%@@@@@@@@@@@@@@@@%#=
+                                 -*%@@@@@@@@@@@@@@@@@@@@@@%-
+                               =%@@@@@@@@@@@@@%%%@@@@@@@@@@@#:
+                              *@@@@@@@@@@@%#*+===+#%@@%@@@@@@@=
+                             #@@@@@@@@@@@*=---::--=*#@@@@@@@@@@*
+                            =@@@@@@@@@@%#=-::::::--=+#@@@@@@@@@@*
+                            #@@@@@@@@@@#=::  .:::---==*%@@@@@@@@@-
+                           :%@@@@@@@@@@*==--:: ...:::-=*%@@@@@@@@%
+                           -@@@@@@@@@#=-:-=++=-  ::=*##*#%@@@@@@@@:
+                           -@@@@@@@*=: :-=+=-::  -+**+++++*%@@@@@%:
+                           +@@@@@@#-: -==*#++-- :-*#**%%##**@@@@@%
+                           #@@@@@@=.      :::::::-+#*=====++#@@@@#
+                           +@@@#*+:          ::  :-+*+==--=++#%@@=
+                           :@%-=-::         ::--:-+++=----==*##@=
+                            -@*:  .:        .:::::=*+=---=++**%+
+                             +@#-=-             ::-======+++*%#
+                             :%@@@#       :--====+****-=+++%@@+
+                              +@@@@-        ::--==+**+==++*@@%:
+                               +@@@=::         ::---==+++*@@*:
+                               -%%@= ::::        :--=++*#@@@+:
+                               -#++-   :::::..::::-=+***%%*=-:
+                                 : ::      ::::-==+*****=:
+                                #=               -=+**+*:
+                              =%@%              :=++*+++:
+                           :+%@@@@@:        ::  :-=++++:-#:
+                       =*%@@@@@@@@@@=         :---===- ::%@%#+-:
+                   -*%@@@@@@@@@@@@@@@=         :--==:  . *@@@@@@#*-:
+               -*%@@@@@@@@@@@@@@@@@@@@=      -+++*#%@%+ .+@@@@@@@@@@%*=-
+         :=*#%@@@@@@@@@@@@@@@@@@@@@@@@@-    -*#*+#%@@%#+:-@@@@@@@@@@@@@@@#*=:
+      +#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@- :-:  *#=+#@*--=:*@@@@@@@@@@@@@@@@@@%#+
+    :@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-      *#+*%#-:::=@@@@@@@@@@@@@@@@@@@@@%:
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%:     =%*+*@= :: #@@@@@@@@@@@@@@@@@@@@@#
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#  :. ***++@@-:: +@@@@@@@@@@@@@@@@@@@@@@=
+   -@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*  - +*++*%@# : -@@@@@@@@@@@@@@@@@@@@@@%
+   +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@= -:+*++*%@@-: :@@@@@@@@@@@@@@@@@@@@@@@=
+   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: -+*++*%@@+ -:@@@@@@@@@@@@@@@@@@@@@@@%
+  +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.-+*+*#%@@# :-%@@@@@@@@@@@@@@@@@@@@@@@=
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*:+***#%@@@  -%@@@@@@@@@@@@@@@@@@@@@@@%
+ +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+*#*##%@@@- =@@@@@@@@@@@@@@@@@@@@@@@@@= :
+ %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#%##%%@@@+ =@@@@@@@@@@@@@@@@@@@@@@@@@# :.
+-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%@@@# -@@@@@@@@@@@@@@@@@@@@@@@@@@- ::
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@ -@@@@@@@@@@@@@@@@@@@@@@@@@@* :..</pre>
+      <div class="ficha">
+        <p class="prompt">$ whoami</p>
+        <h1>Federico Villón</h1>
+        <p class="rol">Soporte IT · Datos · Automatización con IA</p>
+        <dl class="datos">
+          <dt>Estudio</dt><dd>Ingeniería en Sistemas de Información · UTN</dd>
+          <dt>Base</dt><dd>Concepción del Uruguay, Entre Ríos</dd>
+          <dt>Busco</dt><dd>trabajo remoto part-time</dd>
+          <dt>Hora</dt><dd><span id="reloj">--:--</span> <span class="estado" id="estado"></span></dd>
+          <dt>Idioma</dt><dd>español, con voseo · inglés técnico escrito</dd>
+        </dl>
+        <div class="acciones">
+          <a class="btn principal" href="#proyectos">Ver proyectos</a>
+          <a class="btn" href="mailto:fedevillon110@gmail.com">Escribime</a>
+          <a class="btn" href="cv/CV-Federico-Villon.pdf" download>CV en PDF</a>
+        </div>
+      </div>
+    </div>
+    <div class="terminal" id="terminal">
+      <div class="salida" id="salida" aria-live="polite"></div>
+      <form class="linea" id="linea" autocomplete="off">
+        <label for="comando" class="ps1">fede@portfolio:~$</label>
+        <input id="comando" name="comando" spellcheck="false" autocapitalize="off" aria-describedby="ayuda-terminal" placeholder="escribí help y apretá Enter">
+      </form>
+      <p class="sr" id="ayuda-terminal">Terminal interactiva. Comandos: help, proyectos, abrir, stack, cv, contacto, clear.</p>
+    </div>
+  </section>
+
+  <section id="proyectos" class="seccion" aria-labelledby="t-proyectos">
+    <h2 id="t-proyectos" class="titulo"><span>&gt;</span> ~/proyectos</h2>
+    <p class="intro">Tres proyectos pensados para negocios reales, con demo para probar acá mismo. Los diseñé yo y usé IA para escribir el código más rápido; en cada uno cuento qué hice y qué no.</p>
+    <div class="proyectos">
+      <article class="ventana proyecto">
+        <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">despensa.py</span><span class="lenguaje">Python</span></div>
+        <div class="proyecto-cuerpo">
+          <h3>Despensa</h3>
+          <p>Stock, caja y reportes para almacenes de barrio: alertas de faltantes y vencimientos, compras a proveedores, roles y exportación a Excel.</p>
+          <ul class="chips"><li>Flask</li><li>SQLite</li><li>SQL</li><li>32 tests</li></ul>
+          <p class="honesto"><strong>Mi parte:</strong> el análisis del negocio, el modelo de datos, las reglas de stock y la documentación de soporte.</p>
+          <div class="acciones"><button class="btn principal" data-demo="despensa">Ver demo</button><a class="btn" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">Código</a></div>
+        </div>
+      </article>
+      <article class="ventana proyecto">
+        <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">bandeja.py</span><span class="lenguaje">Python</span></div>
+        <div class="proyecto-cuerpo">
+          <h3>Bandeja</h3>
+          <p>Lee facturas y remitos de proveedores con un modelo de IA gratuito que corre en la PC, y avisa lo que no cierra: totales mal sumados, duplicados y aumentos de precio.</p>
+          <ul class="chips"><li>IA local (Ollama)</li><li>SQLite</li><li>Excel</li><li>56/56 campos medidos</li></ul>
+          <p class="honesto"><strong>Mi parte:</strong> los controles, la evaluación del modelo (de 89 % a 100 % de campos correctos) y el panel de revisión. La IA lee; el código verifica.</p>
+          <div class="acciones"><button class="btn principal" data-demo="bandeja">Ver demo</button><a class="btn" href="https://github.com/fede-villon/bandeja" target="_blank" rel="noopener">Código</a></div>
+        </div>
+      </article>
+      <article class="ventana proyecto">
+        <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">turnero.html</span><span class="lenguaje">JavaScript</span></div>
+        <div class="proyecto-cuerpo">
+          <h3>Turnero</h3>
+          <p>Turnos online para barberías: la web donde el cliente reserva desde el celular y el panel del local con agenda, cobro, recordatorios por WhatsApp y números.</p>
+          <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>15 tests</li></ul>
+          <p class="honesto"><strong>Mi parte:</strong> el flujo de reserva pensado para el celular, el diseño y la lógica de horarios libres. Es una demo: los datos viven en el navegador.</p>
+          <div class="acciones"><button class="btn principal" data-demo="turnero">Ver demo</button><a class="btn" href="https://github.com/fede-villon/turnero" target="_blank" rel="noopener">Código</a></div>
+        </div>
+      </article>
+      <article class="ventana proyecto">
+        <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">campus.pwa</span><span class="lenguaje">JavaScript</span></div>
+        <div class="proyecto-cuerpo">
+          <h3>Campus Backend Developer</h3>
+          <p>App web para aprender backend jugando: misiones, niveles y ejercicios de Python que corren en el navegador. La armé para estudiar yo.</p>
+          <ul class="chips"><li>PWA</li><li>Pyodide</li><li>offline</li></ul>
+          <p class="honesto"><strong>Mi parte:</strong> la idea, el recorrido de niveles y los contenidos.</p>
+          <div class="acciones"><button class="btn principal" data-demo="campus">Ver demo</button><a class="btn" href="https://github.com/fede-villon/CampusBackendDeveloper" target="_blank" rel="noopener">Código</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="stack" class="seccion" aria-labelledby="t-stack">
+    <h2 id="t-stack" class="titulo"><span>&gt;</span> ~/stack</h2>
+    <div class="ventana codigo">
+      <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">stack.yaml</span><span></span></div>
+<pre><code><span class="k">soporte:</span>     [diagnóstico y reparación de PCs, Windows, Office, redes domésticas, SSH]
+<span class="k">sistemas:</span>    [Linux (Debian), usuarios y permisos, servidor casero]
+<span class="k">datos:</span>       [SQL, SQLite, Excel, reportes, exportación CSV]
+<span class="k">desarrollo:</span>  [Python, Flask, HTML, CSS, JavaScript, Git, pytest]
+<span class="k">ia:</span>          [agentes de IA, modelos locales con Ollama, salida JSON validada]
+<span class="k">además:</span>      [diseño gráfico, edición de video, atención a clientes]
+<span class="k">forma_de_trabajo:</span> <span class="s">"planifico, uso IA para acelerar, verifico y documento"</span></code></pre>
+    </div>
+  </section>
+
+  <section id="trayectoria" class="seccion dos" aria-labelledby="t-trayectoria">
+    <h2 id="t-trayectoria" class="titulo"><span>&gt;</span> ~/trayectoria</h2>
+    <div class="ventana lista">
+      <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">experiencia.log</span><span></span></div>
+      <ol class="linea-tiempo">
+        <li><time>2026 – hoy</time><strong>Desarrollador web y automatización</strong><span>Freelance · remoto</span><p>Sitios y paneles de gestión para negocios; automatización de la captación y el seguimiento de clientes con scripts y agentes de IA; atención y soporte a clientes.</p></li>
+        <li><time>2024 – hoy</time><strong>Diseñador de contenido y editor de video</strong><span>Freelance</span><p>Piezas gráficas y videos para comercios. Trato directo con clientes y entregas con fecha.</p></li>
+      </ol>
+    </div>
+    <div class="ventana lista">
+      <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">formacion.log</span><span></span></div>
+      <ol class="linea-tiempo">
+        <li><time>2026 – hoy</time><strong>Ingeniería en Sistemas de Información</strong><span>UTN · Facultad Regional Concepción del Uruguay</span><p>Primer año aprobado completo: programación en Python, algoritmos, arquitectura de computadoras y bases de datos.</p></li>
+        <li><time>2026</time><strong>Desarrollo con Inteligencia Artificial</strong><span>BIG school</span><p>Agentes de IA, automatización de procesos y desarrollo asistido por IA.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contacto" class="seccion" aria-labelledby="t-contacto">
+    <h2 id="t-contacto" class="titulo"><span>&gt;</span> ~/contacto</h2>
+    <div class="ventana contacto">
+      <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">contacto.sh</span><span></span></div>
+      <div class="contacto-cuerpo">
+        <p class="contacto-texto">Busco mi primer trabajo en IT, remoto y part-time: soporte técnico, datos o automatización. Respondo en el día.</p>
+        <ul class="canales">
+          <li><span class="cmd">$ mail</span><a href="mailto:fedevillon110@gmail.com">fedevillon110@gmail.com</a></li>
+          <li><span class="cmd">$ whatsapp</span><a href="https://wa.me/5493447552717?text=Hola%20Federico%2C%20vi%20tu%20portfolio." target="_blank" rel="noopener">+54 3447 55-2717</a></li>
+          <li><span class="cmd">$ linkedin</span><a href="https://www.linkedin.com/in/fedevillon" target="_blank" rel="noopener">in/fedevillon</a></li>
+          <li><span class="cmd">$ github</span><a href="https://github.com/fede-villon" target="_blank" rel="noopener">fede-villon</a></li>
+          <li><span class="cmd">$ cv</span><a href="cv/CV-Federico-Villon.pdf" download>CV-Federico-Villon.pdf</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <span>v1.0 · hecho en Concepción del Uruguay · noviembre 2026</span>
+  <span>$ echo "gracias por pasar" <span class="cursor" aria-hidden="true">▍</span></span>
+</footer>
+
+<!-- Ventana para las demos -->
+<div class="velo" id="velo" hidden></div>
+<div class="ventana demo" id="demo" role="dialog" aria-modal="true" aria-labelledby="demo-nombre" hidden>
+  <div class="ventana-barra">
+    <button class="puntos cerrar-puntos" type="button" id="demo-cerrar-puntos" aria-label="Cerrar demo"><i></i><i></i><i></i></button>
+    <span class="ventana-nombre" id="demo-nombre">demo</span>
+    <span class="demo-acciones"><a id="demo-pestana" href="#" target="_blank" rel="noopener">abrir en pestaña nueva ↗</a><button type="button" id="demo-cerrar" class="btn chico">Cerrar</button></span>
+  </div>
+  <div class="demo-pestanas" id="demo-pestanas" role="tablist" hidden></div>
+  <iframe id="demo-marco" title="Demo del proyecto" loading="lazy"></iframe>
+</div>
+
+<script src="js/sitio.js?v=1"></script>
+</body>
+</html>

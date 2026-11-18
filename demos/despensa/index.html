@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio · Despensa</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div style="background:#1c2128;color:#e9ecef;padding:10px 16px;font:14px system-ui;text-align:center">
+  Versión navegable de <strong>Despensa</strong> con datos de ejemplo: se puede recorrer, pero no guarda cambios.
+  La app completa (Python + Flask) está en
+  <a style="color:#8ee3b8" href="https://github.com/fede-villon/despensa" target="_blank" rel="noopener">GitHub</a>.
+</div>
+
+<header class="barra">
+  <a class="marca" href="index.html"><span class="logo">D</span> Despensa</a>
+  <nav>
+    
+    <a href="index.html" class="activo">Inicio</a>
+    <a href="caja.html" class="">Caja</a>
+    <a href="ventas.html" class="">Ventas</a>
+    <a href="productos.html" class="">Productos</a>
+    
+    <a href="compras.html" class="">Compras</a>
+    <a href="reportes.html" class="">Reportes</a>
+    
+  </nav>
+  <div class="sesion">
+    <span>Marta (dueña) <small class="rol">admin</small></span>
+    <span style="opacity:.6">Salir</span>
+  </div>
+</header>
+
+<main class="contenido">
+  
+  
+<div class="encabezado">
+  <h1>Buen día, Marta</h1>
+  <a class="btn primario" href="caja.html">Nueva venta</a>
+</div>
+<section class="metricas">
+  <div class="metrica"><span>Vendido hoy</span><strong>$52.150</strong></div>
+  <div class="metrica"><span>Ventas hoy</span><strong>9</strong></div>
+  <div class="metrica"><span>Ganancia hoy</span><strong>$16.050</strong></div>
+  <div class="metrica alerta"><span>Con stock bajo</span><strong>3</strong></div>
+</section>
+<div class="dos-col">
+  <section class="tarjeta">
+    <h2>Reponer <small class="tenue">stock en o por debajo del mínimo</small></h2>
+    
+    <table><thead><tr><th>Producto</th><th class="num">Stock</th><th class="num">Mínimo</th></tr></thead><tbody>
+    
+      <tr><td><a href="producto.html">Galletitas de agua 300 g</a></td>
+          <td class="num ">3</td><td class="num tenue">10</td></tr>
+    
+      <tr><td><a href="producto.html">Manteca 200 g</a></td>
+          <td class="num ">2</td><td class="num tenue">5</td></tr>
+    
+      <tr><td><a href="producto.html">Soda sifón 2 L</a></td>
+          <td class="num ">7</td><td class="num tenue">8</td></tr>
+    </tbody></table>
+    
+  </section>
+  <section class="tarjeta">
+    <h2>Por vencer <small class="tenue">próximos 7 días</small></h2>
+    
+    <table><thead><tr><th>Producto</th><th class="num">Stock</th><th>Vence</th></tr></thead><tbody>
+    
+      <tr><td><a href="producto.html">Pan francés 1 kg</a></td><td class="num">8</td>
+          <td><span class="etiqueta roja">mañana</span></td></tr>
+    
+      <tr><td><a href="producto.html">Facturas (docena)</a></td><td class="num">3</td>
+          <td><span class="etiqueta roja">mañana</span></td></tr>
+    
+      <tr><td><a href="producto.html">Crema de leche 200 ml</a></td><td class="num">9</td>
+          <td><span class="etiqueta ambar">en 3 días</span></td></tr>
+    
+      <tr><td><a href="producto.html">Yogur bebible 1 L</a></td><td class="num">12</td>
+          <td><span class="etiqueta ambar">en 4 días</span></td></tr>
+    
+      <tr><td><a href="producto.html">Leche entera 1 L</a></td><td class="num">36</td>
+          <td><span class="etiqueta ambar">en 5 días</span></td></tr>
+    
+      <tr><td><a href="producto.html">Pan lactal</a></td><td class="num">6</td>
+          <td><span class="etiqueta ambar">en 6 días</span></td></tr>
+    </tbody></table>
+    
+  </section>
+</div>
+<section class="tarjeta">
+  <h2>Últimas ventas</h2>
+  <table><thead><tr><th>#</th><th>Fecha</th><th>Cajero</th><th>Pago</th><th class="num">Total</th></tr></thead><tbody>
+  
+    <tr><td><a href="ticket.html">676</a></td><td>18/11/2026 18:23</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">$14.550</td></tr>
+  
+    <tr><td><a href="ticket.html">675</a></td><td>18/11/2026 17:38</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">$1.000</td></tr>
+  
+    <tr><td><a href="ticket.html">674</a></td><td>18/11/2026 15:27</td><td>Marta (dueña)</td><td>Débito</td><td class="num">$1.200</td></tr>
+  
+    <tr><td><a href="ticket.html">673</a></td><td>18/11/2026 18:28</td><td>Marta (dueña)</td><td>Efectivo</td><td class="num">$5.400</td></tr>
+  
+    <tr><td><a href="ticket.html">672</a></td><td>18/11/2026 18:55</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">$5.000</td></tr>
+  
+    <tr><td><a href="ticket.html">671</a></td><td>18/11/2026 16:26</td><td>Lucas (caja)</td><td>Efectivo</td><td class="num">$6.900</td></tr>
+  
+  </tbody></table>
+</section>
+
+</main>
+
+<script>
+document.querySelectorAll('form').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('En esta versión de muestra no se guardan cambios. La app completa corre con Python: github.com/fede-villon/despensa');
+}));
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script></body>
+</html>
