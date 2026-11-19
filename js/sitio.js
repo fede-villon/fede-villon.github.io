@@ -4,6 +4,10 @@
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const reducido = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const movil = () => matchMedia('(max-width: 900px)').matches;
+  // Idioma: el elegido antes, o el del navegador
+  let idioma = (() => { try { const g = localStorage.getItem('idioma'); if (g) return g; } catch (e) {} return /^en/i.test(navigator.language || '') ? 'en' : 'es'; })();
+  if (/[?&]lang=en/.test(location.search)) idioma = 'en';
+  const T = (es, en) => idioma === 'en' ? en : es;
 
   function avisar(texto) {
     const a = $('aviso'); a.textContent = texto; a.classList.add('visible');
@@ -32,17 +36,34 @@
     },
   };
   const ORDEN = ['turnero', 'despensa', 'bandeja'];
+  const PROYECTOS_EN = {
+    despensa: { texto: 'A system for a grocery store or kiosk to track stock and sales from the counter computer, with no notebooks or scattered spreadsheets.',
+      puntos: ['Checkout with barcode scanner and multiple payment methods', 'Alerts for products running low or about to expire', 'Supplier purchases that update stock automatically', 'Sales and profit reports, exportable to Excel'],
+      pestanas: ['home', 'checkout', 'products', 'reports'] },
+    bandeja: { tecnologia: 'Python · AI · SQLite', texto: 'Automatically reads the invoices and delivery notes suppliers send, loads them into a database and flags only what needs a human check.',
+      puntos: ['Catches wrong totals and duplicate invoices', 'Warns when a supplier raises a price', 'Dashboard to approve or reject each document', 'Weekly email summary with an Excel attachment'],
+      pestanas: ['review dashboard', 'weekly summary'] },
+    turnero: { texto: 'Online booking for barbershops: customers book from their phone in under a minute and the shop runs its day from a dashboard.',
+      puntos: ['Only shows truly available time slots', 'WhatsApp reminders with the message ready to send', 'Schedule per barber, with checkout in two taps', 'Business numbers: revenue, no-shows and occupancy'],
+      pestanas: ['customer site', 'shop dashboard'] },
+  };
+  const P = clave => { const p = PROYECTOS[clave], e = PROYECTOS_EN[clave]; if (idioma !== 'en') return p;
+    return { ...p, ...e, pestanas: p.pestanas.map(([t, u], i) => [e.pestanas[i] || t, u]) }; };
 
   // ---------- Fondo y barra ----------
+  // la variable va solo en el fondo (no en toda la página) y una vez por cuadro
+  const fondo = document.querySelector('.fondo'); let gx = 0, gy = 0, pendienteFondo = false;
   addEventListener('pointermove', e => {
-    document.documentElement.style.setProperty('--gx', e.clientX + 'px');
-    document.documentElement.style.setProperty('--gy', e.clientY + 'px');
+    gx = e.clientX; gy = e.clientY;
+    if (pendienteFondo) return; pendienteFondo = true;
+    requestAnimationFrame(() => { pendienteFondo = false; fondo.style.setProperty('--gx', gx + 'px'); fondo.style.setProperty('--gy', gy + 'px'); });
   }, { passive: true });
   const barra = $('barra');
-  addEventListener('scroll', () => barra.classList.toggle('fija', scrollY > 30), { passive: true });
+  let fija = null; addEventListener('scroll', () => { const f = scrollY > 30; if (f !== fija) { fija = f; barra.classList.toggle('fija', f); } }, { passive: true });
 
   // Sección activa en la barra
   const RUTAS = { inicio: '~', proyectos: '~/proyectos', stack: '~/servicios', trayectoria: '~/trayectoria', contacto: '~/contacto' };
+  const RUTAS_EN = { inicio: '~', proyectos: '~/projects', stack: '~/services', trayectoria: '~/experience', contacto: '~/contact' };
   const enlaces = [...document.querySelectorAll('.barra nav a[href^="#"]')];
   const secciones = ['inicio', ...enlaces.map(a => a.getAttribute('href').slice(1))].map(id => $(id)).filter(Boolean);
   let seccionActual = null;
@@ -53,7 +74,7 @@
     if (s === seccionActual) return;
     seccionActual = s;
     enlaces.forEach(a => a.classList.toggle('activo', a.getAttribute('href') === '#' + s.id));
-    $('ruta').textContent = RUTAS[s.id] || '~';
+    $('ruta').textContent = (idioma === 'en' ? RUTAS_EN : RUTAS)[s.id] || '~';
   }
   addEventListener('scroll', marcarSeccion, { passive: true }); marcarSeccion();
 
@@ -84,10 +105,11 @@
   })();
 
   // ---------- Roles que se escriben y borran ----------
-  (function rotar() {
-    const el = $('rotador'), roles = ['páginas web', 'automatizaciones', 'soluciones tecnológicas'];
+  const rotar = {}; (function () {
+    const el = $('rotador'), ROLES = { es: ['páginas web', 'automatizaciones', 'soluciones tecnológicas'], en: ['websites', 'automations', 'tech solutions'] };
+    let roles = ROLES[idioma], i = 0, j = roles[0].length, borrando = false;
+    rotar.cambiar = () => { roles = ROLES[idioma]; i = 0; borrando = false; j = roles[0].length; el.textContent = roles[0]; };
     if (reducido) return;
-    let i = 0, j = roles[0].length, borrando = false;
     setTimeout(function tick() {
       const r = roles[i];
       if (!borrando && j === r.length) { borrando = true; return setTimeout(tick, 1800); }
@@ -100,10 +122,14 @@
 
   // ---------- Retrato: la luz sigue al mouse ----------
   const retrato = $('retrato');
+  let pad = parseFloat(getComputedStyle(retrato).paddingLeft), lx = 0, ly = 0, pendienteLuz = false;
   const luz = (x, y) => {
-    const pad = parseFloat(getComputedStyle(retrato).paddingLeft);
-    retrato.style.setProperty('--mx', (x - pad) + 'px'); retrato.style.setProperty('--my', (y - pad) + 'px');
-    retrato.style.setProperty('--rx', x + 'px'); retrato.style.setProperty('--ry', y + 'px');
+    lx = x; ly = y; if (pendienteLuz) return; pendienteLuz = true;
+    requestAnimationFrame(() => {
+      pendienteLuz = false;
+      retrato.style.setProperty('--mx', (lx - pad) + 'px'); retrato.style.setProperty('--my', (ly - pad) + 'px');
+      retrato.style.setProperty('--rx', lx + 'px'); retrato.style.setProperty('--ry', ly + 'px');
+    });
   };
   retrato.addEventListener('pointermove', e => { const r = retrato.getBoundingClientRect(); luz(e.clientX - r.left, e.clientY - r.top); });
 
@@ -127,12 +153,14 @@
     pre.textContent = txt; $('relleno-luz').textContent = txt;
   }
   rellenar();
-  let tRelleno; addEventListener('resize', () => { clearTimeout(tRelleno); tRelleno = setTimeout(rellenar, 200); });
+  let tRelleno; addEventListener('resize', () => { clearTimeout(tRelleno); tRelleno = setTimeout(() => { pad = parseFloat(getComputedStyle(retrato).paddingLeft); rellenar(); }, 200); });
 
   // Sin mouse (celular): la luz recorre la cara sola
   if (!matchMedia('(hover: hover)').matches && !reducido) {
     let a = 0;
-    setInterval(() => { a += .04; luz(retrato.clientWidth * (.5 + Math.cos(a) * .3), retrato.clientHeight * (.4 + Math.sin(a * 1.3) * .22)); }, 40);
+    let visibleRetrato = true;
+    new IntersectionObserver(es => { visibleRetrato = es[0].isIntersecting; }).observe(retrato);
+    setInterval(() => { if (!visibleRetrato) return; a += .04; luz(retrato.clientWidth * (.5 + Math.cos(a) * .3), retrato.clientHeight * (.4 + Math.sin(a * 1.3) * .22)); }, 40);
   }
 
   // ---------- Aparición al hacer scroll ----------
@@ -164,16 +192,16 @@
   let actual = 0, bloqueo = 0;
 
   function detalle(clave) {
-    const p = PROYECTOS[clave], d = $('detalle');
+    const p = P(clave), d = $('detalle');
     d.innerHTML = `
       <div>
         <span class="tecnologia">${esc(p.tecnologia)}</span>
         <h3>${esc(p.nombre)}</h3>
         <p>${esc(p.texto)}</p>
-        <div class="acciones"><button class="btn principal" type="button" data-demo="${clave}">Abrir la demo</button></div>
+        <div class="acciones"><button class="btn principal" type="button" data-demo="${clave}">${T('Abrir la demo', 'Open the demo')}</button></div>
       </div>
       <div>
-        <h4>Qué hace</h4>
+        <h4>${T('Qué hace', 'What it does')}</h4>
         <ul>${p.puntos.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
       </div>`;
     d.classList.remove('cambio'); void d.offsetWidth; d.classList.add('cambio');
@@ -187,10 +215,12 @@
     detalle(ventanas[actual].dataset.p);
     if (movil()) { if (centrarScroll) ventanas[actual].scrollIntoView({ behavior: reducido ? 'auto' : 'smooth', inline: 'center', block: 'nearest' }); return; }
     // Escritorio: la fila se corre para que la ventana elegida quede hacia el centro, como el Alt+Tab
-    const anchoIn = 240, anchoAct = 330, gap = 22, n = ventanas.length;
-    const total = anchoIn * (n - 1) + anchoAct + gap * (n - 1);
-    const centro = actual * (anchoIn + gap) + anchoAct / 2;
-    pista.style.transform = `translateX(${((total / 2 - centro) * .45).toFixed(0)}px)`;
+    const ancho = ventanas[0].offsetWidth, gap = 22, n = ventanas.length;
+    const total = ancho * n + gap * (n - 1), centro = actual * (ancho + gap) + ancho / 2;
+    // se corre hacia la elegida, pero sin que ninguna ventana se salga del espacio disponible
+    const holgura = Math.max(0, (pista.parentElement.clientWidth - total) / 2 - 24);
+    const corrimiento = Math.max(-holgura, Math.min(holgura, (total / 2 - centro) * .5));
+    pista.style.transform = `translateX(${corrimiento.toFixed(0)}px)`;
     bloqueo = performance.now() + 450;
   }
 
@@ -217,23 +247,26 @@
     }, 120);
   }, { passive: true });
 
-  // Vistas previas en vivo: se cargan cuando la sección se acerca y se escalan al tamaño de la ventana
-  const escalar = new ResizeObserver(es => es.forEach(e => {
-    const f = e.target.querySelector('iframe'); if (f) f.style.transform = `scale(${e.contentRect.width / 1280})`;
-  }));
-  ventanas.forEach(w => escalar.observe(w.querySelector('.win-vista')));
-  new IntersectionObserver((es, obs) => {
-    if (es.some(e => e.isIntersecting)) { ventanas.forEach(w => { const f = w.querySelector('iframe'); f.src = f.dataset.src; }); obs.disconnect(); }
-  }, { rootMargin: '400px' }).observe(pista);
+  // Botones de los atajos y teclas cuando la sección de proyectos está a la vista
+  $('ant').addEventListener('click', () => seleccionar(actual - 1));
+  $('sig').addEventListener('click', () => seleccionar(actual + 1));
+  $('entrar').addEventListener('click', () => abrirDemo(ventanas[actual].dataset.p));
+  addEventListener('keydown', e => {
+    if (!$('demo').hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+    marcarSeccion(); if (seccionActual !== $('proyectos')) return;
+    const t = e.target; if (t.closest && (t.closest('input, textarea, a, button') || t === pista)) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); seleccionar(actual + (e.key === 'ArrowRight' ? 1 : -1), { centrarScroll: true }); }
+    else if (e.key === 'Enter') { e.preventDefault(); abrirDemo(ventanas[actual].dataset.p); }
+  });
 
   $('detalle').innerHTML = ''; seleccionar(0);
 
   // ---------- Ventana de demos ----------
   let foco = null;
   function abrirDemo(clave, pestana = 0) {
-    const d = PROYECTOS[clave]; if (!d) return false;
+    if (!PROYECTOS[clave]) return false; const d = P(clave);
     foco = document.activeElement;
-    $('demo-nombre').textContent = `~/proyectos/${d.archivo}`;
+    $('demo-nombre').textContent = `${T('~/proyectos/', '~/projects/')}${d.archivo}`;
     const tabs = $('demo-pestanas');
     tabs.hidden = d.pestanas.length < 2;
     tabs.innerHTML = d.pestanas.map(([t], i) => `<button role="tab" aria-selected="${i === pestana}" data-i="${i}">${esc(t)}</button>`).join('');
@@ -263,7 +296,7 @@
 
   // ---------- Copiar el mail ----------
   $('copiar').addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText('fedevillon110@gmail.com'); avisar('Mail copiado'); }
+    try { await navigator.clipboard.writeText('fedevillon110@gmail.com'); avisar(T('Mail copiado', 'Email copied')); }
     catch (e) { avisar('fedevillon110@gmail.com'); }
   });
 
@@ -274,27 +307,35 @@
   const enlace = (t, u) => `<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`;
   const ir = id => { document.getElementById(id).scrollIntoView({ behavior: reducido ? 'auto' : 'smooth' }); };
   const COMANDOS = {
-    help: () => ['whoami · proyectos · abrir &lt;turnero|despensa|bandeja&gt; · stack · cv · contacto · clear'],
-    whoami: () => ['Federico Villón. Estudiante de Sistemas (UTN). Hago páginas web, automatizaciones y soluciones tecnológicas.'],
-    proyectos: () => ORDEN.map(k => `${k.padEnd(9)} ${esc(PROYECTOS[k].texto.split(':')[0].split('.')[0])} · <button class="enlace" data-demo="${k}">abrir</button>`),
-    ls: () => COMANDOS.proyectos(),
-    abrir: a => abrirDemo((a[0] || '').toLowerCase()) ? ['abriendo…'] : ['uso: abrir turnero | despensa | bandeja'],
-    stack: () => { ir('stack'); return ['te llevo a «Qué hago» ↓']; },
-    cv: () => { Object.assign(document.createElement('a'), { href: 'cv/CV-Federico-Villon.pdf', download: '' }).click(); return ['descargando CV-Federico-Villon.pdf…']; },
+    help: () => [T('whoami · proyectos · abrir &lt;turnero|despensa|bandeja&gt; · stack · cv · contacto · idioma &lt;es|en&gt; · clear',
+      'whoami · projects · open &lt;turnero|despensa|bandeja&gt; · stack · cv · contact · lang &lt;es|en&gt; · clear')],
+    whoami: () => [T('Federico Villón. Estudiante de Sistemas (UTN). Hago páginas web, automatizaciones y soluciones tecnológicas.',
+      'Federico Villón. Information Systems student (UTN, Argentina). I build websites, automations and tech solutions.')],
+    proyectos: () => ORDEN.map(k => `${k.padEnd(9)} ${esc(P(k).texto.split(':')[0].split('.')[0])} · <button class="enlace" data-demo="${k}">${T('abrir', 'open')}</button>`),
+    abrir: a => abrirDemo((a[0] || '').toLowerCase()) ? [T('abriendo…', 'opening…')] : [T('uso: abrir turnero | despensa | bandeja', 'usage: open turnero | despensa | bandeja')],
+    stack: () => { ir('stack'); return [T('te llevo a «Qué hago» ↓', 'taking you to “What I do” ↓')]; },
+    cv: () => { Object.assign(document.createElement('a'), { href: 'cv/CV-Federico-Villon.pdf', download: '' }).click(); return [T('descargando CV-Federico-Villon.pdf…', 'downloading CV-Federico-Villon.pdf… (in Spanish)')]; },
     contacto: () => ['mail      ' + enlace('fedevillon110@gmail.com', 'mailto:fedevillon110@gmail.com'),
       'whatsapp  ' + enlace('+54 3447 55-2717', 'https://wa.me/5493447552717?text=Hola%20Federico%2C%20vi%20tu%20portfolio.'),
       'linkedin  ' + enlace('in/fedevillon', 'https://www.linkedin.com/in/fedevillon')],
-    date: () => [new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', dateStyle: 'full', timeStyle: 'short' })],
+    idioma: a => {
+      const l = (a[0] || '').toLowerCase().replace('us', 'en').replace('english', 'en').replace(/^(español|espanol|spanish)$/, 'es');
+      if (l !== 'es' && l !== 'en') return [T('uso: idioma es | idioma en', 'usage: lang es | lang en')];
+      ponerIdioma(l); return [T('listo: la página está en español', 'done: the page is now in English')];
+    },
+    date: () => [new Date().toLocaleString(T('es-AR', 'en-US'), { timeZone: 'America/Argentina/Buenos_Aires', dateStyle: 'full', timeStyle: 'short' })],
     clear: () => { salida.innerHTML = ''; return []; },
-    sudo: a => a.join(' ').startsWith('contratar') ? ['[sudo] permiso concedido. ' + enlace('Escribime', 'mailto:fedevillon110@gmail.com') + ' y lo hablamos.'] : ['Este incidente será reportado. (probá: sudo contratar)'],
+    sudo: a => /^(contratar|hire)/.test(a.join(' ')) ? [T('[sudo] permiso concedido. ', '[sudo] permission granted. ') + enlace(T('Escribime', 'Email me'), 'mailto:fedevillon110@gmail.com') + T(' y lo hablamos.', ' and let’s talk.')] : [T('Este incidente será reportado. (probá: sudo contratar)', 'This incident will be reported. (try: sudo hire)')],
   };
+  Object.assign(COMANDOS, { ls: () => COMANDOS.proyectos(), projects: () => COMANDOS.proyectos(), open: a => COMANDOS.abrir(a), contact: () => COMANDOS.contacto(),
+    lang: a => COMANDOS.idioma(a), language: a => COMANDOS.idioma(a), english: () => COMANDOS.idioma(['en']), 'español': () => COMANDOS.idioma(['es']), espanol: () => COMANDOS.idioma(['es']) });
   COMANDOS.ayuda = COMANDOS.help;
   function ejecutar(texto) {
     const t = texto.trim(); if (!t) return;
     historial.push(t); pos = historial.length;
     lineaT(`<b>$</b> ${esc(t)}`, 'eco');
     const [c, ...a] = t.split(/\s+/), fn = COMANDOS[c.toLowerCase()];
-    if (!fn) lineaT(`${esc(c)}: no existe. Escribí <b>help</b>.`, 'error'); else fn(a).forEach(l => lineaT(l));
+    if (!fn) lineaT(T(`${esc(c)}: no existe. Escribí <b>help</b>.`, `${esc(c)}: command not found. Type <b>help</b>.`), 'error'); else fn(a).forEach(l => lineaT(l));
     salida.scrollTop = salida.scrollHeight;
   }
   $('linea').addEventListener('submit', e => { e.preventDefault(); ejecutar(entrada.value); entrada.value = ''; });
@@ -304,4 +345,86 @@
     else if (e.key === 'Tab') { const v = entrada.value.trim().toLowerCase(), op = Object.keys(COMANDOS).filter(c => c.startsWith(v)); if (v && op.length === 1) { e.preventDefault(); entrada.value = op[0] + ' '; } }
   });
   $('terminal').addEventListener('click', e => { if (!e.target.closest('a, button')) entrada.focus({ preventScroll: true }); });
+
+  // ---------- Idioma (es / en) ----------
+  // Se traduce cada texto de la página buscándolo en este diccionario; el original queda guardado para volver.
+  const EN = {
+    'Proyectos': 'Projects', 'Qué hago': 'What I do', 'Trayectoria': 'Experience', 'Contacto': 'Contact',
+    'Disponible para nuevos proyectos': 'Available for new projects', 'Hago': 'I build',
+    'Estudio Ingeniería en Sistemas en la UTN. Armo herramientas para negocios: que vendan más, pierdan menos tiempo y no dependan de cuadernos ni planillas sueltas.':
+      'I study Information Systems Engineering at UTN (Argentina). I build tools that help businesses sell more, waste less time and stop relying on notebooks and scattered spreadsheets.',
+    'Ver proyectos': 'See projects', 'Contactarme': 'Contact me', 'Base': 'Based in', 'Hora': 'Local time', 'Idiomas': 'Languages',
+    'Español · inglés técnico escrito': 'Spanish · written technical English', 'probá': 'try',
+    'Pensados para negocios reales, con demo para probar.': 'Built for real businesses, each with a demo you can try.',
+    'cambiar': 'switch', 'abrir demo': 'open demo', 'deslizá para cambiar': 'swipe to switch', 'tocá para abrir': 'tap to open',
+    '~/servicios': '~/services', 'ls -l ~/servicios': 'ls -l ~/services', '~/trayectoria': '~/experience',
+    'desarrollo-web/': 'web-development/', 'automatizaciones/': 'automation/', 'soporte-tecnico/': 'tech-support/',
+    'sistemas-y-redes/': 'systems-and-networks/', 'bases-de-datos/': 'databases/', 'edicion-de-video/': 'video-editing/',
+    'Sitios y sistemas web a medida: desde la página de un negocio hasta paneles de gestión con usuarios, datos y reportes.':
+      'Custom websites and web systems: from a small business site to management dashboards with users, data and reports.',
+    'Procesos que se hacen solos: leer documentos, ordenar información, hacer el seguimiento de clientes y armar reportes, con controles para que el resultado sea confiable.':
+      'Processes that run on their own: reading documents, organizing information, following up with clients and building reports, with checks so the results can be trusted.',
+    'Diagnóstico y solución de problemas de PCs, notebooks y software, y atención a usuarios con explicaciones claras.':
+      'Diagnosing and fixing problems with PCs, laptops and software, and helping users with clear explanations.',
+    'Instalación y configuración de equipos y redes, y administración de un servidor Linux: usuarios, permisos y acceso remoto.':
+      'Setting up computers and networks, and managing a Linux server: users, permissions and remote access.',
+    'Tablas, consultas y reportes para que un negocio sepa qué vende, cuánto gana y qué le falta.':
+      'Tables, queries and reports so a business knows what it sells, what it earns and what it is missing.',
+    'Videos para redes y puntos de venta, a pedido de cada cliente.': 'Videos for social media and in-store screens, made to order for each client.',
+    'agentes de ia · scripts · integraciones': 'ai agents · scripts · integrations', 'edición · contenido para redes': 'editing · social media content',
+    'HEAD → hoy': 'HEAD → today', '2026 – hoy': '2026 – present', '2024 – hoy': '2024 – present',
+    'Desarrollador web y automatización': 'Web & automation developer', 'freelance · remoto': 'freelance · remote',
+    'Sitios y paneles de gestión para negocios, y automatización de la búsqueda y el seguimiento de clientes. Atiendo y doy soporte a cada cliente.':
+      'Websites and management dashboards for businesses, plus automated client prospecting and follow-up. I support each client directly.',
+    'Ingeniería en Sistemas de Información': 'Information Systems Engineering',
+    'Primer año aprobado completo: programación en Python, algoritmos, arquitectura de computadoras y bases de datos.':
+      'First year fully passed: Python programming, algorithms, computer architecture and databases.',
+    'Desarrollo con Inteligencia Artificial': 'AI-assisted development',
+    'Agentes de IA, automatización de procesos y desarrollo asistido por IA.': 'AI agents, process automation and AI-assisted development.',
+    'Editor de video': 'Video editor',
+    'Videos para redes y puntos de venta de comercios. Trato directo con clientes y entregas con fecha.':
+      'Videos for social media and in-store screens for local shops. Direct contact with clients and on-time delivery.',
+    'Escribime': 'Get in touch', 'Para un proyecto, una consulta o una propuesta de trabajo. Respondo en el día.': 'For a project, a question or a job offer. I reply the same day.',
+    'copiar': 'copy', 'Hecho en Concepción del Uruguay · 2026': 'Made in Concepción del Uruguay · 2026',
+    '$ echo "gracias por pasar"': '$ echo "thanks for stopping by"', 'abrir en pestaña nueva ↗': 'open in new tab ↗', 'Cerrar': 'Close',
+    // atributos
+    'escribí un comando: help, proyectos, contacto…': 'type a command: help, projects, contact…', 'Copiar el mail': 'Copy email',
+    'Descargar CV': 'Download CV (Spanish)', 'Cerrar demo': 'Close demo', 'Foto de Federico Villón': 'Photo of Federico Villón',
+    'Proyecto anterior': 'Previous project', 'Proyecto siguiente': 'Next project', 'Abrir la demo elegida': 'Open the selected demo',
+    'Vista previa de Turnero': 'Turnero preview', 'Vista previa de Despensa': 'Despensa preview', 'Vista previa de Bandeja': 'Bandeja preview',
+    'Secciones': 'Sections', 'Presentación': 'Introduction', 'Terminal interactiva': 'Interactive terminal',
+  };
+  const ATRIBUTOS = ['placeholder', 'aria-label', 'title', 'alt'];
+  const originales = new Map();   // nodo o "nodo|atributo" → texto en español
+  const saltar = el => el.closest('script, style, pre, #salida, #nombre, #rotador, #detalle, #ruta, #reloj, .win-nombre');
+  function traducir() {
+    const camina = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let n; (n = camina.nextNode());) {
+      if (!n.nodeValue.trim() || saltar(n.parentElement)) continue;
+      if (!originales.has(n)) originales.set(n, n.nodeValue);
+      const es = originales.get(n), clave = es.trim();
+      n.nodeValue = idioma === 'en' && EN[clave] ? es.replace(clave, EN[clave]) : es;
+    }
+    document.querySelectorAll(ATRIBUTOS.map(a => `[${a}]`).join(',')).forEach(el => ATRIBUTOS.forEach(a => {
+      if (!el.hasAttribute(a)) return;
+      if (!originales.has(el)) originales.set(el, {});
+      const o = originales.get(el); if (!(a in o)) o[a] = el.getAttribute(a);
+      el.setAttribute(a, idioma === 'en' && EN[o[a]] ? EN[o[a]] : o[a]);
+    }));
+  }
+  const META = { es: [document.title, document.querySelector('meta[name=description]').content],
+    en: ['Federico Villón · Websites and automation', 'Information Systems student (UTN, Argentina). Websites, automations and tech solutions for businesses. Projects with live demos.'] };
+  function ponerIdioma(l) {
+    idioma = l;
+    try { localStorage.setItem('idioma', l); } catch (e) {}
+    document.documentElement.lang = l;
+    [document.title, document.querySelector('meta[name=description]').content] = META[l];
+    $('idioma').dataset.activo = l;
+    traducir();
+    if (rotar.cambiar) rotar.cambiar();
+    seccionActual = null; marcarSeccion();
+    const sel = ventanas[actual]; $('detalle').innerHTML = ''; detalle(sel.dataset.p);
+  }
+  $('idioma').addEventListener('click', () => ponerIdioma(idioma === 'es' ? 'en' : 'es'));
+  if (idioma === 'en') ponerIdioma('en'); else $('idioma').dataset.activo = 'es';
 })();

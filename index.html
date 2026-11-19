@@ -12,18 +12,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/estilo.css?v=12">
+<link rel="stylesheet" href="css/estilo.css?v=13">
 </head>
 <body>
 <div class="fondo" aria-hidden="true"></div>
 
 <header class="barra" id="barra">
-  <a class="marca" href="#inicio"><img src="assets/logo.svg" alt="" width="26" height="26"><span class="prompt"><span class="usuario">fede@villón</span>:<span class="ruta" id="ruta">~</span>$<span class="cursor" aria-hidden="true"></span></span></a>
+  <a class="marca" href="#inicio"><img src="assets/logo-barra.svg" alt="" width="26" height="26"><span class="prompt"><span class="usuario">fede@villón</span>:<span class="ruta" id="ruta">~</span>$<span class="cursor" aria-hidden="true"></span></span></a>
   <nav aria-label="Secciones">
     <a href="#proyectos">Proyectos</a>
     <a href="#stack">Qué hago</a>
     <a href="#trayectoria">Trayectoria</a>
     <a href="#contacto">Contacto</a>
+    <button class="idioma" type="button" id="idioma" aria-label="Cambiar idioma / Change language"><span data-l="es">es</span><span data-l="en">en</span></button>
     <a class="cv-barra" href="cv/CV-Federico-Villon.pdf" download>cv.pdf <span aria-hidden="true">↓</span></a>
   </nav>
 </header>
@@ -180,26 +181,26 @@ X&lt;&gt;i!!!!iiiii!!!lIII!IIlIIIIIIIIIIIIIIIIIIIIIIIIIIIII1{][]]?-_+~_nC(&gt;II
         <div class="win" role="option" id="p-turnero" data-p="turnero" aria-selected="true">
           <div class="win-marco">
             <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>turnero.html</div>
-            <div class="win-vista"><iframe data-src="demos/turnero/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Turnero"></iframe></div>
+            <div class="win-vista"><img src="assets/previas/turnero.webp" alt="Vista previa de Turnero" width="800" height="500" loading="lazy" decoding="async"></div>
           </div>
           <span class="win-nombre">Turnero</span>
         </div>
         <div class="win" role="option" id="p-despensa" data-p="despensa" aria-selected="false">
           <div class="win-marco">
             <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>despensa.py</div>
-            <div class="win-vista"><iframe data-src="demos/despensa/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Despensa"></iframe></div>
+            <div class="win-vista"><img src="assets/previas/despensa.webp" alt="Vista previa de Despensa" width="800" height="500" loading="lazy" decoding="async"></div>
           </div>
           <span class="win-nombre">Despensa</span>
         </div>
         <div class="win" role="option" id="p-bandeja" data-p="bandeja" aria-selected="false">
           <div class="win-marco">
             <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>bandeja.py</div>
-            <div class="win-vista"><iframe data-src="demos/bandeja/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Bandeja"></iframe></div>
+            <div class="win-vista"><img src="assets/previas/bandeja.webp" alt="Vista previa de Bandeja" width="800" height="500" loading="lazy" decoding="async"></div>
           </div>
           <span class="win-nombre">Bandeja</span>
         </div>
       </div>
-      <p class="atajos" aria-hidden="true"><span class="solo-pc"><kbd>←</kbd><kbd>→</kbd> cambiar</span><span class="solo-pc"><kbd>enter</kbd> abrir demo</span><span class="solo-tactil">deslizá para cambiar</span><span class="solo-tactil">tocá para abrir</span></p>
+      <div class="atajos"><span class="solo-pc"><button type="button" id="ant" aria-label="Proyecto anterior">←</button><button type="button" id="sig" aria-label="Proyecto siguiente">→</button> cambiar</span><span class="solo-pc"><button type="button" id="entrar" aria-label="Abrir la demo elegida">enter</button> abrir demo</span><span class="solo-tactil">deslizá para cambiar</span><span class="solo-tactil">tocá para abrir</span></div>
     </div>
 
     <article class="detalle" id="detalle" aria-live="polite"></article>
@@ -276,6 +277,6 @@ X&lt;&gt;i!!!!iiiii!!!lIII!IIlIIIIIIIIIIIIIIIIIIIIIIIIIIIII1{][]]?-_+~_nC(&gt;II
   <iframe id="demo-marco" title="Demo del proyecto"></iframe>
 </div>
 
-<script src="js/sitio.js?v=10"></script>
+<script src="js/sitio.js?v=13"></script>
 </body>
 </html>
