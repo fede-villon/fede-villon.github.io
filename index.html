@@ -11,13 +11,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilo.css?v=7">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/estilo.css?v=10">
 </head>
 <body>
 <div class="fondo" aria-hidden="true"></div>
 
 <header class="barra" id="barra">
-  <a class="marca" href="#inicio"><span class="marca-punto"></span>fede villón</a>
+  <a class="marca" href="#inicio"><img src="assets/logo.svg" alt="" width="30" height="30">fede villón</a>
   <nav aria-label="Secciones">
     <a href="#proyectos">Proyectos</a>
     <a href="#stack">Qué hago</a>
@@ -30,7 +31,7 @@
 <main>
   <section class="portada" id="inicio" aria-label="Presentación">
     <div class="portada-texto">
-      <p class="estado" id="estado"><span class="punto"></span><span id="estado-texto">Buscando trabajo remoto part-time</span></p>
+      <p class="estado" id="estado"><span class="punto"></span><span id="estado-texto">Disponible para nuevos proyectos</span></p>
       <h1 class="nombre" id="nombre" aria-label="Federico Villón">Federico Villón</h1>
       <p class="rol">Hago <span class="rotador" id="rotador" aria-live="polite">páginas web</span><span class="caret" aria-hidden="true"></span></p>
       <p class="bajada">Estudio Ingeniería en Sistemas en la UTN. Armo herramientas para negocios: que vendan más, pierdan menos tiempo y no dependan de cuadernos ni planillas sueltas.</p>
@@ -45,97 +46,114 @@
       </dl>
     </div>
 
-    <figure class="retrato" id="retrato" aria-label="Retrato hecho con caracteres">
+    <figure class="retrato" id="retrato">
+      <img class="foto" src="assets/retrato.png" alt="Foto de Federico Villón" width="520" height="531">
       <pre class="ascii base" aria-hidden="true">
-                                            :::
-                                       -+#%@@@@%*=+++=-
-                                    -*%@@@@@@@@@@@@@@@@%#=
-                                 -*%@@@@@@@@@@@@@@@@@@@@@@%-
-                               =%@@@@@@@@@@@@@%%%@@@@@@@@@@@#:
-                              *@@@@@@@@@@@%#*+===+#%@@%@@@@@@@=
-                             #@@@@@@@@@@@*=---::--=*#@@@@@@@@@@*
-                            =@@@@@@@@@@%#=-::::::--=+#@@@@@@@@@@*
-                            #@@@@@@@@@@#=::  .:::---==*%@@@@@@@@@-
-                           :%@@@@@@@@@@*==--:: ...:::-=*%@@@@@@@@%
-                           -@@@@@@@@@#=-:-=++=-  ::=*##*#%@@@@@@@@:
-                           -@@@@@@@*=: :-=+=-::  -+**+++++*%@@@@@%:
-                           +@@@@@@#-: -==*#++-- :-*#**%%##**@@@@@%
-                           #@@@@@@=.      :::::::-+#*=====++#@@@@#
-                           +@@@#*+:          ::  :-+*+==--=++#%@@=
-                           :@%-=-::         ::--:-+++=----==*##@=
-                            -@*:  .:        .:::::=*+=---=++**%+
-                             +@#-=-             ::-======+++*%#
-                             :%@@@#       :--====+****-=+++%@@+
-                              +@@@@-        ::--==+**+==++*@@%:
-                               +@@@=::         ::---==+++*@@*:
-                               -%%@= ::::        :--=++*#@@@+:
-                               -#++-   :::::..::::-=+***%%*=-:
-                                 : ::      ::::-==+*****=:
-                                #=               -=+**+*:
-                              =%@%              :=++*+++:
-                           :+%@@@@@:        ::  :-=++++:-#:
-                       =*%@@@@@@@@@@=         :---===- ::%@%#+-:
-                   -*%@@@@@@@@@@@@@@@=         :--==:  . *@@@@@@#*-:
-               -*%@@@@@@@@@@@@@@@@@@@@=      -+++*#%@%+ .+@@@@@@@@@@%*=-
-         :=*#%@@@@@@@@@@@@@@@@@@@@@@@@@-    -*#*+#%@@%#+:-@@@@@@@@@@@@@@@#*=:
-      +#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@- :-:  *#=+#@*--=:*@@@@@@@@@@@@@@@@@@%#+
-    :@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-      *#+*%#-:::=@@@@@@@@@@@@@@@@@@@@@%:
-    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%:     =%*+*@= :: #@@@@@@@@@@@@@@@@@@@@@#
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#  :. ***++@@-:: +@@@@@@@@@@@@@@@@@@@@@@=
-   -@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*  - +*++*%@# : -@@@@@@@@@@@@@@@@@@@@@@%
-   +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@= -:+*++*%@@-: :@@@@@@@@@@@@@@@@@@@@@@@=
-   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: -+*++*%@@+ -:@@@@@@@@@@@@@@@@@@@@@@@%
-  +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.-+*+*#%@@# :-%@@@@@@@@@@@@@@@@@@@@@@@=
-  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*:+***#%@@@  -%@@@@@@@@@@@@@@@@@@@@@@@%
- +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+*#*##%@@@- =@@@@@@@@@@@@@@@@@@@@@@@@@= :
- %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#%##%%@@@+ =@@@@@@@@@@@@@@@@@@@@@@@@@# :.
--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%@@@# -@@@@@@@@@@@@@@@@@@@@@@@@@@- ::
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@ -@@@@@@@@@@@@@@@@@@@@@@@@@@* :..</pre>
+
+
+                                               dOUXuncCCC
+                                           mct}-+~~~&lt;+[(111)trcL
+                                        qu}_~&lt;++~~&gt;lIIIIi~+~~+_](c
+                                      C)-++~~+++&lt;lIIIIIIIi~++~++~_1c
+                                   wv]&lt;~++&lt;~_++lIIIII!iIII&lt;+_~&lt;++~~_|
+                                 pf_&lt;+_~&lt;&lt;+_+_lI!&gt;+?[[]?_~&lt;~_+&gt;&gt;&lt;~++~]v
+                                q}_--+~&lt;~+-__~+?[}}{111{[]?____~iii&gt;+++t
+                                |+-_+++++__++_]{1)((((()1{[]_++_+&gt;!!l&gt;+~1
+                              $O+-~~~~_++__+-?{)(||||((()1{}?_&gt;IIi&gt;iIIl&lt;~(
+                              M}_++++++~__+_?[))(tt|(((())11}]_&lt;IIIIIIII~+x
+                              J-_+~&lt;&lt;+++~+&lt;_]1|frxxrfttt|((((){]?+IIIlIII&lt;?X
+                              z_+&lt;&gt;~&lt;&gt;i&lt;+~+?[{{[[}{(|ffttt)1[]?___+&gt;IIIII&gt;+r
+                              v++&lt;&lt;!li&lt;+-]1|frrt(1{1)tr|(1[]][}}[?__lIIII&gt;+t
+                              x++&lt;&lt;&lt;i~+[1|ft){}]]{1(|tj|{]][}}][[}[]&lt;IIII&gt;+f
+                             q}++i!!I&lt;-1|f|)11{][}{))tt({??][-+---][-IIIIi+j
+                             C?~&lt;iill&lt;{ttfjrxxjt|(((|||(1]][{1111{[[[lIIIl?r
+                             q{+~&lt;+???|fjncccnfftft(|fjt(1[]}{11)1{}}??-!![
+                              r&lt;+?}{)||fnzXzzcvuxnttjjnj({{}{1)1)1{{}?]-!]
+                              w{&lt;?f((t|trczXXXzcux|(11|)1][}1(()11{{[?[i-
+                                tI&gt;fccftjnzXYYXvxjftruftt1}{{1))1{}}}}~+x
+                                v&gt;II_~[fruczXXcnxnnnnr|||)111111{}}]_&lt;I|n
+                                C]&lt;IIIItruccXXcr|)1{{{{}[[]]]1){}[1lIi&lt;|
+                                 n?+~iI}jxuccvcurjf|()11{}[[}11{[{]Il&lt;]
+                                 Jr?_+&lt;]|tjrnucvnnxrf|()))111{}}}]lI&lt;{j
+                                   )-_&lt;]t|(|frnczzcuxrf|())1{}[[]Iii[tf
+                                   ]-[_{trj|((|trvvcvxrj|)1{[[][&lt;&gt;&gt;+[)t
+                                   n1)t1(xuuxf|(((|())()1{[[]]][_]|fjj
+                                   b0ndwj|nzXcuxxrjjt|)11}[[][[{j       ff
+                                  pC~t$$8qXunuvcccvvcvx|){[[[}[{      j fff
+                                 0t&lt;&gt;&lt;q$@$$MqUxrncXvnxr){}}[}{]{ju jffffffff
+                          bbkpmC|&lt;li&gt;!l0$@@$$$WqXjtxurt(11}}{]1j]}nrrftttfff
+                          Qc|-iIIlii!ilIvB$@@@$$$WZx1)|()1}[[fr|1I~}}(frrjfff
+                      0c(+IIIIIIIIll!!lII(&amp;$@$@@@$$@hz)11{)uJctttIIIIIIi?(f
+                  0Uf]iIIIIIIIIIIIIIIIIIII)W$@$$@@$$oc(||)|rnuxtt!IIIIIIIII&gt;]|x
+             wOYf]&gt;lIIIIIIIIIIIIIIIIIIIIIII)M$@@$$kj-][?--+&gt;&gt;+tf|?IIIIIIIIIIIII~])fx
+      bk OYf[_&gt;lIIIIIIIIIIIIIIIIIIIIIIIIIIII(o$$oz1{?]{}?--_-]])t)!IIIIIIIIIIIIIIII!+[(t nn
+    kQx1+lIIll!lIIIIIIIIIIIIIIIIIIIIIIIIIllII|b0)}ruu{-}{[?+?))11t?IIIIIIIIIIIIIIIIIIIIl&gt;~[rn
+   kz&gt;!lIIIIlIIIIIIIIIIIIIIIIIIIIIIIIIIIIllIII}xJurfxv{-[}]--1(t)f1IIIIIIIIIIIIIIIIIIIIIIIIlfv
+  dO&lt;&gt;&lt;&gt;ilIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII!tUJnuuQc-?}}[+1tf(ff&gt;IIIIIIIIIIIIIIIIIIIIIIIIIr
+  kri&lt;&gt;&gt;iiilIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIllII&gt;jLn|xQx-][}[_+)j(jx?IIIIIIIIIIIIIIIIIIIIIIIII_
+   }&gt;&gt;i&gt;&gt;&gt;&gt;ilIIlIIIIIIIIIIIIIIIIIIIIIIIIIIIIllII_uCf)c|?[[{[-&lt;-t|tv{IIIIIIIIIIIIIIIIIIIIIIIIII|x
+  L_&lt;&gt;i&gt;&gt;&gt;&gt;&gt;ilIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIlII]Xc1u(?[}{[-+~{t(vtIIIIIIIIIIIIIIIIIIIIIIIIII+x
+  Y&lt;&gt;&gt;&gt;iiiiiiiIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII)Y|t)][}}[-_~?j|fjlIIIIIIIIIIIIIIIIIIIIIIIIII|r
+  )!iiiiii&gt;ii!!IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIInn1)][[[]?_~+tu)j&gt;IIIIIIIIIIIIIIIIIIIIIIIIII-xj
+wX&gt;i!!!iiiiiiii!IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII&gt;u)1][[[]?_~&lt;{Y|t&gt;IIIIIIIIIIIIIIIIIIIIIIIIIIItrff
+m}!i!!!!iii!iiiiIIIlIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII]t{[[[]]?_+&lt;?Xu)&lt;IIIIIIIIIIIIIIIIIIIIIIIIIII-xff
+X&lt;&gt;i!!!!iiiii!!!lIII!IIlIIIIIIIIIIIIIIIIIIIIIIIIIIIII1{][]]?-_+~_nC(&gt;IIIIIIIIIIIIIIIIIIIIIIIIIIII|ftff
+1ii!!l!!!iii!llllIIII!!lllIIIIIIIIIIIIIIIIIIIIIIIIIIII1-]]??-__+~tmfIIIIIIIIIIIIIIIIIIIIIIIIIIIII?ftttf
++&gt;ii!!!!ii!!!llIIIIIIl!llllIIIIIIIIIIIIIIIIIIIIIIIIIII&lt;????---_+&lt;{ZnIIIIIIIIIIIIIIIIIIIIIIIIIIIIIItttttf
+&lt;&gt;iiiiiii!l!!llIIIIIIIl!!llIIIIIIIIIIIIIIIIIIIIIIIIIIII&lt;-??--__+~?CcIIIIIIIIIIIIIIIIIIIIIIIIIIIIII[ftttt</pre>
       <pre class="ascii luz" aria-hidden="true">
-                                            :::
-                                       -+#%@@@@%*=+++=-
-                                    -*%@@@@@@@@@@@@@@@@%#=
-                                 -*%@@@@@@@@@@@@@@@@@@@@@@%-
-                               =%@@@@@@@@@@@@@%%%@@@@@@@@@@@#:
-                              *@@@@@@@@@@@%#*+===+#%@@%@@@@@@@=
-                             #@@@@@@@@@@@*=---::--=*#@@@@@@@@@@*
-                            =@@@@@@@@@@%#=-::::::--=+#@@@@@@@@@@*
-                            #@@@@@@@@@@#=::  .:::---==*%@@@@@@@@@-
-                           :%@@@@@@@@@@*==--:: ...:::-=*%@@@@@@@@%
-                           -@@@@@@@@@#=-:-=++=-  ::=*##*#%@@@@@@@@:
-                           -@@@@@@@*=: :-=+=-::  -+**+++++*%@@@@@%:
-                           +@@@@@@#-: -==*#++-- :-*#**%%##**@@@@@%
-                           #@@@@@@=.      :::::::-+#*=====++#@@@@#
-                           +@@@#*+:          ::  :-+*+==--=++#%@@=
-                           :@%-=-::         ::--:-+++=----==*##@=
-                            -@*:  .:        .:::::=*+=---=++**%+
-                             +@#-=-             ::-======+++*%#
-                             :%@@@#       :--====+****-=+++%@@+
-                              +@@@@-        ::--==+**+==++*@@%:
-                               +@@@=::         ::---==+++*@@*:
-                               -%%@= ::::        :--=++*#@@@+:
-                               -#++-   :::::..::::-=+***%%*=-:
-                                 : ::      ::::-==+*****=:
-                                #=               -=+**+*:
-                              =%@%              :=++*+++:
-                           :+%@@@@@:        ::  :-=++++:-#:
-                       =*%@@@@@@@@@@=         :---===- ::%@%#+-:
-                   -*%@@@@@@@@@@@@@@@=         :--==:  . *@@@@@@#*-:
-               -*%@@@@@@@@@@@@@@@@@@@@=      -+++*#%@%+ .+@@@@@@@@@@%*=-
-         :=*#%@@@@@@@@@@@@@@@@@@@@@@@@@-    -*#*+#%@@%#+:-@@@@@@@@@@@@@@@#*=:
-      +#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@- :-:  *#=+#@*--=:*@@@@@@@@@@@@@@@@@@%#+
-    :@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-      *#+*%#-:::=@@@@@@@@@@@@@@@@@@@@@%:
-    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%:     =%*+*@= :: #@@@@@@@@@@@@@@@@@@@@@#
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#  :. ***++@@-:: +@@@@@@@@@@@@@@@@@@@@@@=
-   -@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*  - +*++*%@# : -@@@@@@@@@@@@@@@@@@@@@@%
-   +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@= -:+*++*%@@-: :@@@@@@@@@@@@@@@@@@@@@@@=
-   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: -+*++*%@@+ -:@@@@@@@@@@@@@@@@@@@@@@@%
-  +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.-+*+*#%@@# :-%@@@@@@@@@@@@@@@@@@@@@@@=
-  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*:+***#%@@@  -%@@@@@@@@@@@@@@@@@@@@@@@%
- +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+*#*##%@@@- =@@@@@@@@@@@@@@@@@@@@@@@@@= :
- %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#%##%%@@@+ =@@@@@@@@@@@@@@@@@@@@@@@@@# :.
--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%@@@# -@@@@@@@@@@@@@@@@@@@@@@@@@@- ::
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@ -@@@@@@@@@@@@@@@@@@@@@@@@@@* :..</pre>
+
+
+                                               dOUXuncCCC
+                                           mct}-+~~~&lt;+[(111)trcL
+                                        qu}_~&lt;++~~&gt;lIIIIi~+~~+_](c
+                                      C)-++~~+++&lt;lIIIIIIIi~++~++~_1c
+                                   wv]&lt;~++&lt;~_++lIIIII!iIII&lt;+_~&lt;++~~_|
+                                 pf_&lt;+_~&lt;&lt;+_+_lI!&gt;+?[[]?_~&lt;~_+&gt;&gt;&lt;~++~]v
+                                q}_--+~&lt;~+-__~+?[}}{111{[]?____~iii&gt;+++t
+                                |+-_+++++__++_]{1)((((()1{[]_++_+&gt;!!l&gt;+~1
+                              $O+-~~~~_++__+-?{)(||||((()1{}?_&gt;IIi&gt;iIIl&lt;~(
+                              M}_++++++~__+_?[))(tt|(((())11}]_&lt;IIIIIIII~+x
+                              J-_+~&lt;&lt;+++~+&lt;_]1|frxxrfttt|((((){]?+IIIlIII&lt;?X
+                              z_+&lt;&gt;~&lt;&gt;i&lt;+~+?[{{[[}{(|ffttt)1[]?___+&gt;IIIII&gt;+r
+                              v++&lt;&lt;!li&lt;+-]1|frrt(1{1)tr|(1[]][}}[?__lIIII&gt;+t
+                              x++&lt;&lt;&lt;i~+[1|ft){}]]{1(|tj|{]][}}][[}[]&lt;IIII&gt;+f
+                             q}++i!!I&lt;-1|f|)11{][}{))tt({??][-+---][-IIIIi+j
+                             C?~&lt;iill&lt;{ttfjrxxjt|(((|||(1]][{1111{[[[lIIIl?r
+                             q{+~&lt;+???|fjncccnfftft(|fjt(1[]}{11)1{}}??-!![
+                              r&lt;+?}{)||fnzXzzcvuxnttjjnj({{}{1)1)1{{}?]-!]
+                              w{&lt;?f((t|trczXXXzcux|(11|)1][}1(()11{{[?[i-
+                                tI&gt;fccftjnzXYYXvxjftruftt1}{{1))1{}}}}~+x
+                                v&gt;II_~[fruczXXcnxnnnnr|||)111111{}}]_&lt;I|n
+                                C]&lt;IIIItruccXXcr|)1{{{{}[[]]]1){}[1lIi&lt;|
+                                 n?+~iI}jxuccvcurjf|()11{}[[}11{[{]Il&lt;]
+                                 Jr?_+&lt;]|tjrnucvnnxrf|()))111{}}}]lI&lt;{j
+                                   )-_&lt;]t|(|frnczzcuxrf|())1{}[[]Iii[tf
+                                   ]-[_{trj|((|trvvcvxrj|)1{[[][&lt;&gt;&gt;+[)t
+                                   n1)t1(xuuxf|(((|())()1{[[]]][_]|fjj
+                                   b0ndwj|nzXcuxxrjjt|)11}[[][[{j       ff
+                                  pC~t$$8qXunuvcccvvcvx|){[[[}[{      j fff
+                                 0t&lt;&gt;&lt;q$@$$MqUxrncXvnxr){}}[}{]{ju jffffffff
+                          bbkpmC|&lt;li&gt;!l0$@@$$$WqXjtxurt(11}}{]1j]}nrrftttfff
+                          Qc|-iIIlii!ilIvB$@@@$$$WZx1)|()1}[[fr|1I~}}(frrjfff
+                      0c(+IIIIIIIIll!!lII(&amp;$@$@@@$$@hz)11{)uJctttIIIIIIi?(f
+                  0Uf]iIIIIIIIIIIIIIIIIIII)W$@$$@@$$oc(||)|rnuxtt!IIIIIIIII&gt;]|x
+             wOYf]&gt;lIIIIIIIIIIIIIIIIIIIIIII)M$@@$$kj-][?--+&gt;&gt;+tf|?IIIIIIIIIIIII~])fx
+      bk OYf[_&gt;lIIIIIIIIIIIIIIIIIIIIIIIIIIII(o$$oz1{?]{}?--_-]])t)!IIIIIIIIIIIIIIII!+[(t nn
+    kQx1+lIIll!lIIIIIIIIIIIIIIIIIIIIIIIIIllII|b0)}ruu{-}{[?+?))11t?IIIIIIIIIIIIIIIIIIIIl&gt;~[rn
+   kz&gt;!lIIIIlIIIIIIIIIIIIIIIIIIIIIIIIIIIIllIII}xJurfxv{-[}]--1(t)f1IIIIIIIIIIIIIIIIIIIIIIIIlfv
+  dO&lt;&gt;&lt;&gt;ilIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII!tUJnuuQc-?}}[+1tf(ff&gt;IIIIIIIIIIIIIIIIIIIIIIIIIr
+  kri&lt;&gt;&gt;iiilIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIllII&gt;jLn|xQx-][}[_+)j(jx?IIIIIIIIIIIIIIIIIIIIIIIII_
+   }&gt;&gt;i&gt;&gt;&gt;&gt;ilIIlIIIIIIIIIIIIIIIIIIIIIIIIIIIIllII_uCf)c|?[[{[-&lt;-t|tv{IIIIIIIIIIIIIIIIIIIIIIIIII|x
+  L_&lt;&gt;i&gt;&gt;&gt;&gt;&gt;ilIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIlII]Xc1u(?[}{[-+~{t(vtIIIIIIIIIIIIIIIIIIIIIIIIII+x
+  Y&lt;&gt;&gt;&gt;iiiiiiiIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII)Y|t)][}}[-_~?j|fjlIIIIIIIIIIIIIIIIIIIIIIIIII|r
+  )!iiiiii&gt;ii!!IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIInn1)][[[]?_~+tu)j&gt;IIIIIIIIIIIIIIIIIIIIIIIIII-xj
+wX&gt;i!!!iiiiiiii!IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII&gt;u)1][[[]?_~&lt;{Y|t&gt;IIIIIIIIIIIIIIIIIIIIIIIIIIItrff
+m}!i!!!!iii!iiiiIIIlIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII]t{[[[]]?_+&lt;?Xu)&lt;IIIIIIIIIIIIIIIIIIIIIIIIIII-xff
+X&lt;&gt;i!!!!iiiii!!!lIII!IIlIIIIIIIIIIIIIIIIIIIIIIIIIIIII1{][]]?-_+~_nC(&gt;IIIIIIIIIIIIIIIIIIIIIIIIIIII|ftff
+1ii!!l!!!iii!llllIIII!!lllIIIIIIIIIIIIIIIIIIIIIIIIIIII1-]]??-__+~tmfIIIIIIIIIIIIIIIIIIIIIIIIIIIII?ftttf
++&gt;ii!!!!ii!!!llIIIIIIl!llllIIIIIIIIIIIIIIIIIIIIIIIIIII&lt;????---_+&lt;{ZnIIIIIIIIIIIIIIIIIIIIIIIIIIIIIItttttf
+&lt;&gt;iiiiiii!l!!llIIIIIIIl!!llIIIIIIIIIIIIIIIIIIIIIIIIIIII&lt;-??--__+~?CcIIIIIIIIIIIIIIIIIIIIIIIIIIIIII[ftttt</pre>
       <figcaption>pasá el mouse por la foto</figcaption>
     </figure>
   </section>
@@ -159,8 +177,13 @@
     </div>
 
     <div class="alttab" data-revelar>
-      <div class="alttab-pista" id="pista" role="listbox" aria-label="Proyectos" aria-activedescendant="p-despensa" tabindex="0">
-        <div class="win" role="option" id="p-despensa" data-p="despensa" aria-selected="true">
+      <div class="alttab-pista" id="pista" role="listbox" aria-label="Proyectos" aria-activedescendant="p-turnero" tabindex="0">
+        <div class="win" role="option" id="p-turnero" data-p="turnero" aria-selected="true">
+          <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>turnero.html</div>
+          <div class="win-vista"><iframe data-src="demos/turnero/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Turnero"></iframe></div>
+          <span class="win-nombre">Turnero</span>
+        </div>
+        <div class="win" role="option" id="p-despensa" data-p="despensa" aria-selected="false">
           <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>despensa.py</div>
           <div class="win-vista"><iframe data-src="demos/despensa/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Despensa"></iframe></div>
           <span class="win-nombre">Despensa</span>
@@ -169,16 +192,6 @@
           <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>bandeja.py</div>
           <div class="win-vista"><iframe data-src="demos/bandeja/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Bandeja"></iframe></div>
           <span class="win-nombre">Bandeja</span>
-        </div>
-        <div class="win" role="option" id="p-turnero" data-p="turnero" aria-selected="false">
-          <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>turnero.html</div>
-          <div class="win-vista"><iframe data-src="demos/turnero/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Turnero"></iframe></div>
-          <span class="win-nombre">Turnero</span>
-        </div>
-        <div class="win" role="option" id="p-campus" data-p="campus" aria-selected="false">
-          <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>campus.pwa</div>
-          <div class="win-vista"><iframe data-src="https://fede-villon.github.io/CampusBackendDeveloper/" tabindex="-1" aria-hidden="true" title="Vista previa de Campus"></iframe></div>
-          <span class="win-nombre">Campus</span>
         </div>
       </div>
     </div>
@@ -190,46 +203,55 @@
     <div class="seccion-cabeza" data-revelar>
       <h2 id="t-stack">Qué hago</h2>
     </div>
-    <div class="stack" id="stack-grilla">
-      <div class="tarjeta" data-revelar><h3>Desarrollo web</h3><p>Sitios y sistemas web a medida: desde la página de un negocio hasta paneles de gestión con usuarios, datos y reportes.</p><span class="herramientas">HTML · CSS · JavaScript · Python · Flask · Git</span></div>
-      <div class="tarjeta" data-revelar><h3>Automatizaciones con IA</h3><p>Procesos que se hacen solos: leer documentos, ordenar información, hacer el seguimiento de clientes y armar reportes, con controles para que el resultado sea confiable.</p><span class="herramientas">agentes de IA · scripts · integraciones</span></div>
-      <div class="tarjeta" data-revelar><h3>Soporte técnico</h3><p>Diagnóstico y solución de problemas de PCs, notebooks y software, y atención a usuarios con explicaciones claras.</p><span class="herramientas">hardware · Windows · Office</span></div>
-      <div class="tarjeta" data-revelar><h3>Sistemas y redes</h3><p>Instalación y configuración de equipos y redes, y administración de un servidor Linux: usuarios, permisos y acceso remoto.</p><span class="herramientas">Linux · SSH · routers</span></div>
-      <div class="tarjeta" data-revelar><h3>Bases de datos</h3><p>Tablas, consultas y reportes para que un negocio sepa qué vende, cuánto gana y qué le falta.</p><span class="herramientas">SQL · SQLite · Excel</span></div>
-      <div class="tarjeta" data-revelar><h3>Edición de video</h3><p>Videos para redes y puntos de venta, a pedido de cada cliente.</p><span class="herramientas">edición · contenido para redes</span></div>
+    <div class="ventana ls" data-revelar>
+      <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">~/servicios</span><span></span></div>
+      <p class="cmd"><span>$</span> ls -l ~/servicios</p>
+      <ul class="ls-lista">
+        <li data-revelar><span class="perm" aria-hidden="true">drwxr-xr-x</span><h3 class="dir">desarrollo-web/</h3><p>Sitios y sistemas web a medida: desde la página de un negocio hasta paneles de gestión con usuarios, datos y reportes.</p><span class="herramientas">html · css · javascript · python · flask · git</span></li>
+        <li data-revelar><span class="perm" aria-hidden="true">drwxr-xr-x</span><h3 class="dir">automatizaciones/</h3><p>Procesos que se hacen solos: leer documentos, ordenar información, hacer el seguimiento de clientes y armar reportes, con controles para que el resultado sea confiable.</p><span class="herramientas">agentes de ia · scripts · integraciones</span></li>
+        <li data-revelar><span class="perm" aria-hidden="true">drwxr-xr-x</span><h3 class="dir">soporte-tecnico/</h3><p>Diagnóstico y solución de problemas de PCs, notebooks y software, y atención a usuarios con explicaciones claras.</p><span class="herramientas">hardware · windows · office</span></li>
+        <li data-revelar><span class="perm" aria-hidden="true">drwxr-xr-x</span><h3 class="dir">sistemas-y-redes/</h3><p>Instalación y configuración de equipos y redes, y administración de un servidor Linux: usuarios, permisos y acceso remoto.</p><span class="herramientas">linux · ssh · routers</span></li>
+        <li data-revelar><span class="perm" aria-hidden="true">drwxr-xr-x</span><h3 class="dir">bases-de-datos/</h3><p>Tablas, consultas y reportes para que un negocio sepa qué vende, cuánto gana y qué le falta.</p><span class="herramientas">sql · sqlite · excel</span></li>
+        <li data-revelar><span class="perm" aria-hidden="true">drwxr-xr-x</span><h3 class="dir">edicion-de-video/</h3><p>Videos para redes y puntos de venta, a pedido de cada cliente.</p><span class="herramientas">edición · contenido para redes</span></li>
+      </ul>
     </div>
   </section>
 
   <section id="trayectoria" class="seccion" aria-labelledby="t-trayectoria">
     <div class="seccion-cabeza" data-revelar><h2 id="t-trayectoria">Trayectoria</h2></div>
-    <ol class="linea-tiempo" id="linea-tiempo">
-      <li data-revelar><time>2026 – hoy</time><h3>Desarrollador web y automatización</h3><span>Freelance · remoto</span><p>Sitios y paneles de gestión para negocios, y automatización de la búsqueda y el seguimiento de clientes. Atiendo y doy soporte a cada cliente.</p></li>
-      <li data-revelar><time>2026 – hoy</time><h3>Ingeniería en Sistemas de Información</h3><span>UTN · Facultad Regional Concepción del Uruguay</span><p>Primer año aprobado completo: Python, algoritmos, arquitectura de computadoras y bases de datos.</p></li>
-      <li data-revelar><time>2026</time><h3>Desarrollo con Inteligencia Artificial</h3><span>BIG school</span><p>Agentes de IA, automatización de procesos y desarrollo asistido por IA.</p></li>
-      <li data-revelar><time>2024 – hoy</time><h3>Editor de video</h3><span>Freelance</span><p>Videos para redes y puntos de venta de comercios. Trato directo con clientes y entregas con fecha.</p></li>
-    </ol>
+    <div class="ventana git" data-revelar>
+      <div class="ventana-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span><span class="ventana-nombre">~/trayectoria</span><span></span></div>
+      <p class="cmd"><span>$</span> git log --graph --oneline</p>
+      <ol class="git-log" id="linea-tiempo">
+        <li data-revelar><span class="hash">a3f9c21</span><span class="head">HEAD → hoy</span><time>2026 – hoy</time><h3>Desarrollador web y automatización</h3><span class="lugar">freelance · remoto</span><p>Sitios y paneles de gestión para negocios, y automatización de la búsqueda y el seguimiento de clientes. Atiendo y doy soporte a cada cliente.</p></li>
+        <li data-revelar><span class="hash">7d01e4b</span><time>2026 – hoy</time><h3>Ingeniería en Sistemas de Información</h3><span class="lugar">UTN · FR Concepción del Uruguay</span><p>Primer año aprobado completo: programación en Python, algoritmos, arquitectura de computadoras y bases de datos.</p></li>
+        <li data-revelar><span class="hash">c58b2fa</span><time>2026</time><h3>Desarrollo con Inteligencia Artificial</h3><span class="lugar">BIG school</span><p>Agentes de IA, automatización de procesos y desarrollo asistido por IA.</p></li>
+        <li data-revelar><span class="hash">19e6d03</span><time>2024 – hoy</time><h3>Editor de video</h3><span class="lugar">freelance</span><p>Videos para redes y puntos de venta de comercios. Trato directo con clientes y entregas con fecha.</p></li>
+      </ol>
+    </div>
   </section>
 
   <section id="contacto" class="seccion contacto" aria-labelledby="t-contacto">
     <div data-revelar>
-      <h2 id="t-contacto">¿Hablamos?</h2>
-      <p class="contacto-texto">Busco mi primer trabajo en IT, remoto y part-time. Respondo en el día.</p>
+      <p class="cmd centrado"><span>$</span> ./contacto.sh</p>
+      <h2 id="t-contacto">Escribime</h2>
+      <p class="contacto-texto">Para un proyecto, una consulta o una propuesta de trabajo. Respondo en el día.</p>
       <div class="mail-grande">
-        <a href="mailto:fedevillon110@gmail.com" id="mail">fedevillon110@gmail.com</a>
-        <button class="btn chico" type="button" id="copiar" aria-label="Copiar el mail">Copiar</button>
+        <a href="mailto:fedevillon110@gmail.com">fedevillon110@gmail.com</a>
+        <button class="btn chico" type="button" id="copiar" aria-label="Copiar el mail">copiar</button>
       </div>
-      <div class="acciones">
-        <a class="btn principal" href="https://wa.me/5493447552717?text=Hola%20Federico%2C%20vi%20tu%20portfolio." target="_blank" rel="noopener">WhatsApp · +54 3447 55-2717</a>
-        <a class="btn" href="https://www.linkedin.com/in/fedevillon" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/fede-villon" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="cv/CV-Federico-Villon.pdf" download>Descargar CV</a>
+      <div class="iconos">
+        <a class="icono" href="https://wa.me/5493447552717?text=Hola%20Federico%2C%20vi%20tu%20portfolio." target="_blank" rel="noopener" aria-label="WhatsApp: +54 3447 55-2717" title="WhatsApp: +54 3447 55-2717"><span class="ico ico-whatsapp" aria-hidden="true"></span></a>
+        <a class="icono" href="https://www.linkedin.com/in/fedevillon" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><span class="ico ico-linkedin" aria-hidden="true"></span></a>
+        <a class="icono" href="https://github.com/fede-villon" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><span class="ico ico-github" aria-hidden="true"></span></a>
+        <a class="icono" href="cv/CV-Federico-Villon.pdf" download aria-label="Descargar CV" title="Descargar CV"><span class="ico ico-cv" aria-hidden="true"></span></a>
       </div>
     </div>
   </section>
 </main>
 
 <footer class="pie">
-  <span>Hecho en Concepción del Uruguay · noviembre 2026</span>
+  <span>Hecho en Concepción del Uruguay · 2026</span>
   <!-- Momento clave 2: el cierre, como el README -->
   <span class="mono">$ echo "gracias por pasar" <span class="cursor" aria-hidden="true">▍</span></span>
 </footer>
@@ -248,6 +270,6 @@
   <iframe id="demo-marco" title="Demo del proyecto"></iframe>
 </div>
 
-<script src="js/sitio.js?v=7"></script>
+<script src="js/sitio.js?v=8"></script>
 </body>
 </html>

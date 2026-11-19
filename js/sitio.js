@@ -30,14 +30,8 @@
       puntos: ['Solo muestra horarios realmente libres', 'Recordatorios por WhatsApp con el mensaje armado', 'Agenda por barbero con cobro en dos toques', 'Números del negocio: ingresos, ausencias y ocupación'],
       pestanas: [['web del cliente', 'demos/turnero/index.html'], ['panel del local', 'demos/turnero/panel.html']],
     },
-    campus: {
-      nombre: 'Campus Backend', tecnologia: 'PWA · JavaScript · Python', archivo: 'campus',
-      texto: 'Una app para aprender programación backend jugando, con misiones y niveles. Funciona en el navegador y sin conexión.',
-      puntos: ['Recorrido por niveles con misiones', 'Ejercicios de Python que corren en el navegador', 'Se instala como app en el celular'],
-      pestanas: [['app', 'https://fede-villon.github.io/CampusBackendDeveloper/']],
-    },
   };
-  const ORDEN = Object.keys(PROYECTOS);
+  const ORDEN = ['turnero', 'despensa', 'bandeja'];
 
   // ---------- Fondo y barra ----------
   addEventListener('pointermove', e => {
@@ -247,11 +241,11 @@
   const enlace = (t, u) => `<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`;
   const ir = id => { document.getElementById(id).scrollIntoView({ behavior: reducido ? 'auto' : 'smooth' }); };
   const COMANDOS = {
-    help: () => ['whoami · proyectos · abrir &lt;despensa|bandeja|turnero|campus&gt; · stack · cv · contacto · clear'],
+    help: () => ['whoami · proyectos · abrir &lt;turnero|despensa|bandeja&gt; · stack · cv · contacto · clear'],
     whoami: () => ['Federico Villón. Estudiante de Sistemas (UTN). Hago páginas web, automatizaciones y soluciones tecnológicas.'],
     proyectos: () => ORDEN.map(k => `${k.padEnd(9)} ${esc(PROYECTOS[k].texto.split(':')[0].split('.')[0])} · <button class="enlace" data-demo="${k}">abrir</button>`),
     ls: () => COMANDOS.proyectos(),
-    abrir: a => abrirDemo((a[0] || '').toLowerCase()) ? ['abriendo…'] : ['uso: abrir despensa | bandeja | turnero | campus'],
+    abrir: a => abrirDemo((a[0] || '').toLowerCase()) ? ['abriendo…'] : ['uso: abrir turnero | despensa | bandeja'],
     stack: () => { ir('stack'); return ['te llevo a «Qué hago» ↓']; },
     cv: () => { Object.assign(document.createElement('a'), { href: 'cv/CV-Federico-Villon.pdf', download: '' }).click(); return ['descargando CV-Federico-Villon.pdf…']; },
     contacto: () => ['mail      ' + enlace('fedevillon110@gmail.com', 'mailto:fedevillon110@gmail.com'),
