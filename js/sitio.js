@@ -314,7 +314,7 @@
     proyectos: () => ORDEN.map(k => `${k.padEnd(9)} ${esc(P(k).texto.split(':')[0].split('.')[0])} · <button class="enlace" data-demo="${k}">${T('abrir', 'open')}</button>`),
     abrir: a => abrirDemo((a[0] || '').toLowerCase()) ? [T('abriendo…', 'opening…')] : [T('uso: abrir turnero | despensa | bandeja', 'usage: open turnero | despensa | bandeja')],
     stack: () => { ir('stack'); return [T('te llevo a «Qué hago» ↓', 'taking you to “What I do” ↓')]; },
-    cv: () => { Object.assign(document.createElement('a'), { href: 'cv/CV-Federico-Villon.pdf', download: '' }).click(); return [T('descargando CV-Federico-Villon.pdf…', 'downloading CV-Federico-Villon.pdf… (in Spanish)')]; },
+    cv: () => { const f = T('CV-Federico-Villon.pdf', 'CV-Federico-Villon-EN.pdf'); Object.assign(document.createElement('a'), { href: 'cv/' + f, download: '' }).click(); return [T('descargando ', 'downloading ') + f + '…']; },
     contacto: () => ['mail      ' + enlace('fedevillon110@gmail.com', 'mailto:fedevillon110@gmail.com'),
       'whatsapp  ' + enlace('+54 3447 55-2717', 'https://wa.me/5493447552717?text=Hola%20Federico%2C%20vi%20tu%20portfolio.'),
       'linkedin  ' + enlace('in/fedevillon', 'https://www.linkedin.com/in/fedevillon')],
@@ -389,7 +389,7 @@
     '$ echo "gracias por pasar"': '$ echo "thanks for stopping by"', 'abrir en pestaña nueva ↗': 'open in new tab ↗', 'Cerrar': 'Close',
     // atributos
     'escribí un comando: help, proyectos, contacto…': 'type a command: help, projects, contact…', 'Copiar el mail': 'Copy email',
-    'Descargar CV': 'Download CV (Spanish)', 'Cerrar demo': 'Close demo', 'Foto de Federico Villón': 'Photo of Federico Villón',
+    'Descargar CV': 'Download CV', 'Cerrar demo': 'Close demo', 'Foto de Federico Villón': 'Photo of Federico Villón',
     'Proyecto anterior': 'Previous project', 'Proyecto siguiente': 'Next project', 'Abrir la demo elegida': 'Open the selected demo',
     'Vista previa de Turnero': 'Turnero preview', 'Vista previa de Despensa': 'Despensa preview', 'Vista previa de Bandeja': 'Bandeja preview',
     'Secciones': 'Sections', 'Presentación': 'Introduction', 'Terminal interactiva': 'Interactive terminal',
@@ -420,6 +420,7 @@
     document.documentElement.lang = l;
     [document.title, document.querySelector('meta[name=description]').content] = META[l];
     $('idioma').dataset.activo = l;
+    document.querySelectorAll('a[href^="cv/CV-Federico-Villon"]').forEach(a => { a.href = l === 'en' ? 'cv/CV-Federico-Villon-EN.pdf' : 'cv/CV-Federico-Villon.pdf'; });
     traducir();
     if (rotar.cambiar) rotar.cambiar();
     seccionActual = null; marcarSeccion();
