@@ -12,19 +12,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/estilo.css?v=10">
+<link rel="stylesheet" href="css/estilo.css?v=12">
 </head>
 <body>
 <div class="fondo" aria-hidden="true"></div>
 
 <header class="barra" id="barra">
-  <a class="marca" href="#inicio"><img src="assets/logo.svg" alt="" width="30" height="30">fede villón</a>
+  <a class="marca" href="#inicio"><img src="assets/logo.svg" alt="" width="26" height="26"><span class="prompt"><span class="usuario">fede@villón</span>:<span class="ruta" id="ruta">~</span>$<span class="cursor" aria-hidden="true"></span></span></a>
   <nav aria-label="Secciones">
     <a href="#proyectos">Proyectos</a>
     <a href="#stack">Qué hago</a>
     <a href="#trayectoria">Trayectoria</a>
     <a href="#contacto">Contacto</a>
-    <a class="btn chico" href="cv/CV-Federico-Villon.pdf" download>CV</a>
+    <a class="cv-barra" href="cv/CV-Federico-Villon.pdf" download>cv.pdf <span aria-hidden="true">↓</span></a>
   </nav>
 </header>
 
@@ -46,7 +46,7 @@
       </dl>
     </div>
 
-    <figure class="retrato" id="retrato">
+    <figure class="retrato" id="retrato"><pre class="relleno" id="relleno" aria-hidden="true"></pre><pre class="relleno luz-relleno" id="relleno-luz" aria-hidden="true"></pre>
       <img class="foto" src="assets/retrato.png" alt="Foto de Federico Villón" width="520" height="531">
       <pre class="ascii base" aria-hidden="true">
 
@@ -154,7 +154,6 @@ X&lt;&gt;i!!!!iiiii!!!lIII!IIlIIIIIIIIIIIIIIIIIIIIIIIIIIIII1{][]]?-_+~_nC(&gt;II
 1ii!!l!!!iii!llllIIII!!lllIIIIIIIIIIIIIIIIIIIIIIIIIIII1-]]??-__+~tmfIIIIIIIIIIIIIIIIIIIIIIIIIIIII?ftttf
 +&gt;ii!!!!ii!!!llIIIIIIl!llllIIIIIIIIIIIIIIIIIIIIIIIIIII&lt;????---_+&lt;{ZnIIIIIIIIIIIIIIIIIIIIIIIIIIIIIItttttf
 &lt;&gt;iiiiiii!l!!llIIIIIIIl!!llIIIIIIIIIIIIIIIIIIIIIIIIIIII&lt;-??--__+~?CcIIIIIIIIIIIIIIIIIIIIIIIIIIIIII[ftttt</pre>
-      <figcaption>pasá el mouse por la foto</figcaption>
     </figure>
   </section>
 
@@ -173,27 +172,34 @@ X&lt;&gt;i!!!!iiiii!!!lIII!IIlIIIIIIIIIIIIIIIIIIIIIIIIIIIII1{][]]?-_+~_nC(&gt;II
   <section id="proyectos" class="seccion" aria-labelledby="t-proyectos">
     <div class="seccion-cabeza" data-revelar>
       <h2 id="t-proyectos">Proyectos</h2>
-      <p>Pensados para negocios reales, con demo para probar. Pasá el mouse por una ventana o usá <kbd>←</kbd> <kbd>→</kbd>; con un clic o <kbd>Enter</kbd> se abre.</p>
+      <p>Pensados para negocios reales, con demo para probar.</p>
     </div>
 
     <div class="alttab" data-revelar>
       <div class="alttab-pista" id="pista" role="listbox" aria-label="Proyectos" aria-activedescendant="p-turnero" tabindex="0">
         <div class="win" role="option" id="p-turnero" data-p="turnero" aria-selected="true">
-          <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>turnero.html</div>
-          <div class="win-vista"><iframe data-src="demos/turnero/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Turnero"></iframe></div>
+          <div class="win-marco">
+            <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>turnero.html</div>
+            <div class="win-vista"><iframe data-src="demos/turnero/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Turnero"></iframe></div>
+          </div>
           <span class="win-nombre">Turnero</span>
         </div>
         <div class="win" role="option" id="p-despensa" data-p="despensa" aria-selected="false">
-          <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>despensa.py</div>
-          <div class="win-vista"><iframe data-src="demos/despensa/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Despensa"></iframe></div>
+          <div class="win-marco">
+            <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>despensa.py</div>
+            <div class="win-vista"><iframe data-src="demos/despensa/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Despensa"></iframe></div>
+          </div>
           <span class="win-nombre">Despensa</span>
         </div>
         <div class="win" role="option" id="p-bandeja" data-p="bandeja" aria-selected="false">
-          <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>bandeja.py</div>
-          <div class="win-vista"><iframe data-src="demos/bandeja/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Bandeja"></iframe></div>
+          <div class="win-marco">
+            <div class="win-barra"><span class="puntos" aria-hidden="true"><i></i><i></i><i></i></span>bandeja.py</div>
+            <div class="win-vista"><iframe data-src="demos/bandeja/index.html" tabindex="-1" aria-hidden="true" title="Vista previa de Bandeja"></iframe></div>
+          </div>
           <span class="win-nombre">Bandeja</span>
         </div>
       </div>
+      <p class="atajos" aria-hidden="true"><span class="solo-pc"><kbd>←</kbd><kbd>→</kbd> cambiar</span><span class="solo-pc"><kbd>enter</kbd> abrir demo</span><span class="solo-tactil">deslizá para cambiar</span><span class="solo-tactil">tocá para abrir</span></p>
     </div>
 
     <article class="detalle" id="detalle" aria-live="polite"></article>
@@ -270,6 +276,6 @@ X&lt;&gt;i!!!!iiiii!!!lIII!IIlIIIIIIIIIIIIIIIIIIIIIIIIIIIII1{][]]?-_+~_nC(&gt;II
   <iframe id="demo-marco" title="Demo del proyecto"></iframe>
 </div>
 
-<script src="js/sitio.js?v=8"></script>
+<script src="js/sitio.js?v=10"></script>
 </body>
 </html>

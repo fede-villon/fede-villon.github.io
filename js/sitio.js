@@ -42,11 +42,20 @@
   addEventListener('scroll', () => barra.classList.toggle('fija', scrollY > 30), { passive: true });
 
   // Sección activa en la barra
+  const RUTAS = { inicio: '~', proyectos: '~/proyectos', stack: '~/servicios', trayectoria: '~/trayectoria', contacto: '~/contacto' };
   const enlaces = [...document.querySelectorAll('.barra nav a[href^="#"]')];
-  const obsSeccion = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) enlaces.forEach(a => a.classList.toggle('activo', a.getAttribute('href') === '#' + e.target.id));
-  }), { rootMargin: '-45% 0px -50% 0px' });
-  enlaces.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) obsSeccion.observe(s); });
+  const secciones = ['inicio', ...enlaces.map(a => a.getAttribute('href').slice(1))].map(id => $(id)).filter(Boolean);
+  let seccionActual = null;
+  function marcarSeccion() {
+    const corte = innerHeight * .45;
+    let s = secciones[0];
+    secciones.forEach(x => { if (x.getBoundingClientRect().top <= corte) s = x; });
+    if (s === seccionActual) return;
+    seccionActual = s;
+    enlaces.forEach(a => a.classList.toggle('activo', a.getAttribute('href') === '#' + s.id));
+    $('ruta').textContent = RUTAS[s.id] || '~';
+  }
+  addEventListener('scroll', marcarSeccion, { passive: true }); marcarSeccion();
 
   // ---------- Reloj ----------
   function reloj() {
@@ -91,15 +100,39 @@
 
   // ---------- Retrato: la luz sigue al mouse ----------
   const retrato = $('retrato');
-  retrato.addEventListener('pointermove', e => {
-    const r = retrato.getBoundingClientRect();
-    retrato.style.setProperty('--mx', (e.clientX - r.left - 26) + 'px');
-    retrato.style.setProperty('--my', (e.clientY - r.top - 26) + 'px');
-  });
+  const luz = (x, y) => {
+    const pad = parseFloat(getComputedStyle(retrato).paddingLeft);
+    retrato.style.setProperty('--mx', (x - pad) + 'px'); retrato.style.setProperty('--my', (y - pad) + 'px');
+    retrato.style.setProperty('--rx', x + 'px'); retrato.style.setProperty('--ry', y + 'px');
+  };
+  retrato.addEventListener('pointermove', e => { const r = retrato.getBoundingClientRect(); luz(e.clientX - r.left, e.clientY - r.top); });
+
+  // Marco de la foto: caracteres sueltos, como los de la foto, en todo el fondo
+  function rellenar() {
+    const pre = $('relleno'), med = document.createElement('span');
+    med.textContent = 'MMMMMMMMMM'; pre.textContent = ''; pre.appendChild(med);
+    const ancho = med.getBoundingClientRect().width / 10, alto = parseFloat(getComputedStyle(pre).lineHeight);
+    const cols = Math.ceil(retrato.clientWidth / ancho) + 1, filas = Math.ceil(retrato.clientHeight / alto) + 1;
+    const juego = '..::-~=+*', cx = cols / 2, cy = filas * .42;
+    let semilla = 7; const azar = () => (semilla = (semilla * 16807) % 2147483647) / 2147483647;
+    let txt = '';
+    for (let y = 0; y < filas; y++) {
+      for (let x = 0; x < cols; x++) {
+        // más denso cerca de la foto, más ralo hacia los bordes
+        const d = Math.hypot((x - cx) / cols, (y - cy) / filas);
+        txt += azar() < .78 - d * .75 ? juego[Math.floor(azar() * juego.length)] : ' ';
+      }
+      txt += '\n';
+    }
+    pre.textContent = txt; $('relleno-luz').textContent = txt;
+  }
+  rellenar();
+  let tRelleno; addEventListener('resize', () => { clearTimeout(tRelleno); tRelleno = setTimeout(rellenar, 200); });
+
   // Sin mouse (celular): la luz recorre la cara sola
   if (!matchMedia('(hover: hover)').matches && !reducido) {
     let a = 0;
-    setInterval(() => { a += .04; retrato.style.setProperty('--mx', (50 + Math.cos(a) * 30) + '%'); retrato.style.setProperty('--my', (40 + Math.sin(a * 1.3) * 22) + '%'); }, 40);
+    setInterval(() => { a += .04; luz(retrato.clientWidth * (.5 + Math.cos(a) * .3), retrato.clientHeight * (.4 + Math.sin(a * 1.3) * .22)); }, 40);
   }
 
   // ---------- Aparición al hacer scroll ----------
