@@ -13,31 +13,27 @@
   // ---------- Datos de los proyectos ----------
   const PROYECTOS = {
     despensa: {
-      nombre: 'Despensa', lenguaje: 'Python · Flask · SQLite', repo: 'https://github.com/fede-villon/despensa', archivo: 'despensa.py',
-      texto: 'Stock, caja y reportes para almacenes de barrio: alertas de faltantes y vencimientos, compras a proveedores, roles de dueño y cajero, y exportación a Excel.',
-      parte: 'el análisis del negocio, el modelo de datos, las reglas de stock y la guía de soporte para cuando algo falla.',
-      metricas: [[32, '', 'tests automáticos'], [10, '', 'pantallas en la demo']], chips: ['Python', 'Flask', 'SQL', 'pytest'],
+      nombre: 'Despensa', tecnologia: 'Python · Flask · SQLite', archivo: 'despensa',
+      texto: 'Un sistema para que un almacén o kiosco controle su mercadería y sus ventas desde la computadora del mostrador, sin cuadernos ni planillas sueltas.',
+      puntos: ['Caja con lector de código de barras y distintos medios de pago', 'Avisos de productos por reponer y por vencer', 'Compras a proveedores que suman stock solas', 'Reportes de ventas y ganancia, exportables a Excel'],
       pestanas: [['inicio', 'demos/despensa/index.html'], ['caja', 'demos/despensa/caja.html'], ['productos', 'demos/despensa/productos.html'], ['reportes', 'demos/despensa/reportes.html']],
     },
     bandeja: {
-      nombre: 'Bandeja', lenguaje: 'Python · IA local (Ollama)', repo: 'https://github.com/fede-villon/bandeja', archivo: 'bandeja.py',
-      texto: 'Lee facturas y remitos de proveedores con un modelo de IA gratuito que corre en la PC, y avisa lo que no cierra: totales mal sumados, duplicados, aumentos de precio y proveedores desconocidos.',
-      parte: 'los controles y la evaluación del modelo: lo medí y pasé de 89 % a 100 % de campos correctos. La IA lee, el código verifica.',
-      metricas: [[100, ' %', 'campos leídos bien'], [32, '', 'tests automáticos']], chips: ['Python', 'Ollama', 'SQLite', 'Excel'],
+      nombre: 'Bandeja', tecnologia: 'Python · IA · SQLite', archivo: 'bandeja',
+      texto: 'Lee automáticamente las facturas y remitos que llegan de los proveedores, los carga en una base de datos y avisa solo lo que hay que revisar.',
+      puntos: ['Detecta totales mal sumados y facturas repetidas', 'Avisa cuando un proveedor sube un precio', 'Panel para aprobar o rechazar cada comprobante', 'Resumen semanal por mail con Excel adjunto'],
       pestanas: [['panel de revisión', 'demos/bandeja/index.html'], ['resumen semanal', 'demos/bandeja/resumen.txt']],
     },
     turnero: {
-      nombre: 'Turnero', lenguaje: 'HTML · CSS · JavaScript', repo: 'https://github.com/fede-villon/turnero', archivo: 'turnero.html',
-      texto: 'Turnos online para barberías: la web donde el cliente reserva desde el celular y el panel del local con agenda, cobro, recordatorios por WhatsApp y números del negocio.',
-      parte: 'el flujo de reserva pensado para el celular, el diseño y la lógica de horarios libres. Es una demo: los datos viven en el navegador.',
-      metricas: [[15, '', 'tests de la agenda'], [2, '', 'apps: cliente y local']], chips: ['JavaScript', 'UX', 'responsive', 'WhatsApp'],
+      nombre: 'Turnero', tecnologia: 'HTML · CSS · JavaScript', archivo: 'turnero',
+      texto: 'Turnos online para barberías: el cliente reserva desde el celular en menos de un minuto y el local maneja su día desde un panel.',
+      puntos: ['Solo muestra horarios realmente libres', 'Recordatorios por WhatsApp con el mensaje armado', 'Agenda por barbero con cobro en dos toques', 'Números del negocio: ingresos, ausencias y ocupación'],
       pestanas: [['web del cliente', 'demos/turnero/index.html'], ['panel del local', 'demos/turnero/panel.html']],
     },
     campus: {
-      nombre: 'Campus Backend Developer', lenguaje: 'PWA · JavaScript · Pyodide', repo: 'https://github.com/fede-villon/CampusBackendDeveloper', archivo: 'campus.pwa',
-      texto: 'Una app para aprender backend jugando: misiones, niveles y ejercicios de Python que corren en el navegador. La armé para estudiar yo.',
-      parte: 'la idea, el recorrido de niveles y los contenidos.',
-      metricas: [[11, '', 'niveles'], [0, '', 'instalaciones necesarias']], chips: ['PWA', 'Pyodide', 'offline'],
+      nombre: 'Campus Backend', tecnologia: 'PWA · JavaScript · Python', archivo: 'campus',
+      texto: 'Una app para aprender programación backend jugando, con misiones y niveles. Funciona en el navegador y sin conexión.',
+      puntos: ['Recorrido por niveles con misiones', 'Ejercicios de Python que corren en el navegador', 'Se instala como app en el celular'],
       pestanas: [['app', 'https://fede-villon.github.io/CampusBackendDeveloper/']],
     },
   };
@@ -86,7 +82,7 @@
 
   // ---------- Roles que se escriben y borran ----------
   (function rotar() {
-    const el = $('rotador'), roles = ['soporte IT', 'análisis de datos', 'automatización con IA', 'páginas web'];
+    const el = $('rotador'), roles = ['páginas web', 'automatizaciones', 'soluciones tecnológicas'];
     if (reducido) return;
     let i = 0, j = roles[0].length, borrando = false;
     setTimeout(function tick() {
@@ -140,34 +136,20 @@
   const pista = $('pista'), ventanas = [...pista.querySelectorAll('.win')];
   let actual = 0, bloqueo = 0;
 
-  function contar(el) {
-    const fin = Number(el.dataset.n), suf = el.dataset.suf || '';
-    if (reducido || fin === 0) { el.textContent = fin + suf; return; }
-    const t0 = performance.now(), dur = 900;
-    (function paso(t) {
-      const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(fin * e) + suf;
-      if (p < 1) requestAnimationFrame(paso);
-    })(t0);
-  }
-
   function detalle(clave) {
     const p = PROYECTOS[clave], d = $('detalle');
     d.innerHTML = `
       <div>
-        <span class="lenguaje">${esc(p.lenguaje)}</span>
+        <span class="tecnologia">${esc(p.tecnologia)}</span>
         <h3>${esc(p.nombre)}</h3>
         <p>${esc(p.texto)}</p>
-        <p class="honesto"><strong>Mi parte:</strong> ${esc(p.parte)}</p>
-        <div class="acciones"><button class="btn principal" type="button" data-demo="${clave}">Abrir la demo</button>
-          <a class="btn" href="${p.repo}" target="_blank" rel="noopener">Ver el código</a></div>
+        <div class="acciones"><button class="btn principal" type="button" data-demo="${clave}">Abrir la demo</button></div>
       </div>
       <div>
-        <div class="metricas">${p.metricas.map(([n, suf, t]) => `<div class="metrica"><strong data-n="${n}" data-suf="${suf}">0${suf}</strong><span>${esc(t)}</span></div>`).join('')}</div>
-        <ul class="chips">${p.chips.map(c => `<li>${esc(c)}</li>`).join('')}</ul>
+        <h4>Qué hace</h4>
+        <ul>${p.puntos.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
       </div>`;
     d.classList.remove('cambio'); void d.offsetWidth; d.classList.add('cambio');
-    d.querySelectorAll('[data-n]').forEach(contar);
   }
 
   function seleccionar(i, { centrarScroll = false } = {}) {
@@ -266,11 +248,11 @@
   const ir = id => { document.getElementById(id).scrollIntoView({ behavior: reducido ? 'auto' : 'smooth' }); };
   const COMANDOS = {
     help: () => ['whoami · proyectos · abrir &lt;despensa|bandeja|turnero|campus&gt; · stack · cv · contacto · clear'],
-    whoami: () => ['Federico Villón. Estudiante de Sistemas (UTN). Busco remoto part-time en soporte IT, datos o automatización.'],
+    whoami: () => ['Federico Villón. Estudiante de Sistemas (UTN). Hago páginas web, automatizaciones y soluciones tecnológicas.'],
     proyectos: () => ORDEN.map(k => `${k.padEnd(9)} ${esc(PROYECTOS[k].texto.split(':')[0].split('.')[0])} · <button class="enlace" data-demo="${k}">abrir</button>`),
     ls: () => COMANDOS.proyectos(),
     abrir: a => abrirDemo((a[0] || '').toLowerCase()) ? ['abriendo…'] : ['uso: abrir despensa | bandeja | turnero | campus'],
-    stack: () => { ir('stack'); return ['te llevo al stack ↓']; },
+    stack: () => { ir('stack'); return ['te llevo a «Qué hago» ↓']; },
     cv: () => { Object.assign(document.createElement('a'), { href: 'cv/CV-Federico-Villon.pdf', download: '' }).click(); return ['descargando CV-Federico-Villon.pdf…']; },
     contacto: () => ['mail      ' + enlace('fedevillon110@gmail.com', 'mailto:fedevillon110@gmail.com'),
       'whatsapp  ' + enlace('+54 3447 55-2717', 'https://wa.me/5493447552717?text=Hola%20Federico%2C%20vi%20tu%20portfolio.'),
